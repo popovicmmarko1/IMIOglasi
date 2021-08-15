@@ -30,7 +30,7 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked = false;
-    private Boolean enabled = false;
+    private Boolean enabled = true;
 
     public AppUser(String fName, String lName, String email, String password, AppUserRole appUserRole) {
         this.fName = fName;

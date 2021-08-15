@@ -10,6 +10,12 @@ public class PageController {
     @GetMapping("/login")
     public String login()
     {
-        return "login";
+        return "index";
+    }
+
+    @GetMapping
+    public String landing()
+    {
+        return "1";
     }
 }

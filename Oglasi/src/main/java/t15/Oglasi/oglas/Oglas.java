@@ -3,6 +3,7 @@ package t15.Oglasi.oglas;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,4 +19,5 @@ public class Oglas {
     private Long id;
     private String name;
     private String mesto;
+    private LocalDateTime vremeIsteka;
 }

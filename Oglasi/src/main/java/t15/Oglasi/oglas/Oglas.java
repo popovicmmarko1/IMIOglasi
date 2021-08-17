@@ -1,9 +1,6 @@
 package t15.Oglasi.oglas;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +9,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
+@AllArgsConstructor
 public class Oglas {
 
     @Id
@@ -19,18 +17,5 @@ public class Oglas {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "oglGen")
     private Long id;
     private String name;
-    private String opis;
-    private String tags;
-    private String slike;
-
-    public Oglas(String name, String opis, String tags, String slike)
-    {
-        this.name = name;
-        this.opis = opis;
-        this.tags = tags;
-        this.slike = slike;
-    }
-
-
-
+    private String mesto;
 }

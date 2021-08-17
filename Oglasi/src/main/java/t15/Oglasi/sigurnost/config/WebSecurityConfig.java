@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/fonts/**").permitAll().antMatchers("/images/**").permitAll()
                 .antMatchers("/scss/**").permitAll().antMatchers("/vendor/**").permitAll()
                 .antMatchers("/Doc/**").permitAll().antMatchers("/assets/**").permitAll()
-                .antMatchers("/oglas/**").permitAll()
+                .antMatchers("/oglas/**").permitAll().antMatchers("/slike/**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();

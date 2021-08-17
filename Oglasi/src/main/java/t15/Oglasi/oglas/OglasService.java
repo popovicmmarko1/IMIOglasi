@@ -8,9 +8,4 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class OglasService {
 
-    @Autowired
-    private final OglasRepository oglasRepository;
-
-
-
 }

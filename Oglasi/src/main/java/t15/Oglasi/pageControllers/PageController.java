@@ -10,7 +10,14 @@ public class PageController {
     @GetMapping("/login")
     public String login()
     {
-        return "index";
+        return "login";
+    }
+
+
+    @GetMapping("/register")
+    public String register()
+    {
+        return "register";
     }
 
     @GetMapping

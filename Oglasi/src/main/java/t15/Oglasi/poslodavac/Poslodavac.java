@@ -18,8 +18,7 @@ public class Poslodavac{
     @SequenceGenerator(name="posGen", sequenceName = "posGen", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "posGen")
     private Long id;
-    @Column(updatable = false, nullable = false)
-    private Long idOglasa;
+    private String naziv;
     @Column(columnDefinition = "TEXT")
     private String opis;
     @Column(columnDefinition = "TEXT")

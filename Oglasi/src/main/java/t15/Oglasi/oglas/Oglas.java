@@ -20,4 +20,9 @@ public class Oglas {
     private String name;
     private String mesto;
     private LocalDateTime vremeIsteka;
+    private LocalDateTime postavljen;
+    @Column(columnDefinition = "TEXT")
+    private String opis;
+    @Column(nullable = false)
+    private Long poslodavacId;
 }

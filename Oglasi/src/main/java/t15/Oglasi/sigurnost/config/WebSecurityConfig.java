@@ -22,11 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().antMatchers("/registration/**").permitAll()
-                .antMatchers("/css/**").permitAll().antMatchers("/js/**").permitAll()
-                .antMatchers("/fonts/**").permitAll().antMatchers("/images/**").permitAll()
-                .antMatchers("/scss/**").permitAll().antMatchers("/vendor/**").permitAll()
-                .antMatchers("/Doc/**").permitAll().antMatchers("/assets/**").permitAll()
-                .antMatchers("/oglas/**").permitAll().antMatchers("/slike/**").permitAll()
+                .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();

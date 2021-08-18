@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import t15.Oglasi.oglas.Oglas;
 import t15.Oglasi.oglas.OglasRepository;
+import t15.Oglasi.poslodavac.Poslodavac;
+import t15.Oglasi.poslodavac.PoslodavacRepository;
 import t15.Oglasi.slike.Slike;
 import t15.Oglasi.slike.SlikeRepository;
 import t15.Oglasi.tag.Tag;
@@ -26,6 +28,8 @@ public class PageController {
     private SlikeRepository slikeRepository;
     @Autowired
     private TagRepository tagRepository;
+    @Autowired
+    private PoslodavacRepository poslodavacRepository;
 
     @GetMapping("/login")
     public String login()
@@ -39,27 +43,77 @@ public class PageController {
         return "index";
     }
 
+    @GetMapping("/oglas/testt")
+    public String oglastestt()
+    {
+        return "oglas";
+    }
+
     @GetMapping("/oglas/pageid={id}")
     public String oglas(@PathVariable long id, Model model)
     {
         Optional<Oglas> o = oglasRepository.findById(id);
-        List<Slike> s = slikeRepository.findByOglasId(id);
-        List<Tag> t = tagRepository.findByOglasId(id);
+
+        Oglas oglas;
         if(o.isPresent())
         {
+            oglas = o.get();
+            model.addAttribute("naslov", oglas.getName());
+            model.addAttribute("mesto", oglas.getMesto());
+            model.addAttribute("postavljen", oglas.getPostavljen().toString());
+            model.addAttribute("istice", oglas.getVremeIsteka().toString());
+            model.addAttribute("opis", oglas.getOpis());
+
+            List<Slike> s = slikeRepository.findByOglasId(id);
+            List<Tag> t = tagRepository.findByOglasId(id);
+
+            if(!s.isEmpty()) {
+                model.addAttribute("slika", "ture");
+                int br = 0;
+                for (Slike slika : s) {
+                    br++;
+                    model.addAttribute("slika" + br, slika.getSrc());
+                }
+            }else{
+                model.addAttribute("slika", "false");
+            }
+
+            if(!t.isEmpty()){
+                model.addAttribute("tag", "true");
+                int br = 0;
+                for(Tag tag : t)
+                {
+                    br++;
+                    model.addAttribute("tag" + br, tag.getTag());
+                }
+            }else{
+                model.addAttribute("tag", "false");
+            }
+            Optional <Poslodavac> p = poslodavacRepository.findById(oglas.getPoslodavacId());
+
+            if(p.isPresent())
+            {
+                Poslodavac poslodavac = p.get();
+                model.addAttribute("poslodavac_ime", poslodavac.getNaziv());
+                model.addAttribute("poslodavac_opis", poslodavac.getOpis());
+                model.addAttribute("poslodavac_slika", poslodavac.getSlika());
+
+            }else{
+                throw new IllegalStateException("Poslodavac ne postoji!");
+            }
 
             return "oglas";
         }else {
-            return null;
+            throw new IllegalStateException("Oglas ne postoji!");
         }
     }
 
-    @GetMapping("/oglas/test")
+    @GetMapping("/oglastest")
     public String test(Model model)
     {
-        Oglas o = new Oglas(1L, "Posao 1", "Mesto 1", LocalDateTime.now().plusDays(20));
         model.addAttribute("naslov", "Posao 1");
         model.addAttribute("mesto", "Mesto 1");
+        model.addAttribute("postavljen", LocalDateTime.now().toString());
         model.addAttribute("istice", LocalDateTime.now().plusDays(20).toString());
         model.addAttribute("poslodavac", "Poslodavac 1");
         model.addAttribute("opis", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");

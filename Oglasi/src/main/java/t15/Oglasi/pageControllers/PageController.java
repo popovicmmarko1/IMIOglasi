@@ -108,7 +108,7 @@ public class PageController {
         }
     }
 
-    @GetMapping("/oglastest")
+    @GetMapping("/oglas/test")
     public String test(Model model)
     {
         model.addAttribute("naslov", "Posao 1");

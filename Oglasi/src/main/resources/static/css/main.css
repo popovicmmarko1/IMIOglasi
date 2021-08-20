@@ -226,7 +226,16 @@ iframe {
   display: block;
 }
 
+.login100-form-login-register {
+  font-family: Ubuntu-Bold;
+  font-size: 18px;
+  color: black;
+  line-height: 1.2;
+  text-align: center;
 
+
+  display: block;
+}
 /*------------------------------------------------------------------
 [ Input ]*/
 

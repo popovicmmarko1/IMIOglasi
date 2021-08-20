@@ -1,8 +1,99 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <body>
-        <div layout:fragment="content">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        </div>
+    <link type="text/css" rel="stylesheet" href="/application/cache/161857018305c9ee1d92400fef3d75b46e2c7541f6.css" media="screen"  />
+    <link type="text/css" rel="stylesheet" href="/application/cache/1624885721aee4292b01e72c9e22289dc47b0ee027.css" media="screen"  />
+
+    <link rel="stylesheet" type="text/css" href="static/css/oglas.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+</head>
+    <body style="background: #f1f3f7"> <!-- ;-->
+        <div layout:fragment="content" class="back" style="background-color:white; border: 1px solid #e5e5e5; width: 1200px; margin: auto; margin-top:30px; margin-bottom:30px; padding-left: 40px; padding-right: 30px; padding-top:30px; padding-bottom:30px;">
+
+
+            <header>
+                <div style="width: 900px; float:left;">
+                <h1 style="font-weight: 700;" th:text="${naslov}"/>  <!-- >Naziv</h1> -->
+                <h2 th:text="${poslodavac_ime}"/> <!-- Poslodavac</h2>-->
+                <p class="place" style="margin-bottom: 0;" th:text="${mesto}" /><i class="glyphicon glyphicon-map-marker"></i> <!-- Mesto</p> -->
+                <p class="date" style="margin-top: 0; font-weight: 700;" th:text="${#dates.format(istice, 'dd-MMM-yyyy')}" /><i class="glyphicon glyphicon-time"></i> <!--Istice</p> -->
+                </div>
+                <div id="logo_ogl" style=" width:120px; height: 120px; float:right; border:1px solid black; background-color:red; ">
+                    <img width="120px" height="120px"  src="../slike/slika1.png">
+                </div>
+                <br>
+                <div style="border:1px solid #A9A9A9;  clear:both;">
+                </div>
+            </header>
+                <h2>O Poslodavcu</h2>
+                <div th:text="${poslodavac_opis}" /> 
+
+
+                <h2>Tekst Oglasa</h2>
+                    <div th:text="${opis}" />
+
+
+
+<!--
+                    <div class="no-print">
+                        <div id="__comment_form_modal" class="uk-flex-top uk-modal" uk-modal="">
+                            <div class="uk-modal-dialog">
+
+                                <div class="uk-modal-header">
+                                    <p class="uk-modal-title">Prijavite problem sa oglasom</p>
+                                </div>
+
+                                <form id="__comment_form" class="uk-form-stacked">
+
+                                    <div class="uk-modal-body">
+                                        <p>Ukoliko postoji problem sa ovim oglasom (netačne, neažurne informacije ili slično), molimo vas da nam ga prijavite ovim putem.</p>
+                                        <p class="uk-alert uk-alert-danger">
+                                            <i class="las la-exclamation-circle"></i> Vaš komentar je vidljiv isključivo zaposlenima sajta Poslovi.infostud.com. Ostavljanjem komentara na ovaj konkurs nećete konkurisati na oglas.
+                                        </p>
+
+                                        <p data-error-message-header="" class="error-general-message" style="display:none"></p>
+
+                                        <div class="uk-margin">
+                                            <div class="error-section-message" data-error-section-message="" data-error-section-message-name="" style="display:none"></div>                <div data-error-section="" data-error-section-name="">
+                                            <label class="uk-form-label" for="name">Ime i prezime <span class="required">*</span></label>
+                                            <div class="uk-form-controls">
+                                                <input class="uk-input uk-width-1-1" type="text" id="__name" name="name" value="">
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="uk-margin">
+                                            <div class="error-section-message" data-error-section-message="" data-error-section-message-question="" style="display:none"></div>                <div data-error-section="" data-error-section-question="">
+                                            <label class="uk-form-label" for="question">Poruka <span class="required">*</span></label>
+                                            <div class="uk-form-controls">
+                                                <textarea class="uk-textarea uk-width-1-1" id="__question" name="question" cols="30" rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-modal-footer uk-text-right">
+                                        <a href="javascript:void(0);" id="__comment_cancel" class="uk-button uk-button-default">Nazad</a>
+                                        <a href="javascript:void(0);" id="__comment_send" class="uk-button uk-button-primary">Pošaljite</a>
+
+                                        <input type="hidden" name="id" value="378069">
+                                        <input type="hidden" id="size" name="size" value="1536x864">
+                                        <input type="hidden" id="cookieEnabled" name="cookieEnabled" value="true">
+                                        <input type="hidden" id="userAgent" name="userAgent" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36">
+                                        <input type="hidden" id="platform" name="platform" value="Win32">
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+-->
+
+            </div>
     </body>
 </html>

@@ -24,7 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/registration/**").permitAll()
                 .antMatchers("/css/**").permitAll().antMatchers("/js/**").permitAll()
                 .antMatchers("/fonts/**").permitAll().antMatchers("/images/**").permitAll()
-                .antMatchers("/scss/**").permitAll().antMatchers("/vendor/**").permitAll()
+                .antMatchers("/scss/**").permitAll().antMatchers("/vendor/**")
+                .permitAll().antMatchers("/signup/**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();

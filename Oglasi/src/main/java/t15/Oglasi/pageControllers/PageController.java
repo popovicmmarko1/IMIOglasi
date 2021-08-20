@@ -13,11 +13,10 @@ public class PageController {
         return "login";
     }
 
-
-    @GetMapping("/register")
-    public String register()
+    @GetMapping("/signup")
+    public String signup()
     {
-        return "register";
+        return "signup";
     }
 
     @GetMapping

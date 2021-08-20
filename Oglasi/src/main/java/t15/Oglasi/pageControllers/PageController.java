@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import t15.Oglasi.appUser.AppUser;
 import t15.Oglasi.oglas.Oglas;
 import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.poslodavac.Poslodavac;
@@ -15,6 +16,7 @@ import t15.Oglasi.slike.SlikeRepository;
 import t15.Oglasi.tag.Tag;
 import t15.Oglasi.tag.TagRepository;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -37,10 +39,25 @@ public class PageController {
         return "login";
     }
 
-    @GetMapping("/")
-    public String landing()
+    @GetMapping(value = {"/",  "/index", "/index.html"})
+    public String landing(Principal user, Model model)
     {
+        if(user != null)    System.out.println(user.getName());
+        else System.out.println("guest");
+
+        List<Oglas> oglasi = oglasRepository.findAll();
+
+        if(!oglasi.isEmpty())
+        {
+
+        }
         return "index";
+    }
+
+    @GetMapping("/oglas/create")
+    public String oglasCreate()
+    {
+        return "oglas_create";
     }
 
     @GetMapping("/oglas/testt")
@@ -68,7 +85,6 @@ public class PageController {
             List<Tag> t = tagRepository.findByOglasId(id);
 
             if(!s.isEmpty()) {
-                model.addAttribute("slika", "ture");
                 int br = 0;
                 for (Slike slika : s) {
                     br++;
@@ -77,6 +93,7 @@ public class PageController {
             }else{
                 model.addAttribute("slika", "false");
             }
+
 
             if(!t.isEmpty()){
                 model.addAttribute("tag", "true");

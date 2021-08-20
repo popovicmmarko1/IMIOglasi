@@ -8,4 +8,13 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class OglasService {
 
+    @Autowired
+    private final OglasRepository oglasRepository;
+
+    public String postaviOglas(Oglas request)
+    {
+        oglasRepository.save(request);
+        return "uspesno";
+    }
+
 }

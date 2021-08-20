@@ -1,6 +1,5 @@
 package t15.Oglasi.pageControllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,23 +36,68 @@ public class PageController {
         return "login";
     }
 
-    @GetMapping("/signup")
+    @GetMapping(value = {"/signup",  "/signup.html"})
     public String signup()
     {
         return "signup";
     }
 
-    @GetMapping("/")
-    public String landing()
-    {
-        return "index";
-    }
+    @GetMapping(value = {"/", "/index", "/index.html"})
+    public String home() { return "index"; }
 
-    @GetMapping("/oglas/testt")
-    public String oglastestt()
+    @GetMapping(value = {"oglas",  "/oglas.html"})
+    public String oglas()
     {
         return "oglas";
     }
+
+    @GetMapping(value = {"listing",  "/listing.html"})
+    public String listing()
+    {
+        return "listing";
+    }
+
+    @GetMapping(value = {"blog",  "/blog.html"})
+    public String blog()
+    {
+        return "blog";
+    }
+
+    @GetMapping(value = {"blog_details",  "/blog_details.html"})
+    public String blog_details()
+    {
+        return "blog_details";
+    }
+
+    @GetMapping(value = {"contact",  "/contact.html"})
+    public String contact()
+    {
+        return "contact";
+    }
+
+    @GetMapping(value = {"directory_details",  "/directory_details.html"})
+    public String directory_details()
+    {
+        return "directory_details";
+    }
+
+    @GetMapping(value = {"_layout",  "/_layout.html"})
+    public String layout()
+    {
+        return "_layout";
+    }
+
+    @GetMapping(value = {"elements",  "/elements.html"})
+    public String elements()
+    {
+        return "elements";
+    }
+
+//    @GetMapping("/")
+//    public String landing() { return "index"; }
+
+    @GetMapping("/oglas/testt")
+    public String oglastestt() { return "oglas"; }
 
     @GetMapping("/oglas/pageid={id}")
     public String oglas(@PathVariable long id, Model model)

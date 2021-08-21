@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login V16</title>
+    <title>Registracija</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -35,7 +35,7 @@
 				<span class="login100-form-title p-b-41">
 					Regustrujte nalog
 				</span>
-            <form th:action="@{/signup}" method="post" class="login100-form validate-form p-b-33 p-t-5">
+            <form th:action="@{/registration}" method="post" class="login100-form validate-form p-b-33 p-t-5">
 
 
                 <div class="wrap-input100 validate-input" data-validate = "Unesite ime">
@@ -53,18 +53,18 @@
                     <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Unesite lozinku">
-                    <input class="input100" type="password" name="password" placeholder="Lozinka">
+                <div class="wrap-input100 validate-input pass" data-validate="Unesite lozinku">
+                    <input class="input100" type="password" id="pass1" name="password" placeholder="Lozinka">
                     <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                 </div>
-                <div class="wrap-input100 validate-input" data-validate="Potvrdite lozinku">
-                    <input class="input100" type="password" name="password" placeholder="Potvrda lozinke">
+                <div class="wrap-input100 validate-input pass" data-validate="Potvrdite lozinku">
+                    <input class="input100" type="password" id="pass2" name="rpassword" placeholder="Potvrda lozinke">
                     <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                 </div>
 
                 <div class="container-login100-form-btn m-t-32 m-b-12">
                     <a href="/signup">
-                        <button type="submit"  value="signup" class="login100-form-btn">
+                        <button type="submit" value="signup" class="login100-form-btn">
                             Registruj se
                         </button>
                     </a>
@@ -73,12 +73,11 @@
                 <span class="login100-form-login-register">Već imate nalog?</span>
                 <div class="container-login100-form-btn m-t-5">
                     <a href="/login">
-                        <button value="Login" class="login100-form-btn">
+                        <button value="Login" type="button" class="login100-form-btn">
                             Prijavi se
                         </button>
                     </a>
                 </div>
-
             </form>
         </div>
     </div>

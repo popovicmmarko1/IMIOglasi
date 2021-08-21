@@ -34,7 +34,6 @@
         return check;
     });
 
-
     $('.validate-form .input100').each(function(){
         $(this).focus(function(){
            hideValidate(this);
@@ -51,6 +50,14 @@
             if($(input).val().trim() == ''){
                 return false;
             }
+        }
+        if (($(input).attr('name') == 'password') || ($(input).attr('name') == 'rpassword'))
+        {
+            var pass = $('#pass1').val();
+            var rpass = $('#pass2').val();
+
+            if(pass != rpass)
+                return false;
         }
     }
 

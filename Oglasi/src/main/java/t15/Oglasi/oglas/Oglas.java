@@ -3,14 +3,15 @@ package t15.Oglasi.oglas;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
-@AllArgsConstructor
 public class Oglas {
 
     @Id
@@ -19,10 +20,21 @@ public class Oglas {
     private Long id;
     private String name;
     private String mesto;
-    private LocalDateTime vremeIsteka;
-    private LocalDateTime postavljen;
+    private LocalDate vremeIsteka;
+    private String postavljen;
     @Column(columnDefinition = "TEXT")
     private String opis;
     @Column(nullable = false)
     private Long poslodavacId;
+
+    public Oglas(String name, String mesto, LocalDate vremeIsteka, String opis, Long poslodavacId)
+    {
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.name = name;
+        this.mesto = mesto;
+        this.vremeIsteka = vremeIsteka;
+        this.opis = opis;
+        this.poslodavacId = poslodavacId;
+        this.postavljen = LocalDate.now().format(df);
+    }
 }

@@ -1,17 +1,20 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>DirectoryListing</title>
+    <title>OglasiIMI</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+<!--    <link rel="shortcut icon" type="image/x-icon" href="static/images/icons/logoOglasiIMI.png">-->
+<!--    <link rel="icon" href="static/images/icons/LogoOglasiIMI.png">-->
+<!--    <link rel="icon" href="http://example.com/favicon.png">-->
+    <link rel="icon" type="image/png" href="images/icons/jobs-icon-png-10.jpg"/>
 
-	<!-- CSS here -->
+    <!-- CSS here -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
 	<link rel="stylesheet" href="assets/css/slicknav.css">
     <link rel="stylesheet" href="assets/css/flaticon.css">
     <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
@@ -24,6 +27,8 @@
 	<link rel="stylesheet" href="assets/css/slick.css">
 	<link rel="stylesheet" href="assets/css/nice-select.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/home.scss">
+
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -46,28 +51,28 @@
                     <div class="menu-wrapper d-flex align-items-center justify-content-between">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                            <a href="index"><img src="assets/img/logo/logo.png" alt=""></a>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="listing.html">Catagories</a></li> 
-                                    <li><a href="#">Pages</a>
+                                    <li><a href="index">Početna</a></li>
+                                    <li><a href="listing">Kategorije</a></li>
+                                    <li><a href="signup">Pages</a>
                                         <ul class="submenu">
-                                            <li><a href="directory_details.html">listing Details</a></li>
-                                            <li><a href="listing.html">Catagories</a></li> 
+                                            <li><a href="directory_details">listing Details</a></li>
+                                            <li><a href="listing">Catagories</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">Blog</a>
+                                    <li><a href="blog">Blog</a>
                                         <ul class="submenu">
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog_details.html">Blog Details</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
+                                            <li><a href="blog">Blog</a></li>
+                                            <li><a href="blog_details">Blog Details</a></li>
+                                            <li><a href="elements">Elements</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="contact">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>          
@@ -95,17 +100,28 @@
                         <div class="col-xl-10 col-lg-10">
                             <!-- Hero Caption -->
                             <div class="hero__caption pt-100">
-                                <h1>Explore Australia</h1>
+                                <h1>Pronađite brzo i lako poslove u vašoj okolini</h1>
                                 <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>
                             </div>
                             <!--Hero form -->
                             <form action="#" class="search-box mb-100">
                                 <div class="input-form">
-                                    <input type="text" placeholder="What are you finding?">
+                                    <input type="text" placeholder="Pozicija, poslodavac ili ključna reč...">
                                 </div>
                                 <div class="select-form">
                                     <div class="select-itms">
                                         <select name="select" id="select1">
+                                            <option value="">In where?</option>
+                                            <option value="">Catagories 1</option>
+                                            <option value="">Catagories 2</option>
+                                            <option value="">Catagories 3</option>
+                                            <option value="">Catagories 4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="select-form">
+                                    <div class="select-itms">
+                                        <select name="select" id="select2">
                                             <option value="">In where?</option>
                                             <option value="">Catagories One</option>
                                             <option value="">Catagories Two</option>
@@ -120,9 +136,9 @@
                             </form>	
                             <!-- hero category1 img -->
                             <div class="category-img text-center">
-                                <a href="listing.html"> <img src="assets/img/gallery/hero_category1.png" alt=""></a>
-                                <a href="listing.html"> <img src="assets/img/gallery/hero_category2.png" alt=""></a>
-                                <a href="listing.html"> <img src="assets/img/gallery/hero_category3.png" alt=""></a>
+                                <a href="listing"> <img src="assets/img/gallery/hero_category1.png" alt=""></a>
+                                <a href="listing"> <img src="assets/img/gallery/hero_category2.png" alt=""></a>
+                                <a href="listing"> <img src="assets/img/gallery/hero_category3.png" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -543,7 +559,7 @@
                                 <ul>
                                     <li>12 March   I   by Alan</li>
                                 </ul>
-                                <p><a href="blog_details.html">The Best SPA Salons For Your Relaxation</a></p>
+                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>
                             </div>
                         </div>
                     </div>
@@ -557,7 +573,7 @@
                                 <ul>
                                     <li>12 March   I   by Alan</li>
                                 </ul>
-                                <p><a href="blog_details.html">The Best SPA Salons For Your Relaxation</a></p>
+                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>
                             </div>
                         </div>
                     </div>
@@ -600,18 +616,18 @@
                                 <div class="main-menu2">
                                     <nav>
                                         <ul>
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="explore.html">Explore</a></li> 
-                                            <li><a href="pages.html">Pages</a></li>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="index">Home</a></li>
+                                            <li><a href="explore">Explore</a></li> 
+                                            <li><a href="pages">Pages</a></li>
+                                            <li><a href="blog">Blog</a></li>
+                                            <li><a href="contact">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-2 col-lg-3 col-md-4">
-                            <a href="#" class="btn f-right sm-left">Add Listing</a>
+                            <a href="/signup" class="btn f-right sm-left">Add Listing</a>
                         </div>
                     </div>
                 </div>

@@ -7,10 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-<!--    <link rel="shortcut icon" type="image/x-icon" href="static/images/icons/logoOglasiIMI.png">-->
-<!--    <link rel="icon" href="static/images/icons/LogoOglasiIMI.png">-->
-<!--    <link rel="icon" href="http://example.com/favicon.png">-->
-    <link rel="icon" type="image/png" href="images/icons/jobs-icon-png-10.jpg"/>
+    <link rel="icon" type="image/png" href="images/icons/LogoOglasiIMI.png"/>
 
     <!-- CSS here -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -27,8 +24,6 @@
 	<link rel="stylesheet" href="assets/css/slick.css">
 	<link rel="stylesheet" href="assets/css/nice-select.css">
 	<link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/home.scss">
-
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -37,7 +32,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    <img src="images/icons/LogoOglasiIMI.png" alt="">
                 </div>
             </div>
         </div>
@@ -51,7 +46,7 @@
                     <div class="menu-wrapper d-flex align-items-center justify-content-between">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index"><img src="assets/img/logo/logo.png" alt=""></a>
+                           <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt=""> OglasiIMI</a>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu f-right d-none d-lg-block">
@@ -59,12 +54,13 @@
                                 <ul id="navigation">
                                     <li><a href="index">Početna</a></li>
                                     <li><a href="listing">Kategorije</a></li>
-                                    <li><a href="signup">Pages</a>
-                                        <ul class="submenu">
-                                            <li><a href="directory_details">listing Details</a></li>
-                                            <li><a href="listing">Catagories</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="listing">Poslodavci</a></li>
+<!--                                    <li><a href="signup">Pages</a>-->
+<!--                                        <ul class="submenu">-->
+<!--                                            <li><a href="directory_details">listing Details</a></li>-->
+<!--                                            <li><a href="listing">Catagories</a></li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
                                     <li><a href="blog">Blog</a>
                                         <ul class="submenu">
                                             <li><a href="blog">Blog</a></li>
@@ -78,8 +74,8 @@
                         </div>          
                         <!-- Header-btn -->
                         <div class="header-btns d-none d-lg-block f-right">
-                            <a href="#" class="mr-40"><i class="ti-user"></i> Log in</a>
-                            <a href="#" class="btn">Add Listing</a>
+                            <a href="login" class="mr-40"><i class="ti-user"></i> Prijavite se</a>
+                            <a href="oglas_create" class="btn">Postavite oglas</a>
                         </div>
                         <!-- Mobile Menu -->
                         <div class="col-12">
@@ -101,7 +97,7 @@
                             <!-- Hero Caption -->
                             <div class="hero__caption pt-100">
                                 <h1>Pronađite brzo i lako poslove u vašoj okolini</h1>
-                                <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>
+                                <p>U našoj pretrazi odaberite radno mesto ili poziciju, poslodavca, kao i lokaciju posla koja vam odgovara.</p>
                             </div>
                             <!--Hero form -->
                             <form action="#" class="search-box mb-100">
@@ -109,20 +105,19 @@
                                     <input type="text" placeholder="Pozicija, poslodavac ili ključna reč...">
                                 </div>
                                 <div class="select-form">
-                                    <div class="select-itms">
                                         <select name="select" id="select1">
-                                            <option value="">In where?</option>
-                                            <option value="">Catagories 1</option>
-                                            <option value="">Catagories 2</option>
-                                            <option value="">Catagories 3</option>
-                                            <option value="">Catagories 4</option>
+                                            <option value="">Izaberite grad</option>
+                                            <option value="">Kragujevac</option>
+                                            <option value="">Novi Sad</option>
+                                            <option value="">Beograd</option>
+                                            <option value="">Niš</option>
+                                            <option value="">Kraljevo</option>
                                         </select>
-                                    </div>
                                 </div>
                                 <div class="select-form">
                                     <div class="select-itms">
                                         <select name="select" id="select2">
-                                            <option value="">In where?</option>
+                                            <option value="">Oblast rada</option>
                                             <option value="">Catagories One</option>
                                             <option value="">Catagories Two</option>
                                             <option value="">Catagories Three</option>
@@ -131,11 +126,13 @@
                                     </div>
                                 </div>
                                 <div class="search-form">
-                                    <a href="#"><i class="ti-search"></i> Search</a>
-                                </div>	
-                            </form>	
-                            <!-- hero category1 img -->
-                            <div class="category-img text-center">
+                                    <a href="#"><i class="ti-search"></i> PRETRAŽI</a>
+                                </div>
+                            </form>
+                            <div class="hero__caption3">
+                                <p>Najpopularnije kategorije</p>
+                            </div>
+                            <div class="category-img text-center pb-20">
                                 <a href="listing"> <img src="assets/img/gallery/hero_category1.png" alt=""></a>
                                 <a href="listing"> <img src="assets/img/gallery/hero_category2.png" alt=""></a>
                                 <a href="listing"> <img src="assets/img/gallery/hero_category3.png" alt=""></a>
@@ -153,7 +150,7 @@
                     <div class="col-lg-12">
                         <!-- Section Tittle -->
                         <div class="section-tittle text-center mb-80">
-                            <h2>Explore top cities</h2>
+                            <h2>Najnoviji poslovi</h2>
                             <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>
                         </div>
                     </div>
@@ -162,7 +159,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="single-location mb-30">
                             <div class="location-img">
-                                <img src="assets/img/gallery/location1.png" alt="">
+                                <img src="assets/img/gallery/location3.png" alt="">
                             </div>
                             <div class="location-details">
                                 <p>New York</p>
@@ -173,11 +170,33 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="single-location mb-30">
                             <div class="location-img">
+                                <img src="assets/img/gallery/h1_hero2.png" alt="" height="150">
+                            </div>
+                            <div class="location-details">
+                                <p>New York York</p>
+                                <a href="#" class="location-btn">65 <i class="ti-plus"></i> Listing</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-location mb-30">
+                            <div class="location-img">
+                                <img src="assets/img/gallery/location2.png" alt="" height="150">
+                            </div>
+                            <div class="location-details">
+                                <p>Paris123123</p>
+                                <a href="#" class="location-btn">60 <i class="ti-plus"></i> Listing</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-location mb-30">
+                            <div class="location-img">
                                 <img src="assets/img/gallery/location2.png" alt="">
                             </div>
                             <div class="location-details">
-                                <p>Paris</p>
-                                <a href="#" class="location-btn">60 <i class="ti-plus"></i> Listing</a>
+                                <p>Rome</p>
+                                <a href="#" class="location-btn">50 <i class="ti-plus"></i> Listing</a>
                             </div>
                         </div>
                     </div>
@@ -192,28 +211,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location4.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Italy</p>
-                                <a href="#" class="location-btn">28 <i class="ti-plus"></i> Location</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location5.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Nepal</p>
-                                <a href="#" class="location-btn">99 <i class="ti-plus"></i> Listing</a>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="col-lg-4 col-md-6 col-sm-6">-->
+<!--                        <div class="single-location mb-30">-->
+<!--                            <div class="location-img">-->
+<!--                                <img src="assets/img/gallery/location4.png" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="location-details">-->
+<!--                                <p>Italy</p>-->
+<!--                                <a href="#" class="location-btn">28 <i class="ti-plus"></i> Location</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-md-6 col-sm-6">-->
+<!--                        <div class="single-location mb-30">-->
+<!--                            <div class="location-img">-->
+<!--                                <img src="assets/img/gallery/location5.png" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="location-details">-->
+<!--                                <p>Nepal</p>-->
+<!--                                <a href="#" class="location-btn">99 <i class="ti-plus"></i> Listing</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -225,7 +244,7 @@
                     <div class="col-lg-12">
                         <!-- Section Tittle -->
                         <div class="section-tittle text-center mb-80">
-                            <h2>Popular Directory</h2>
+                            <h2>Istaknuti poslodavci</h2>
                             <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>
                         </div>
                     </div>

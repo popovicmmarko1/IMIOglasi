@@ -1,13 +1,13 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>DirectoryListing</title>
+    <title>OglasiIMI</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="icon" type="image/png" href="images/icons/LogoOglasiIMI.png"/>
 
 	<!-- CSS here -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    <img src="images/icons/LogoOglasiIMI.png" alt="">
                 </div>
             </div>
         </div>
@@ -46,20 +46,21 @@
                     <div class="menu-wrapper d-flex align-items-center justify-content-between">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index"><img src="assets/img/logo/logo.png" alt=""></a>
+                            <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt=""> OglasiIMI</a>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="index">Home</a></li>
-                                    <li><a href="listing">Catagories</a></li> 
-                                    <li><a href="#">Pages</a>
-                                        <ul class="submenu">
-                                            <li><a href="directory_details">listing Details</a></li>
-                                            <li><a href="listing">Catagories</a></li> 
-                                        </ul>
-                                    </li>
+                                    <li><a href="index">Početna</a></li>
+                                    <li><a href="listing">Kategorije</a></li>
+                                    <li><a href="listing">Poslodavci</a></li>
+<!--                                    <li><a href="signup">Pages</a>-->
+<!--                                        <ul class="submenu">-->
+<!--                                            <li><a href="directory_details">listing Details</a></li>-->
+<!--                                            <li><a href="listing">Catagories</a></li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
                                     <li><a href="blog">Blog</a>
                                         <ul class="submenu">
                                             <li><a href="blog">Blog</a></li>
@@ -70,11 +71,11 @@
                                     <li><a href="contact">Contact</a></li>
                                 </ul>
                             </nav>
-                        </div>          
+                        </div>
                         <!-- Header-btn -->
                         <div class="header-btns d-none d-lg-block f-right">
-                            <a href="#" class="mr-40"><i class="ti-user"></i> Log in</a>
-                            <a href="#" class="btn">Add Listing</a>
+                            <a href="login" class="mr-40"><i class="ti-user"></i> Prijavite se</a>
+                            <a href="oglas_create" class="btn">Postavite oglas</a>
                         </div>
                         <!-- Mobile Menu -->
                         <div class="col-12">
@@ -94,38 +95,39 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-10 col-lg-10">
                         <!-- Hero Caption -->
-                        <div class="hero__caption hero__caption2 pt-200">
-                            <h1>Explore what you are finding</h1>
+                        <div class="hero__caption hero__caption2 pt-100">
+                            <h1>Pretraga poslova</h1>
+                            <p>Pronađite posao koji vas zanima korišćenjem filtera.</p>
                         </div>
                         <!--Hero form -->
                         <form action="#" class="search-box mb-100">
                             <div class="input-form">
-                                <input type="text" placeholder="What are you finding?">
+                                <input type="text" placeholder="Pozicija, poslodavac ili ključna reč...">
                             </div>
                             <div class="select-form">
                                 <div class="select-itms">
                                     <select name="select" id="select1">
-                                        <option value="">In where?</option>
-                                        <option value="">Catagories One</option>
-                                        <option value="">Catagories Two</option>
-                                        <option value="">Catagories Three</option>
-                                        <option value="">Catagories Four</option>
+                                        <option value="">Izaberite grad</option>
+                                        <option value="">Kragujevac</option>
+                                        <option value="">Novi Sad</option>
+                                        <option value="">Beograd</option>
+                                        <option value="">Niš</option>
+                                        <option value="">Kraljevo</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="select-form">
                                 <div class="select-itms">
                                     <select name="select" id="select2">
-                                        <option value="">In where?</option>
-                                        <option value="">Catagories One</option>
-                                        <option value="">Catagories Two</option>
-                                        <option value="">Catagories Three</option>
-                                        <option value="">Catagories Four</option>
+                                        <option value="">+ 0 km</option>
+                                        <option value="" selected>+ 15 km</option>
+                                        <option value="">+ 30 km</option>
+                                        <option value="">+ 50 km</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="search-form">
-                                <a href="#"><i class="ti-search"></i> Search</a>
+                                <a href="#"><i class="ti-search"></i> PRETRAŽI</a>
                             </div>	
                         </form>	
                     </div>
@@ -133,9 +135,6 @@
             </div>
         </div>
     </div>
-   
-
-
   <!-- listing Area Start -->
   <div class="listing-area pt-120 pb-120">
     <div class="container">
@@ -145,7 +144,7 @@
                 <div class="row">
                     <div class="col-12">
                             <div class="small-section-tittle2 mb-45">
-                            <h4>Advanced Filter</h4>
+                            <h4>Napredna pretraga</h4>
                         </div>
                     </div>
                 </div>
@@ -154,63 +153,171 @@
                     <!-- single one -->
                     <div class="single-listing">
                         <!-- Select City items start -->
-                        <div class="select-job-items2">
-                            <select name="select2">
-                                <option value="">City</option>
-                                <option value="">Dhaka</option>
-                                <option value="">india</option>
-                                <option value="">UK</option>
-                                <option value="">US</option>
-                                <option value="">Pakistan</option>
-                            </select>
-                        </div>
+<!--                        <div class="select-job-items2">-->
+<!--                            <select name="select3">-->
+<!--                                <option value="">Grad</option>-->
+<!--                                <option value="">Kragujevac</option>-->
+<!--                                <option value="">Novi Sad</option>-->
+<!--                                <option value="">Beograd</option>-->
+<!--                                <option value="">Niš</option>-->
+<!--                                <option value="">Kraljevo</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
                         <!--  Select City items End-->
                         <!-- Select State items start -->
                         <div class="select-job-items2">
-                            <select name="select2">
-                                <option value="">State</option>
-                                <option value="">Dhaka</option>
-                                <option value="">Mirpur</option>
-                                <option value="">Danmondi</option>
-                                <option value="">Rampura</option>
-                                <option value="">Htizill</option>
+                            <select name="select4">
+                                <option value="">Oblast rada</option>
+                                <option value="">IT</option>
+                                <option value="">Trgovina, prodaja</option>
+                                <option value="">Mašinstvo</option>
+                                <option value="">Administracija</option>
+                                <option value="">Bankarstvo</option>
                             </select>
                         </div>
                         <!--  Select State items End-->
                         <!-- Select km items start -->
                         <div class="select-job-items2">
-                            <select name="select2">
-                                <option value="">Near 1 km</option>
-                                <option value="">2 km</option>
-                                <option value="">3 km</option>
-                                <option value="">4 km</option>
-                                <option value="">5 km</option>
-                                <option value="">6 km</option>
+                            <select name="select5">
+                                <option value="">Poslodavac (neka bude polje za pretragu)</option>
+                                <option value="">
+<!--                                    <div class="search-box mb-100 input-form">-->
+<!--                                    <input type="text" placeholder="What are you finding?">-->
+<!--                                    <div class="bs-searchbox"><input type="text" class="form-control" autocomplete="off" placeholder="Unesite naziv grada"></div>-->
+<!--                                </div>-->
+                                </option>
+                            </select>
+                        </div>
+                        <!--  Select km items End-->
+                        <!-- Select km items start -->
+                        <div class="select-job-items2">
+                            <select name="select6">
+                                <option value="">Nivo obrazovanja (Stručna sprema)</option>
+                                <option value="">Osnovna škola</option>
+                                <option value="">Srednja škola</option>
+                                <option value="">Visoka škola / Viša</option>
+                                <option value="">Master / Fakultet</option>
+                                <option value="">Magistratura / Specijalizacija</option>
+                                <option value="">Doktorske studije / PhD</option>
+                            </select>
+                        </div>
+                        <!--  Select km items End-->
+                        <!-- Select km items start -->
+                        <div class="select-job-items2">
+                            <select name="select7">
+                                <option value="">Radno iskustvo</option>
+                                <option value="">Bez ograničenja iskustva</option>
+                                <option value="">Bez iskustva</option>
+                                <option value="">Manje od jedne (1) godine</option>
+                                <option value="">Više od jedne (1) godine</option>
+                                <option value="">Više od dve (2) godine</option>
+                                <option value="">Više od tri (3) godine</option>
+                                <option value="">Više od pet (5) godina</option>
+                                <option value="">Više od deset (10) godina</option>
+                                <option value="">Više od šest (6) meseci</option>
+                            </select>
+                        </div>
+                        <div class="select-job-items2">
+                            <select name="select9">
+                                <option value="">Tip zaposlenja</option>
+                                <option value="">Ugovor na neodređeno vreme</option>
+                                <option value="">Ugovor na određeno vreme</option>
+                                <option value="">Praksa (plaćena i/ili mogućnost zaposlenja</option>
+                                <option value="">Honorarno</option>
+                                <option value="">Sezonski</option>
+                                <option value="">Volontiranje</option>
+                            </select>
+                        </div>
+                        <div class="select-job-items2">
+                            <select name="select8">
+                                <option value="">Pol</option>
+                                <option value="">Muški</option>
+                                <option value="">Ženski</option>
+                                <option value="">Oba</option>
+                            </select>
+                        </div>
+                        <div class="select-job-items2">
+                            <select name="select9">
+                                <option value="">Radno vreme</option>
+                                <option value="">Puno radno vreme</option>
+                                <option value="">Nepuno radno vreme</option>
+                            </select>
+                        </div>
+                        <div class="select-job-items2">
+                            <select name="select9">
+                                <option value="">Posao objavljen</option>
+                                <option value="">Danas</option>
+                                <option value="">U poslednja 2 dana</option>
+                                <option value="">U poslednja 3 dana</option>
+                                <option value="">U poslednjih 7 dana</option>
+                                <option value="">U poslednjih 15 dana</option>
+                                <option value="">U poslednjih 30 dana</option>
+                            </select>
+                        </div>
+                        <div class="select-job-items2">
+                            <select name="select9">
+                                <option value="">Posao ističe</option>
+                                <option value="">Naredna 2 dana</option>
+                                <option value="">Naredna 3 dana</option>
+                                <option value="">Narednih 7 dana</option>
+                                <option value="">Narednih 15 dana</option>
+                                <option value="">Narednih 30 dana</option>
                             </select>
                         </div>
                         <!--  Select km items End-->
                         <!-- select-Categories start -->
-                        <div class="select-Categories pt-80 pb-30">
+                        <div class="select-Categories pt-80 pb-20">
                             <div class="small-section-tittle2 mb-20">
-                                <h4>Price range</h4>
+                                <h4>Visina plate</h4>
                             </div>
-                            <label class="container">$50 - $150
+                            <label class="container">20 000 - 30 000 RSD
                                 <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            <label class="container">$150 - $300
+                            <label class="container">30 000 - 45 000 RSD
                                 <input type="checkbox" checked="checked active">
                                 <span class="checkmark"></span>
                             </label>
-                            <label class="container">$300 - $500
+                            <label class="container">45 000 - 60 000 RSD
                                 <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            <label class="container">$500 - $1000
+                            <label class="container">60 000 - 85 000 RSD
                                 <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            <label class="container">$1000 - Above
+                            <label class="container">85 000 - 110 000 RSD
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">preko 110 000 RSD
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <!-- select-Categories End -->
+                        <!-- select-Categories start -->
+                        <div class="select-Categories pb-20">
+                            <div class="small-section-tittle2 mb-20">
+                                <h4>Tags</h4>
+                            </div>
+                            <label class="container">Wireless Internet
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Accepts Credit Cards
+                                <input type="checkbox" checked="checked active">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Smoking Allowed
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Parking Street
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Coupons
                                 <input type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
@@ -252,7 +359,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="count mb-35">
-                            <span>5432 Listings are available</span>
+                            <span>Pronađeno je 5432 rezultata pretrage</span>
                         </div>
                     </div>
                 </div>
@@ -361,6 +468,67 @@
                                             </div>
                                             <div class="icon">
                                                 <img src="assets/img/gallery/categori_icon1.png" alt=""> 
+                                            </div>
+                                        </div>
+                                        <div class="properties__caption">
+                                            <h3><a href="#">Urban areas</a></h3>
+                                            <p>Let's uncover the best places to eat, drink</p>
+                                        </div>
+                                        <div class="properties__footer d-flex justify-content-between align-items-center">
+                                            <div class="restaurant-name">
+                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                                <h3>Food & Restaurant</h3>
+                                            </div>
+                                            <div class="heart">
+                                                <img src="assets/img/gallery/heart1.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <!-- Single -->
+                                <div class="properties properties2 mb-30">
+                                    <div class="properties__card">
+                                        <div class="properties__img overlay1">
+                                            <a href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>
+                                            <div class="img-text">
+                                                <span>$$$</span>
+                                                <span>Closed</span>
+                                            </div>
+                                            <div class="icon">
+                                                <img src="assets/img/gallery/categori_icon1.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="properties__caption">
+                                            <h3><a href="#">Urban areas</a></h3>
+                                            <p>Let's uncover the best places to eat, drink</p>
+                                        </div>
+                                        <div class="properties__footer d-flex justify-content-between align-items-center">
+                                            <div class="restaurant-name">
+                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                                <h3>Food & Restaurant</h3>
+                                            </div>
+                                            <div class="heart">
+                                                <img src="assets/img/gallery/heart1.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <!-- Single -->
+                                <div class="properties properties2 mb-30">
+                                    <div class="properties__card">
+                                        <div class="properties__img overlay1">
+                                            <a href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>
+                                            <div class="img-text">
+                                                <span>$$$</span>
+                                                <span>Closed</span>
+                                            </div>
+                                            <div class="icon">
+                                                <img src="assets/img/gallery/categori_icon1.png" alt="">
                                             </div>
                                         </div>
                                         <div class="properties__caption">

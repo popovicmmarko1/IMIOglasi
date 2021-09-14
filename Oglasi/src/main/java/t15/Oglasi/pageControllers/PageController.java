@@ -101,6 +101,12 @@ public class PageController {
         return "elements";
     }
 
+    @GetMapping(value = {"profil",  "/profil.html"})
+    public String profil()
+    {
+        return "profil";
+    }
+
 //    @GetMapping("/")
 //    public String landing() { return "index"; }
 

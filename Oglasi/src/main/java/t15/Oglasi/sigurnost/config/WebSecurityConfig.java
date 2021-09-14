@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().antMatchers("/registration/**").permitAll()
                 .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
-                .antMatchers("/register/**", "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**", "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/oglas_create/**", "/signup/**").permitAll()
+                .antMatchers("/register/**", "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**", "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/oglas_create/**", "/profil/**", "/signup/**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();

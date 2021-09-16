@@ -59,6 +59,12 @@ public class PageController {
         return "listing";
     }
 
+    @GetMapping(value = {"employers",  "/employers.html"})
+    public String employers()
+    {
+        return "employers";
+    }
+
     @GetMapping(value = {"blog",  "/blog.html"})
     public String blog()
     {
@@ -93,6 +99,12 @@ public class PageController {
     public String elements()
     {
         return "elements";
+    }
+
+    @GetMapping(value = {"profil",  "/profil.html"})
+    public String profil()
+    {
+        return "profil";
     }
 
 //    @GetMapping("/")

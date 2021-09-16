@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import t15.Oglasi.appUser.AppUser;
+import t15.Oglasi.appUser.AppUserRepository;
+import t15.Oglasi.appUser.profil.Profil;
+import t15.Oglasi.appUser.profil.ProfilRepository;
 import t15.Oglasi.oglas.Oglas;
 import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.poslodavac.Poslodavac;
@@ -23,6 +26,10 @@ import java.util.Optional;
 @Controller
 public class PageController {
 
+    @Autowired
+    private AppUserRepository appUserRepository;
+    @Autowired
+    private ProfilRepository profilRepository;
     @Autowired
     private OglasRepository oglasRepository;
     @Autowired
@@ -102,8 +109,40 @@ public class PageController {
     }
 
     @GetMapping(value = {"profil",  "/profil.html"})
-    public String profil()
+    public String profil(Model model)
     {
+        model.addAttribute("ime", "ime1");
+        model.addAttribute("prezmi", "prezime1");
+        model.addAttribute("mesto", "mesto1");
+        model.addAttribute("bio", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis elit mi, vel imperdiet metus condimentum ac. Suspendisse ut efficitur sem, dapibus dapibus urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque sagittis mattis arcu, vitae dictum risus tristique sed. Donec nec dictum orci. Pellentesque malesuada nulla sem. Sed eu nisi nec felis cursus ultricies at in lacus. Nulla id est a nisi mattis rutrum. Integer ipsum turpis, fringilla vel pulvinar in, mollis ut tortor.");
+        model.addAttribute("email", "email@email.com");
+        model.addAttribute("telefon", "065065065");
+
+        return "profil";
+    }
+
+    @GetMapping(value = {"myprofile"})
+    public String profilTest(Model model, Principal principal)
+    {
+        AppUser user;
+        Profil profil;
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                user = ulogovan.get();
+                profil = profilRepository.findByAppUserId(user.getId());
+                model.addAttribute("username",user.getFName());
+                model.addAttribute("ime", user.getFName());
+                model.addAttribute("prezime", user.getLName());
+                model.addAttribute("mesto", profil.getMesto());
+                model.addAttribute("bio", profil.getOpis());
+                model.addAttribute("email", user.getEmail());
+                model.addAttribute("telefon", profil.getBrTelefona());
+            }
+        }catch (Exception e){
+            System.out.println("Nije ulogovan!");
+        }
         return "profil";
     }
 

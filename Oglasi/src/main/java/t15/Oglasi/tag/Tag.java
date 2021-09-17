@@ -13,12 +13,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class Tag {
-
-
     @Id
     @SequenceGenerator(name = "tagGen", sequenceName = "tagGen", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tagGen")
     private Long id;
     private Long idOglasa;
-    private String tag;
+    private String idTag;
 }

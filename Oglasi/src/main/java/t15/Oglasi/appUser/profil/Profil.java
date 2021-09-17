@@ -22,6 +22,7 @@ public class Profil {
     private Long AppUserId;
     private String mesto;
     private String brTelefona;
+    @Column(columnDefinition = "TEXT")
     private String opis;
     private LocalDateTime datumRodjenja;
 }

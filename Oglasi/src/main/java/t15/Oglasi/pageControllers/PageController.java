@@ -157,6 +157,12 @@ public class PageController {
         return "elements";
     }
 
+    @GetMapping(value = {"dodaj_oglas",  "/dodaj_oglas.html"})
+    public String dodaj_oglas()
+    {
+        return "dodaj_oglas";
+    }
+
     @GetMapping(value = {"profil",  "/profil.html"})
     public String profil(Model model)
     {

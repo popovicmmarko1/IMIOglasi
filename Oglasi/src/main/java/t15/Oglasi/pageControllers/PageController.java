@@ -94,7 +94,7 @@ public class PageController {
         return "oglas";
     }
 
-    @GetMapping("listing")
+    @GetMapping(value = {"listing",  "/listing.html"})
     public String pretraga(@RequestParam Optional<Integer> page, @RequestParam Optional<String> search, @RequestParam Optional<String> grad,
                            @RequestParam Optional<String> oblast, Model model, Principal principal)
     {
@@ -116,14 +116,33 @@ public class PageController {
     }
 
     @GetMapping(value = {"employers",  "/employers.html"})
-    public String employers()
+    public String employers(Model model, Principal principal)
     {
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                model.addAttribute("username",ulogovan.get().getFName());
+            }
+        }catch (Exception e){
+            System.out.println("Nije ulogovan!");
+        }
         return "employers";
     }
 
     @GetMapping(value = {"blog",  "/blog.html"})
-    public String blog()
+    public String blog(Model model, Principal principal)
     {
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                model.addAttribute("username",ulogovan.get().getFName());
+            }
+        }catch (Exception e){
+            System.out.println("Nije ulogovan!");
+        }
+
         return "blog";
     }
 
@@ -134,8 +153,18 @@ public class PageController {
     }
 
     @GetMapping(value = {"contact",  "/contact.html"})
-    public String contact()
+    public String contact(Model model, Principal principal)
     {
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                model.addAttribute("username",ulogovan.get().getFName());
+            }
+        }catch (Exception e){
+            System.out.println("Nije ulogovan!");
+        }
+
         return "contact";
     }
 

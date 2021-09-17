@@ -1,19 +1,33 @@
 package t15.Oglasi.pageControllers;
 
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import t15.Oglasi.appUser.AppUser;
+import t15.Oglasi.appUser.AppUserRepository;
+import t15.Oglasi.appUser.profil.Profil;
+import t15.Oglasi.appUser.profil.ProfilRepository;
+import t15.Oglasi.grad.Grad;
+import t15.Oglasi.grad.GradRepository;
 import t15.Oglasi.oglas.Oglas;
 import t15.Oglasi.oglas.OglasRepository;
+import t15.Oglasi.oglas.OglasService;
 import t15.Oglasi.poslodavac.Poslodavac;
 import t15.Oglasi.poslodavac.PoslodavacRepository;
 import t15.Oglasi.slike.Slike;
 import t15.Oglasi.slike.SlikeRepository;
 import t15.Oglasi.tag.Tag;
 import t15.Oglasi.tag.TagRepository;
+import t15.Oglasi.tag.oblast.OblastRepository;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -24,13 +38,23 @@ import java.util.Optional;
 public class PageController {
 
     @Autowired
+    private AppUserRepository appUserRepository;
+    @Autowired
     private OglasRepository oglasRepository;
+    @Autowired
+    private OglasService oglasService;
     @Autowired
     private SlikeRepository slikeRepository;
     @Autowired
     private TagRepository tagRepository;
     @Autowired
     private PoslodavacRepository poslodavacRepository;
+    @Autowired
+    private ProfilRepository profilRepository;
+    @Autowired
+    private GradRepository gradRepository;
+    @Autowired
+    private OblastRepository oblastRepository;
 
     @GetMapping("/login")
     public String login()
@@ -45,7 +69,24 @@ public class PageController {
     }
 
     @GetMapping(value = {"/", "/index", "/index.html"})
-    public String home() { return "index"; }
+    public String home(Model model, Principal principal) {
+
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                model.addAttribute("username",ulogovan.get().getFName());
+            }
+        }catch (Exception e){
+            System.out.println("Nije ulogovan!");
+        }
+
+        model.addAttribute("gradovi", gradRepository.findAll());
+        model.addAttribute("oblasti", oblastRepository.findAll());
+
+
+        return "index";
+    }
 
     @GetMapping(value = {"oglas",  "/oglas.html"})
     public String oglas()
@@ -53,9 +94,24 @@ public class PageController {
         return "oglas";
     }
 
-    @GetMapping(value = {"listing",  "/listing.html"})
-    public String listing()
+    @GetMapping("listing")
+    public String pretraga(@RequestParam Optional<Integer> page, @RequestParam Optional<String> search, @RequestParam Optional<String> grad,
+                           @RequestParam Optional<String> oblast, Model model, Principal principal)
     {
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                model.addAttribute("username",ulogovan.get().getFName());
+            }
+        }catch (Exception e){
+            System.out.println("Nije ulogovan!");
+        }
+
+        model.addAttribute("gradovi", gradRepository.findAll());
+        model.addAttribute("oblasti", oblastRepository.findAll());
+        List<Oglas> strana = oglasRepository.findByKeyword(search.orElse(""), PageRequest.of(page.orElse(0), 6));
+        model.addAttribute("oglasi",strana);
         return "listing";
     }
 
@@ -102,8 +158,39 @@ public class PageController {
     }
 
     @GetMapping(value = {"profil",  "/profil.html"})
-    public String profil()
+    public String profil(Model model)
     {
+        model.addAttribute("ime", "ime1");
+        model.addAttribute("prezmi", "prezime1");
+        model.addAttribute("mesto", "mesto1");
+        model.addAttribute("bio", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis elit mi, vel imperdiet metus condimentum ac. Suspendisse ut efficitur sem, dapibus dapibus urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque sagittis mattis arcu, vitae dictum risus tristique sed. Donec nec dictum orci. Pellentesque malesuada nulla sem. Sed eu nisi nec felis cursus ultricies at in lacus. Nulla id est a nisi mattis rutrum. Integer ipsum turpis, fringilla vel pulvinar in, mollis ut tortor.");
+        model.addAttribute("email", "email@email.com");
+        model.addAttribute("telefon", "065065065");
+        return "profil";
+    }
+
+    @GetMapping(value = {"myprofile"})
+    public String profilTest(Model model, Principal principal)
+    {
+        AppUser user;
+        Profil profil;
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                user = ulogovan.get();
+                profil = profilRepository.findByAppUserId(user.getId());
+                model.addAttribute("username",user.getFName());
+                model.addAttribute("ime", user.getFName());
+                model.addAttribute("prezime", user.getLName());
+                model.addAttribute("mesto", profil.getMesto());
+                model.addAttribute("bio", profil.getOpis());
+                model.addAttribute("email", user.getEmail());
+                model.addAttribute("telefon", profil.getBrTelefona());
+            }
+        }catch (Exception e){
+            System.out.println("Nije ulogovan!");
+        }
         return "profil";
     }
 
@@ -123,6 +210,8 @@ public class PageController {
     public String oglas(@PathVariable long id, Model model)
     {
         Optional<Oglas> o = oglasRepository.findById(id);
+        Optional<AppUser> optionalAppUser;
+        AppUser appUser;
 
         Oglas oglas;
         if(o.isPresent())
@@ -142,7 +231,6 @@ public class PageController {
                 model.addAttribute("poslodavac_ime", poslodavac.getNaziv());
                 model.addAttribute("poslodavac_opis", poslodavac.getOpis());
                 model.addAttribute("poslodavac_slika", poslodavac.getSlika());
-
             }else{
                 throw new IllegalStateException("Poslodavac ne postoji!");
             }

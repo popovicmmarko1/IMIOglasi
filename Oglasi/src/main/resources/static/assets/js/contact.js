@@ -14,7 +14,7 @@ $(document).ready(function(){
             rules: {
                 name: {
                     required: true,
-                    minlength: 2
+                    minlength: 3
                 },
                 subject: {
                     required: true,
@@ -22,7 +22,7 @@ $(document).ready(function(){
                 },
                 number: {
                     required: true,
-                    minlength: 5
+                    minlength: 8
                 },
                 email: {
                     required: true,
@@ -35,23 +35,23 @@ $(document).ready(function(){
             },
             messages: {
                 name: {
-                    required: "come on, you have a name, don't you?",
-                    minlength: "your name must consist of at least 2 characters"
+                    required: "Unesite ime i prezime.",
+                    minlength: "Vaše ime mora da sadrži najmanje 3 karaktera."
                 },
                 subject: {
-                    required: "come on, you have a subject, don't you?",
-                    minlength: "your subject must consist of at least 4 characters"
+                    required: "Unesite temu.",
+                    minlength: "Tema mora da sadrži najmanje 4 karaktera."
                 },
                 number: {
-                    required: "come on, you have a number, don't you?",
-                    minlength: "your Number must consist of at least 5 characters"
+                    required: "Unesite broj telefona.",
+                    minlength: "Vaš broj telefona mora da sadrži najmanje 8 karaktera."
                 },
                 email: {
-                    required: "no email, no message"
+                    required: "Unesite email adresu."
                 },
                 message: {
-                    required: "um...yea, you have to write something to send this form.",
-                    minlength: "thats all? really?"
+                    required: "Unesite poruku.",
+                    minlength: "Poruka je prekratka."
                 }
             },
             submitHandler: function(form) {

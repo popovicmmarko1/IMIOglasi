@@ -76,7 +76,7 @@
                     <!-- Header-btn -->
                     <div class="header-btns d-none d-lg-block f-right">
                         <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' ' + ${username} ?: ' Prijavite se'"></i></a>
-                        <a href="oglas_create" class="btn">Postavite oglas</a>
+                        <a href="dodaj_oglas" class="btn">Postavite oglas</a>
                     </div>
                     <!-- Mobile Menu -->
                     <div class="col-12">
@@ -102,26 +102,33 @@
                                 koja vam odgovara.</p>
                         </div>
                         <!--Hero form -->
-                        <form action="/listing" class="search-box mb-40" id="pretraga" method="GET">
+                        <form action="#" class="search-box mb-40">
                             <div class="input-form">
-                                <input type="text" name="search" placeholder="Pozicija, poslodavac ili ključna reč...">
+                                <input type="text" placeholder="Pozicija, poslodavac ili ključna reč...">
                             </div>
                             <div class="select-form">
-                                <select name="grad" id="select1" th:field="*{gradovi}">
-                                    <option value="0">Izaberi grad</option>
-                                    <option th:each="grad : ${gradovi}" th:value="${grad.ime}" th:text="${grad.ime}"></option>
+                                <select name="select" id="select1">
+                                    <option value="">Izaberite grad</option>
+                                    <option value="">Kragujevac</option>
+                                    <option value="">Novi Sad</option>
+                                    <option value="">Beograd</option>
+                                    <option value="">Niš</option>
+                                    <option value="">Kraljevo</option>
                                 </select>
                             </div>
                             <div class="select-form">
                                 <div class="select-itms">
-                                    <select name="oblast" id="select2" th:field="*{oblasti}">
+                                    <select name="select" id="select2">
                                         <option value="">Oblast rada</option>
-                                        <option style="height:50px;overflow=auto;" th:each="oblast : ${oblasti}" th:value="${oblast.naziv}" th:text="${oblast.naziv}"></option>
+                                        <option value="">Catagories One</option>
+                                        <option value="">Catagories Two</option>
+                                        <option value="">Catagories Three</option>
+                                        <option value="">Catagories Four</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="search-form">
-                                <a href="#" onclick="document.getElementById('pretraga').submit()"><i class="ti-search"></i>PRETRAŽI</button></a>
+                                <a href="#"><i class="ti-search"></i> PRETRAŽI</a>
                             </div>
                         </form>
                         <div class="hero__caption3">
@@ -695,7 +702,7 @@
                 <div class="wants-wrapper">
                     <div class="row align-items-center justify-content-center text-center">
                         <div class="col-xl-7 col-lg-9 col-md-8">
-                            <div class="wantToWork-caption wantToWork-caption2 ">
+                            <div class="wantToWork-caption wantToWork-caption2">
                                 <div class="main-menu2">
                                     <nav>
                                         <ul>

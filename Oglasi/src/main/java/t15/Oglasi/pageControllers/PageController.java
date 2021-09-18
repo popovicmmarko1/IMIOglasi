@@ -110,23 +110,14 @@ public class PageController {
 
         model.addAttribute("gradovi", gradRepository.findAll());
         model.addAttribute("oblasti", oblastRepository.findAll());
-        List<Oglas> strana = oglasRepository.findByKeyword(search.orElse(""), PageRequest.of(page.orElse(0), 6));
+        Page<Oglas> strana = oglasRepository.findByKeyword(search.orElse(""), PageRequest.of(page.orElse(0), 6));
         model.addAttribute("oglasi",strana);
         return "listing";
     }
 
     @GetMapping(value = {"employers",  "/employers.html"})
-    public String employers(Model model, Principal principal)
+    public String employers()
     {
-        try{
-            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
-            if(ulogovan.isPresent())
-            {
-                model.addAttribute("username",ulogovan.get().getFName());
-            }
-        }catch (Exception e){
-            System.out.println("Nije ulogovan!");
-        }
         return "employers";
     }
 
@@ -245,7 +236,7 @@ public class PageController {
                 Poslodavac poslodavac = p.get();
                 model.addAttribute("poslodavac_ime", poslodavac.getNaziv());
                 model.addAttribute("poslodavac_opis", poslodavac.getOpis());
-                model.addAttribute("poslodavac_slika", poslodavac.getSlika());
+                model.addAttribute("poslodavac_slika", poslodavac.getBaner());
             }else{
                 throw new IllegalStateException("Poslodavac ne postoji!");
             }

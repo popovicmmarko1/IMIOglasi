@@ -234,8 +234,6 @@ public class PageController {
         return "profil";
     }
 
-//    @GetMapping("/")
-//    public String landing() { return "index"; }
 
     @GetMapping("/oglas_create")
     public String napraviOglas() { return "oglas_create"; }

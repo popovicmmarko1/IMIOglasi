@@ -671,7 +671,14 @@ hr{border-bottom:1px solid #eceff8;border-top:0 none;margin:30px 0;padding:0}
 .popular-location .single-location .location-details ul{display:inline-block;padding-left:10px}
 .popular-location .single-location .location-details ul li{display:inline-block;color:#fff;font-size:19px}
 
+.popular-location .single-location .location-img .icon{position:absolute;top:25px;right:25px}
+.popular-location .single-location .location-img .icon img{width:106px;height:106px}
+
+
 .single-location:hover .location-img img{transform:scale(1.1)}
+
+
+
 .popular-directorya-area .properties{margin:0 15px}
 .popular-directorya-area .properties__card{box-shadow:0px 6px 6px 0px rgba(2,25,65,0.08);border-radius:10px;-webkit-transition:.4s;-moz-transition:.4s;-o-transition:.4s;transition:.4s}
 .popular-directorya-area .properties__card:hover{box-shadow:0px 8px 8px 0px rgba(2,25,65,0.08)}
@@ -885,6 +892,7 @@ hr{border-bottom:1px solid #eceff8;border-top:0 none;margin:30px 0;padding:0}
 .category-listing{padding:30px 19px 30px 16px}
 }
 .category-listing .single-listing .input-form input{width:100%;height:45px;background:#fff;color:#777777;font-size:18px;font-weight:400;padding:9px 33px 9px 18px;border:1px solid #ededed;border-radius:5px;position:relative;margin-bottom:20px}
+
 .category-listing .single-listing .select-job-items1 .nice-select,.category-listing .single-listing .select-job-items2 .nice-select{width:100%;height:45px;background:#fff;border-radius:5px;padding:11px 19px 11px 18px;color:#616875;line-height:20px;border:1px solid #ededed;margin-bottom:20px}
 @media (max-width: 575px){
 .category-listing .single-listing .select-job-items1 .nice-select,.category-listing .single-listing .select-job-items2 .nice-select{padding-left:25px}
@@ -893,7 +901,7 @@ hr{border-bottom:1px solid #eceff8;border-top:0 none;margin:30px 0;padding:0}
 .category-listing .single-listing .select-job-items1 .nice-select,.category-listing .single-listing .select-job-items2 .nice-select{padding-left:25px}
 }
 .category-listing .single-listing .select-job-items1 .nice-select .list,.category-listing .single-listing .select-job-items2 .nice-select .list{width:100%}
-.category-listing .single-listing .select-job-items1 .nice-select.open .list,.category-listing .single-listing .select-job-items2 .nice-select.open .list{width:100%;border-radius:0;border:0}
+.category-listing .single-listing .select-job-items1 .nice-select.open .list,.category-listing .single-listing .select-job-items2 .nice-select.open .list{width:100%;border-radius:0;border:0;overflow-y:scroll;height: auto;max-height: 200px} /*scrollable menu*/
 .category-listing .single-listing .select-job-items1 .nice-select::after,.category-listing .single-listing .select-job-items2 .nice-select::after{border-bottom:1px solid #a9b6cd;border-right:1px solid #a9b6cd;height:12px;width:12px;margin-top:-9px;right:29px}
 
 .category-listing .single-listing .select-Categories .container{display:block;position:relative;padding-left:35px;margin-bottom:12px;cursor:pointer;font-size:22px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:#666666;font-size:16px}

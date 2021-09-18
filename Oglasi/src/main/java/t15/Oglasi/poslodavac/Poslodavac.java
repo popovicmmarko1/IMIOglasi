@@ -22,5 +22,8 @@ public class Poslodavac{
     @Column(columnDefinition = "TEXT")
     private String opis;
     @Column(columnDefinition = "TEXT")
-    private String slika;
+    private String baner;
+    @Column(columnDefinition = "TEXT")
+    private String logo;
+
 }

@@ -18,9 +18,11 @@ public class Poslodavac{
     @SequenceGenerator(name="posGen", sequenceName = "posGen", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "posGen")
     private Long id;
+    private Long appUserId;
     private String naziv;
     @Column(columnDefinition = "TEXT")
     private String opis;
     @Column(columnDefinition = "TEXT")
-    private String slika;
+    private String baner;
+    private String logo;
 }

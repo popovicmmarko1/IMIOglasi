@@ -84,6 +84,8 @@ public class PageController {
         model.addAttribute("gradovi", gradRepository.findAll());
         model.addAttribute("oblasti", oblastRepository.findAll());
 
+        model.addAttribute("poslovi6", oglasRepository.findTop6());
+
 
         return "index";
     }
@@ -110,7 +112,51 @@ public class PageController {
 
         model.addAttribute("gradovi", gradRepository.findAll());
         model.addAttribute("oblasti", oblastRepository.findAll());
-        List<Oglas> strana = oglasRepository.findByKeyword(search.orElse(""), PageRequest.of(page.orElse(0), 6));
+
+        Page<Oglas> strana = oglasRepository.findAll(PageRequest.of(page.orElse(0), 6));
+
+        //ime
+        if(search.isPresent() && !grad.isPresent() && !oblast.isPresent())
+        {
+            strana = oglasRepository.findByKeyword(search.get(), PageRequest.of(page.orElse(0), 6));
+        }
+
+        //mesto
+        if(!search.isPresent() && grad.isPresent() && !oblast.isPresent())
+        {
+            strana = oglasRepository.findByGrad(grad.get(), PageRequest.of(page.orElse(0), 6));
+        }
+
+        //oblast
+        if(!search.isPresent() && !grad.isPresent() && oblast.isPresent())
+        {
+            strana = oglasRepository.findByOblast(oblast.get(), PageRequest.of(page.orElse(0), 6));
+        }
+
+        //ime mesto oblast
+        if(search.isPresent() && grad.isPresent() && oblast.isPresent())
+        {
+            strana = oglasRepository.findByAll(search.get(), grad.get(), oblast.get(), PageRequest.of(page.orElse(0), 6));
+        }
+
+        //ime mesto
+        if(search.isPresent() && grad.isPresent() && !oblast.isPresent())
+        {
+            strana = oglasRepository.findByKeywordAndGrad(search.get(), grad.get(), PageRequest.of(page.orElse(0), 6));
+        }
+
+        //ime oblast
+        if(search.isPresent() && !grad.isPresent() && oblast.isPresent())
+        {
+            strana = oglasRepository.findByKeywordAndOblast(search.get(), oblast.get(), PageRequest.of(page.orElse(0), 6));
+        }
+
+        //mesto oblast
+        if(!search.isPresent() && grad.isPresent() && oblast.isPresent())
+        {
+            strana = oglasRepository.findByMestoAndOblast(grad.get(), oblast.get(), PageRequest.of(page.orElse(0), 6));
+        }
+
         model.addAttribute("oglasi",strana);
         return "listing";
     }
@@ -236,7 +282,7 @@ public class PageController {
                 Poslodavac poslodavac = p.get();
                 model.addAttribute("poslodavac_ime", poslodavac.getNaziv());
                 model.addAttribute("poslodavac_opis", poslodavac.getOpis());
-                model.addAttribute("poslodavac_slika", poslodavac.getSlika());
+                model.addAttribute("poslodavac_slika", poslodavac.getBaner());
             }else{
                 throw new IllegalStateException("Poslodavac ne postoji!");
             }

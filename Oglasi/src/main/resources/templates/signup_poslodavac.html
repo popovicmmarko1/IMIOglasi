@@ -54,19 +54,19 @@
       <div class="card-body">
         <h2 class="title">Registruj se kao poslodavac</h2>
         <h3 class="title">Osnovni podaci kompanije</h3> <br>
-        <form method="POST">
+        <form method="POST" action="/registrationp">
 
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label for="poslodavac">Poslodavac</label>
-                <input type="text" class="form-control" id="poslodavac" placeholder="Naziv firme">
+                <input name="naziv" type="text" class="form-control" id="poslodavac" placeholder="Naziv firme">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="adresaposlodavca">Adresa poslodavca</label>
-                <input type="text" class="form-control" id="adresaposlodavca" placeholder="Adresa sedista firme">
+                <input name="adresa" type="text" class="form-control" id="adresaposlodavca" placeholder="Adresa sedista firme">
               </div>
             </div> <!-- end col -->
           </div>
@@ -81,7 +81,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="grad">Grad</label>
-                <input type="text" class="form-control" id="grad" placeholder="Unesi grad">
+                <input name="grad" type="text" class="form-control" id="grad" placeholder="Unesi grad">
               </div>
             </div> <!-- end col -->
           </div>
@@ -90,13 +90,13 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="pib">PIB</label>
-                <input type="text" class="form-control" id="pib" placeholder="Poreski identifikacioni broj">
+                <input name="PIB" type="text" class="form-control" id="pib" placeholder="Poreski identifikacioni broj">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="telefon">Telefon</label>
-                <input type="text" class="form-control" id="telefon" placeholder="Kontakt telefon">
+                <input name="telefon" type="text" class="form-control" id="telefon" placeholder="Kontakt telefon">
               </div>
             </div> <!-- end col -->
           </div>
@@ -108,13 +108,13 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="ime">Ime</label>
-                <input type="text" class="form-control" id="ime" placeholder="Ime kontakt osobe">
+                <input name="fName" type="text" class="form-control" id="ime" placeholder="Ime kontakt osobe">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="prezime">Prezime</label>
-                <input type="text" class="form-control" id="prezime" placeholder="Prezime kontakt osobe">
+                <input name="lName" type="text" class="form-control" id="prezime" placeholder="Prezime kontakt osobe">
               </div>
             </div> <!-- end col -->
           </div>
@@ -123,7 +123,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="email">E-mail adresa</label>
-                <input type="text" class="form-control" id="email" placeholder="Unesi e-mail adresa">
+                <input name="email" type="text" class="form-control" id="email" placeholder="Unesi e-mail adresa">
               </div>
             </div>
 
@@ -133,7 +133,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="lozinka">Lozinka</label>
-                <input type="text" class="form-control" id="lozinka" placeholder="Unesi lozinku">
+                <input name="password" type="text" class="form-control" id="lozinka" placeholder="Unesi lozinku">
               </div>
             </div>
             <div class="col-md-6">
@@ -143,6 +143,7 @@
               </div>
             </div> <!-- end col -->
           </div>
+          <div style="display: none;"><input name="role" value="PUSER"></div>
 
           <div class="container-login100-form-btn m-t-32 m-b-12">
             <a href="/signup">
@@ -154,7 +155,7 @@
 
           <div class="container-login100-form-btn m-t-32 m-b-12">
             <a href="/signup">
-              <button type="submit" value="signup" class="login100-form-btn">
+              <button type="button" value="signup" class="login100-form-btn">
                 Registruj se kao kandidat
               </button>
             </a>

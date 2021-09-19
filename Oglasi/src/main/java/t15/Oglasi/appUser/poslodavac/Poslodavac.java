@@ -1,4 +1,4 @@
-package t15.Oglasi.poslodavac;
+package t15.Oglasi.appUser.poslodavac;
 
 
 import lombok.EqualsAndHashCode;
@@ -30,4 +30,12 @@ public class Poslodavac{
     @Column(columnDefinition = "TEXT")
     private String logo;
 
+
+    public Poslodavac(String naziv, String adresa, String grad, String pib, String telefon) {
+        this.naziv = naziv;
+        this.adresa = adresa;
+        this.grad = grad;
+        this.pib = pib;
+        this.telefon = telefon;
+    }
 }

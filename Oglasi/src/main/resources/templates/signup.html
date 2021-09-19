@@ -53,19 +53,19 @@
         <div class="card card-4">
             <div class="card-body">
                 <h2 class="title">Registruj se kao kandidat</h2>
-                <form method="POST">
+                <form method="POST" action="/registration">
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="ime">Ime</label>
-                                <input type="text" class="form-control" id="ime" placeholder="Unesi svoje ime">
+                                <input name="fName" type="text" class="form-control" id="ime" placeholder="Unesi svoje ime">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="prezime">Prezime</label>
-                                <input type="text" class="form-control" id="prezime" placeholder="Unesi svoje prezime">
+                                <input name="lName" type="text" class="form-control" id="prezime" placeholder="Unesi svoje prezime">
                             </div>
                         </div> <!-- end col -->
                     </div>
@@ -74,7 +74,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email">E-mail adresa</label>
-                                <input type="text" class="form-control" id="email" placeholder="Unesi e-mail adresa">
+                                <input name="email" type="text" class="form-control" id="email" placeholder="Unesi e-mail adresa">
                             </div>
                         </div>
 
@@ -84,7 +84,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="lozinka">Lozinka</label>
-                                <input type="text" class="form-control" id="lozinka" placeholder="Unesi lozinku">
+                                <input name="password" type="text" class="form-control" id="lozinka" placeholder="Unesi lozinku">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -102,10 +102,10 @@
                             </button>
                         </a>
                     </div>
-
+                    <div style="display: none;"><input name="role" value="USER"></div>
                     <div class="container-login100-form-btn m-t-32 m-b-12">
-                        <a href="/signup_poslodavac.html">
-                            <button type="submit" value="signup_poslodavac" class="login100-form-btn">
+                        <a href="/signup_poslodavac">
+                            <button type="button" value="signup_poslodavac" class="login100-form-btn">
                                 Registruj se kao poslodavac
                             </button>
                         </a>

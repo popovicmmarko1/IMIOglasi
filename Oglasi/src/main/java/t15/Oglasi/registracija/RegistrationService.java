@@ -1,16 +1,13 @@
 package t15.Oglasi.registracija;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
-import t15.Oglasi.appUser.AppUser;
-import t15.Oglasi.appUser.AppUserRole;
-import t15.Oglasi.appUser.AppUserService;
+import t15.Oglasi.appUser.user.AppUser;
+import t15.Oglasi.appUser.user.AppUserService;
 import t15.Oglasi.mail.EmailSender;
 import t15.Oglasi.registracija.token.ConfirmationToken;
 import t15.Oglasi.registracija.token.ConfirmationTokenService;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service

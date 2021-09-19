@@ -20,12 +20,6 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface OglasRepository extends JpaRepository<Oglas, Long>, JpaSpecificationExecutor<Oglas> {
 
-
-    @Query(value = "SELECT * FROM oglas o ?1", nativeQuery = true)
-    public Page<Oglas> findTest(String query, Pageable pageable);
-
-
-
     @Query(value = "SELECT * FROM oglas ORDER BY oglas.postavljen DESC LIMIT 6", nativeQuery = true)
     public List<Oglas> findTop6();
 

@@ -16,38 +16,21 @@ import java.io.IOException;
 @RequestMapping(value = "/postavioglas", method = RequestMethod.POST)
 @AllArgsConstructor
 public class OglasController {
-
     @Autowired
     private OglasService oglasService;
 
     @PostMapping
-    public String dodaj(@RequestBody Oglas request)
+    public String saveOglas(Oglas request, @RequestParam("image") MultipartFile file, HttpServletResponse response) throws Exception
     {
-        oglasService.postaviOglas(request);
-        return "uspesno";
-    }
-
-
-}
-
-@RestController
-@RequestMapping(value = "/postavioglasp", method = RequestMethod.POST)
-@AllArgsConstructor
-class OglasControlerPostavi {
-    @Autowired
-    private OglasService oglasService;
-
-    @PostMapping
-    public void saveOglas(Oglas request, @RequestParam("image") MultipartFile multipartFile, HttpServletResponse response) throws IOException
-    {
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         request.setBaner(fileName);
 
         Oglas saved = oglasService.postaviOglas(request);
-        String uploadDir = "/slike/baneri/" + saved.getId();
+        String uploadDir = "\\META-INF.resources\\static\\slike\\baneri\\" + saved.getId();
 
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        FileUploadUtil.saveFile(uploadDir, fileName, file);
 
         response.sendRedirect("/");
+        return "Uspesno postavljen oglas";
     }
 }

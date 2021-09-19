@@ -19,6 +19,10 @@ public class Poslodavac{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "posGen")
     private Long id;
     private String naziv;
+    private String adresa;
+    private String grad;
+    private String pib;
+    private String telefon;
     @Column(columnDefinition = "TEXT")
     private String opis;
     @Column(columnDefinition = "TEXT")

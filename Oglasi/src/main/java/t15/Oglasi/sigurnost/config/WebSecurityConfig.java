@@ -24,7 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests().antMatchers("/registration/**").permitAll()
                 .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
                 .antMatchers("/register/**", "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**",
-                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/dodaj_oglas/**", "/profil/**", "/myprofile/**", "/signup/**").permitAll()
+                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/dodaj_oglas/**", "/profil/**", "/myprofile/**", "/signup/**",
+                        "/postavioglas/**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();

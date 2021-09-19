@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
 </head>
 <body>
 <!-- ? Preloader Start -->
@@ -77,7 +78,7 @@
                     <!-- Ako je korisnik prijavljen -->
                     <div th:if="${username}" class="header-btns d-none d-lg-block f-right">
                         <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
-                        <a href="dodaj_oglas" class="btn">Postavite oglas</a>
+                        <a href="oglas_create" class="btn">Postavite oglas</a>
                     </div>
                     <!-- Ako korisnik nije prijavljen -->
                     <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">
@@ -107,29 +108,52 @@
                             <p>U našoj pretrazi odaberite radno mesto ili poziciju, poslodavca, kao i lokaciju posla
                                 koja vam odgovara.</p>
                         </div>
-                        <!--Hero form -->
-                        <form action="/listing" class="search-box mb-40" id="pretraga" method="GET">
+
+                        <form action="/listing" methog="GET" id="pretraga" class="search-box mb-40">
                             <div class="input-form">
                                 <input type="text" name="search" placeholder="Pozicija, poslodavac ili ključna reč...">
                             </div>
                             <div class="select-form">
-                                <select name="grad" id="select1" th:field="*{gradovi}">
-                                    <option value="0">Izaberi grad</option>
+                                <select id="select1" th:name="grad">
+                                    <option value="" th:selected th:disabled th:hidden>Izaberi grad</option>
                                     <option th:each="grad : ${gradovi}" th:value="${grad.ime}" th:text="${grad.ime}"></option>
                                 </select>
                             </div>
                             <div class="select-form">
-                                <div class="select-itms">
-                                    <select name="oblast" id="select2" th:field="*{oblasti}">
-                                        <option value="">Oblast rada</option>
-                                        <option style="height:50px;overflow=auto;" th:each="oblast : ${oblasti}" th:value="${oblast.naziv}" th:text="${oblast.naziv}"></option>
-                                    </select>
-                                </div>
+                                <select id="select2" th:name="oblast">
+                                    <option value="">Oblast rada</option>
+                                    <option style="height:50px;overflow=auto;" th:each="oblast : ${oblasti}" th:value="${oblast.naziv}" th:text="${oblast.naziv}"></option>
+                                </select>
                             </div>
                             <div class="search-form">
                                 <a href="#" onclick="document.getElementById('pretraga').submit()"><i class="ti-search"></i>PRETRAŽI</button></a>
                             </div>
                         </form>
+
+                        <!--Hero form 
+                        <form action="/listing" class="search-box mb-40" id="pretraga" method="GET">
+                            <div class="input-form">
+                                <input type="text" name="search" placeholder="Pozicija, poslodavac ili ključna reč...">
+                            </div>
+                            <div class="select-form">
+                                <select id="select1" th:name="grad">
+                                    <option value="" th:selected th:disabled th:hidden>Izaberi grad</option>
+                                    <option th:each="grad : ${gradovi}" th:value="${grad.ime}" th:text="${grad.ime}"></option>
+                                </select>
+                            </div>
+                            <div class="select-form">
+                               
+                                    <select id="select2" th:name="oblast">
+                                        <option value="">Oblast rada</option>
+                                        <option style="height:50px;overflow=auto;" th:each="oblast : ${oblasti}" th:value="${oblast.naziv}" th:text="${oblast.naziv}"></option>
+                                    </select>
+                                
+                            </div>
+                            <div class="search-form">
+                                <a href="#" onclick="document.getElementById('pretraga').submit()"><i class="ti-search"></i>PRETRAŽI</button></a>
+                            </div>
+                        </form>
+                        -->
                         <div class="hero__caption3">
                             <p>Najpopularnije kategorije</p>
                         </div>
@@ -176,6 +200,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="popular-directorya-area fix">
+                    <div class="row" >
+                        <div class="col-lg-4" th:each="posao : ${poslovi6}">
+                            <div class="properties properties2 mb-30">
+                                <div class="properties__card">
+                                    <div class="properties__img overlay1">
+                                        <a th:href="@{/oglas/(pageid=${posao.id})}"><img src="assets/img/gallery/properties1.png" alt=""></a>
+                                        <div class="icon">
+                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
+                                        </div>
+                                    </div>
+                                <div class="properties__caption">
+                                    <h3><a href="#" th:text="${posao.name}"></a></h3>
+                                        <p th:text="${posao.opis}"></p>
+                                </div>
+                                <div class="properties__footer d-flex justify-content-between align-items-center">
+                                    <div class="restaurant-name">
+                                        <h3 th:text="${posao.mesto}"></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!---
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="single-location mb-30">
@@ -289,6 +339,7 @@
                         </div>
                     </div>
                 </div>
+                -->
             </div>
         </div>
         <!-- Popular Locations End -->

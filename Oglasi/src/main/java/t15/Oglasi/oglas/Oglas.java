@@ -21,12 +21,20 @@ public class Oglas {
     private Long id;
     private String name;
     private String mesto;
-    private LocalDate vremeIsteka;
-    private String postavljen;
     @Column(columnDefinition = "TEXT")
     private String opis;
+    private LocalDate vremeIsteka;
+    private String postavljen;
     @Column(nullable = false)
     private Long poslodavacId;
+    private String oblast;
+    private String pol;
+    private String radnoIskustvo;
+    private String radnoVreme;
+    private String tipZaposlenja;
+    private String visinaPlate;
+    private String nivoObrazovanja;
+    private String baner;
 
     public Oglas(String name, String mesto, LocalDate vremeIsteka, String opis, Long poslodavacId)
     {

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     <link rel="icon" type="image/png" href="images/icons/LogoOglasiIMI.png"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 	<!-- CSS here -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -99,23 +99,21 @@
                             <p>Pronađite posao koji vas zanima korišćenjem filtera.</p>
                         </div>
                         <!--Hero form -->
-                        <form action="/listing" class="search-box mb-100" id="pretraga" method="GET">
+                        <form action="/listing" methog="GET" id="pretraga" class="search-box mb-40">
                             <div class="input-form">
                                 <input type="text" name="search" placeholder="Pozicija, poslodavac ili ključna reč...">
                             </div>
                             <div class="select-form">
-                                <select name="grad" id="select1" th:field="*{gradovi}">
-                                    <option value="0">Izaberi grad</option>
+                                <select id="select1" th:name="grad">
+                                    <option value="" th:selected th:disabled th:hidden>Izaberi grad</option>
                                     <option th:each="grad : ${gradovi}" th:value="${grad.ime}" th:text="${grad.ime}"></option>
                                 </select>
                             </div>
                             <div class="select-form">
-                                <div class="select-itms">
-                                    <select name="oblast" id="select2" th:field="*{oblasti}">
-                                        <option value="">Oblast rada</option>
-                                        <option style="height:50px;overflow=auto;" th:each="oblast : ${oblasti}" th:value="${oblast.naziv}" th:text="${oblast.naziv}"></option>
-                                    </select>
-                                </div>
+                                <select id="select2" th:name="oblast">
+                                    <option value="">Oblast rada</option>
+                                    <option style="height:50px;overflow=auto;" th:each="oblast : ${oblasti}" th:value="${oblast.naziv}" th:text="${oblast.naziv}"></option>
+                                </select>
                             </div>
                             <div class="search-form">
                                 <a href="#" onclick="document.getElementById('pretraga').submit()"><i class="ti-search"></i>PRETRAŽI</button></a>
@@ -623,7 +621,7 @@
     <script src="./assets/js/jquery.sticky.js"></script>
     <!-- Progress -->
     <script src="./assets/js/jquery.barfiller.js"></script>
-
+    
     <!-- counter , waypoint,Hover Direction -->
     <script src="./assets/js/jquery.counterup.min.js"></script>
     <script src="./assets/js/waypoints.min.js"></script>

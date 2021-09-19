@@ -68,6 +68,12 @@ public class PageController {
         return "signup";
     }
 
+    @GetMapping(value = {"/signup_poslodavac",  "/signup_poslodavac.html"})
+    public String signup_poslodavac()
+    {
+        return "signup_poslodavac";
+    }
+
     @GetMapping(value = {"/", "/index", "/index.html"})
     public String home(Model model, Principal principal) {
 

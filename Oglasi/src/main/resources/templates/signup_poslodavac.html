@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Registracija</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+  <title>Registracija</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 
 
 
 
-    <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Icons font CSS-->
+  <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+  <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <!-- Font special for pages-->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+  <!-- Vendor CSS-->
+  <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+  <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
-    <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
-    <!--===============================================================================================-->
+  <!-- Main CSS-->
+  <link href="css/main.css" rel="stylesheet" media="all">
+  <!--===============================================================================================-->
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1028.0" data-gr-ext-installed="" class="vsc-initialized">
@@ -49,72 +49,126 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
 
 <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-    <div class="wrapper wrapper--w680">
-        <div class="card card-4">
-            <div class="card-body">
-                <h2 class="title">Registruj se kao kandidat</h2>
-                <form method="POST">
+  <div class="wrapper wrapper--w680">
+    <div class="card card-4">
+      <div class="card-body">
+        <h2 class="title">Registruj se kao poslodavac</h2>
+        <h3 class="title">Osnovni podaci kompanije</h3> <br>
+        <form method="POST">
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="ime">Ime</label>
-                                <input type="text" class="form-control" id="ime" placeholder="Unesi svoje ime">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="prezime">Prezime</label>
-                                <input type="text" class="form-control" id="prezime" placeholder="Unesi svoje prezime">
-                            </div>
-                        </div> <!-- end col -->
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="email">E-mail adresa</label>
-                                <input type="text" class="form-control" id="email" placeholder="Unesi e-mail adresa">
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="lozinka">Lozinka</label>
-                                <input type="text" class="form-control" id="lozinka" placeholder="Unesi lozinku">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="plozinke">Potvrda lozinke</label>
-                                <input type="text" class="form-control" id="plozinke" placeholder="Potvrda lozinke">
-                            </div>
-                        </div> <!-- end col -->
-                    </div>
-
-                    <div class="container-login100-form-btn m-t-32 m-b-12">
-                        <a href="/signup">
-                            <button type="submit" value="signup" class="login100-form-btn">
-                                Registruj se
-                            </button>
-                        </a>
-                    </div>
-
-                    <div class="container-login100-form-btn m-t-32 m-b-12">
-                        <a href="/signup_poslodavac.html">
-                            <button type="submit" value="signup_poslodavac" class="login100-form-btn">
-                                Registruj se kao poslodavac
-                            </button>
-                        </a>
-                    </div>
-
-                </form>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="poslodavac">Poslodavac</label>
+                <input type="text" class="form-control" id="poslodavac" placeholder="Naziv firme">
+              </div>
             </div>
-        </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="adresaposlodavca">Adresa poslodavca</label>
+                <input type="text" class="form-control" id="adresaposlodavca" placeholder="Adresa sedista firme">
+              </div>
+            </div> <!-- end col -->
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="drzava">Drzava</label>
+                <input type="text" class="form-control" id="drzava" placeholder="Naziv drzave">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="grad">Grad</label>
+                <input type="text" class="form-control" id="grad" placeholder="Unesi grad">
+              </div>
+            </div> <!-- end col -->
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="pib">PIB</label>
+                <input type="text" class="form-control" id="pib" placeholder="Poreski identifikacioni broj">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="telefon">Telefon</label>
+                <input type="text" class="form-control" id="telefon" placeholder="Kontakt telefon">
+              </div>
+            </div> <!-- end col -->
+          </div>
+          <br><br>
+          <h3 class="title">Podaci kontakt osobe</h3>
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="ime">Ime</label>
+                <input type="text" class="form-control" id="ime" placeholder="Ime kontakt osobe">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="prezime">Prezime</label>
+                <input type="text" class="form-control" id="prezime" placeholder="Prezime kontakt osobe">
+              </div>
+            </div> <!-- end col -->
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="email">E-mail adresa</label>
+                <input type="text" class="form-control" id="email" placeholder="Unesi e-mail adresa">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="lozinka">Lozinka</label>
+                <input type="text" class="form-control" id="lozinka" placeholder="Unesi lozinku">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="plozinke">Potvrda lozinke</label>
+                <input type="text" class="form-control" id="plozinke" placeholder="Potvrda lozinke">
+              </div>
+            </div> <!-- end col -->
+          </div>
+
+          <div class="container-login100-form-btn m-t-32 m-b-12">
+            <a href="/signup">
+              <button type="submit" value="signup" class="login100-form-btn">
+                Registruj se
+              </button>
+            </a>
+          </div>
+
+          <div class="container-login100-form-btn m-t-32 m-b-12">
+            <a href="/signup">
+              <button type="submit" value="signup" class="login100-form-btn">
+                Registruj se kao kandidat
+              </button>
+            </a>
+          </div>
+
+
+
+
+
+
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="vendor/jquery/jquery.min.js"></script>

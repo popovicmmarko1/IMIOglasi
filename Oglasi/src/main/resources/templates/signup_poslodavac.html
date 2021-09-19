@@ -1,184 +1,589 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Registracija</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--===============================================================================================-->
-  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="css/util.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>Registracija poslodavca</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/LogoOglasiIMI.png"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
 
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
 
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
-  <!-- Icons font CSS-->
-  <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-  <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-  <!-- Font special for pages-->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Vendor CSS-->
-  <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-  <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-
-  <!-- Main CSS-->
-  <link href="css/main.css" rel="stylesheet" media="all">
-  <!--===============================================================================================-->
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <!--===============================================================================================-->
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1028.0" data-gr-ext-installed="" class="vsc-initialized">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
-
-<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-  <div class="wrapper wrapper--w680">
-    <div class="card card-4">
-      <div class="card-body">
-        <h2 class="title">Registruj se kao poslodavac</h2>
-        <h3 class="title">Osnovni podaci kompanije</h3> <br>
-        <form method="POST" action="/registrationp">
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="poslodavac">Poslodavac</label>
-                <input name="naziv" type="text" class="form-control" id="poslodavac" placeholder="Naziv firme">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="adresaposlodavca">Adresa poslodavca</label>
-                <input name="adresa" type="text" class="form-control" id="adresaposlodavca" placeholder="Adresa sedista firme">
-              </div>
-            </div> <!-- end col -->
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="drzava">Drzava</label>
-                <input type="text" class="form-control" id="drzava" placeholder="Naziv drzave">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="grad">Grad</label>
-                <input name="grad" type="text" class="form-control" id="grad" placeholder="Unesi grad">
-              </div>
-            </div> <!-- end col -->
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="pib">PIB</label>
-                <input name="PIB" type="text" class="form-control" id="pib" placeholder="Poreski identifikacioni broj">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="telefon">Telefon</label>
-                <input name="telefon" type="text" class="form-control" id="telefon" placeholder="Kontakt telefon">
-              </div>
-            </div> <!-- end col -->
-          </div>
-          <br><br>
-          <h3 class="title">Podaci kontakt osobe</h3>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+      integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+      integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous"/>
+<div class="limiter">
+    <div class="container-login100" style="background-image: url('https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Falejandrocremades%2Ffiles%2F2018%2F07%2Fdesk-3139127_1920-1200x773.jpg');">
+        <div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Registruj se kao poslodavac
+				</span>
+            <form th:action="@{/registration}" method="post" class="login100-form validate-form p-b-33 p-t-5">
+                <h3 class="title m-t-40 p-l-30 m-r-30" style="text-align:center">Osnovni podaci kompanije</h3> <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input" data-validate="Unesite naziv firme">
+                            <input class="input100" type="text" name="naziv" id="poslodavac" placeholder="Naziv firme">
+                            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input" data-validate="Unesite državu">
+                            <input class="input100" type="text" name="drzava" id="drzava" placeholder="Država">
+                            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input" data-validate="Unesite grad">
+                            <input class="input100" type="text" name="grad" id="grad"  placeholder="Grad">
+                            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
 
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="ime">Ime</label>
-                <input name="fName" type="text" class="form-control" id="ime" placeholder="Ime kontakt osobe">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="prezime">Prezime</label>
-                <input name="lName" type="text" class="form-control" id="prezime" placeholder="Prezime kontakt osobe">
-              </div>
-            </div> <!-- end col -->
-          </div>
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input pass" data-validate="Unesite adresu">
+                            <input class="input100" type="text" id="adresaposlodavca" name="adresa"
+                                   placeholder="Adresa sedišta firme">
+                            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input pass" data-validate="Unesite PIB">
+                            <input class="input100" type="number" id="pib" name="pib"
+                                   placeholder="PIB (Poreski identifikacioni broj)">
+                            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input pass" data-validate="Unesite telefon">
+                            <input class="input100" type="number" id="telefon" name="telefon"
+                                   placeholder="Kontakt telefon">
+                            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                        </div>
+                    </div>
+                </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="email">E-mail adresa</label>
-                <input name="email" type="text" class="form-control" id="email" placeholder="Unesi e-mail adresa">
-              </div>
-            </div>
+                <h3 class="title m-t-40 p-l-30 m-r-30" style="text-align:center;color:green">Podaci kontakt osobe</h3> <br>
 
-          </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input" data-validate="Unesite ime">
+                            <input class="input100" type="text" name="fName" id="ime" placeholder="Ime">
+                            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input" data-validate="Unesite prezime">
+                            <input class="input100" type="text" name="lName" id="prezime" placeholder="Prezime">
+                            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Unesite email">
+                    <input class="input100" type="email" name="email"  id="email" placeholder="Email">
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="lozinka">Lozinka</label>
-                <input name="password" type="text" class="form-control" id="lozinka" placeholder="Unesi lozinku">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="plozinke">Potvrda lozinke</label>
-                <input type="text" class="form-control" id="plozinke" placeholder="Potvrda lozinke">
-              </div>
-            </div> <!-- end col -->
-          </div>
-          <div style="display: none;"><input name="role" value="PUSER"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input pass" data-validate="Unesite lozinku">
+                            <input class="input100" type="password" id="lozinka" name="password"
+                                   placeholder="Lozinka">
+                            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="wrap-input100 validate-input pass" data-validate="Potvrdite lozinku">
+                            <input class="input100" type="password" id="plozinke" name="rpassword"
+                                   placeholder="Potvrda lozinke">
+                            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                        </div>
+                    </div>
+                </div>
 
-          <div class="container-login100-form-btn m-t-32 m-b-12">
-            <a href="/signup">
-              <button type="submit" value="signup" class="login100-form-btn">
-                Registruj se
-              </button>
-            </a>
-          </div>
-
-          <div class="container-login100-form-btn m-t-32 m-b-12">
-            <a href="/signup">
-              <button type="button" value="signup" class="login100-form-btn">
-                Registruj se kao kandidat
-              </button>
-            </a>
-          </div>
-
-
-
-
-
-
-        </form>
-      </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="container-login100-form-btn m-t-37">
+                            <a href="/signup">
+                                <button type="submit" value="signup" class="login100-form-btn">
+                                    Registruj se
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!--                        <span class="login100-form-login-register">Već imate nalog?</span>-->
+                        <div class="container-login100-form-btn m-t-10">
+                            <a href="/login">
+                                <label for="prijava" style="text-align:center;font-size:17px">Već imate nalog?</label>
+                                <button value="Login" type="button" id="prijava" name="prijava"
+                                        class="login100-form-btn">
+                                    Prijavi se
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-login100-form-btn m-t-15 pl-2 pr-2">
+                    <a href="/signup">
+                        <button type="button" value="signup" class="login100-form-btn">
+                            Registruj se kao kandidat
+                        </button>
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
 </div>
+<!--<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">-->
+<!--    <div class="wrapper wrapper&#45;&#45;w680">-->
+<!--        <div class="card card-4">-->
+<!--            <div class="card-body">-->
+<!--                <h2 class="title">Registruj se kao poslodavac</h2>-->
+<!--                <h3 class="title">Osnovni podaci kompanije</h3> <br>-->
+<!--                <form method="POST" action="/registrationp">-->
 
-<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="vendor/jquery/jquery.min.js"></script>
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="poslodavac">Poslodavac</label>-->
+<!--                                <input name="naziv" type="text" class="form-control" id="poslodavac"-->
+<!--                                       placeholder="Naziv firme">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="adresaposlodavca">Adresa poslodavca</label>-->
+<!--                                <input name="adresa" type="text" class="form-control" id="adresaposlodavca"-->
+<!--                                       placeholder="Adresa sedista firme">-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash; end col &ndash;&gt;-->
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="drzava">Drzava</label>-->
+<!--                                <input type="text" class="form-control" id="drzava" placeholder="Naziv drzave">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="grad">Grad</label>-->
+<!--                                <input name="grad" type="text" class="form-control" id="grad" placeholder="Unesi grad">-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash; end col &ndash;&gt;-->
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="pib">PIB</label>-->
+<!--                                <input name="PIB" type="text" class="form-control" id="pib"-->
+<!--                                       placeholder="Poreski identifikacioni broj">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="telefon">Telefon</label>-->
+<!--                                <input name="telefon" type="text" class="form-control" id="telefon"-->
+<!--                                       placeholder="Kontakt telefon">-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash; end col &ndash;&gt;-->
+<!--                    </div>-->
+<!--                    <br><br>-->
+<!--                    <h3 class="title" >Podaci kontakt osobe</h3>-->
+
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="ime">Ime</label>-->
+<!--                                <input name="fName" type="text" class="form-control" id="ime"-->
+<!--                                       placeholder="Ime kontakt osobe">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="prezime">Prezime</label>-->
+<!--                                <input name="lName" type="text" class="form-control" id="prezime"-->
+<!--                                       placeholder="Prezime kontakt osobe">-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash; end col &ndash;&gt;-->
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="email">E-mail adresa</label>-->
+<!--                                <input name="email" type="text" class="form-control" id="email"-->
+<!--                                       placeholder="Unesi e-mail adresa">-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="lozinka">Lozinka</label>-->
+<!--                                <input name="password" type="text" class="form-control" id="lozinka"-->
+<!--                                       placeholder="Unesi lozinku">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="plozinke">Potvrda lozinke</label>-->
+<!--                                <input type="text" class="form-control" id="plozinke" placeholder="Potvrda lozinke">-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash; end col &ndash;&gt;-->
+<!--                    </div>-->
+<!--                    <div style="display: none;"><input name="role" value="PUSER"></div>-->
+
+<!--                    <div class="container-login100-form-btn m-t-32 m-b-12">-->
+<!--                        <a href="/signup">-->
+<!--                            <button type="submit" value="signup" class="login100-form-btn">-->
+<!--                                Registruj se-->
+<!--                            </button>-->
+<!--                        </a>-->
+<!--                    </div>-->
+
+<!--                    <div class="container-login100-form-btn m-t-32 m-b-12">-->
+<!--                        <a href="/signup">-->
+<!--                            <button type="button" value="signup" class="login100-form-btn">-->
+<!--                                Registruj se kao kandidat-->
+<!--                            </button>-->
+<!--                        </a>-->
+<!--                    </div>-->
+
+
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
 
 <script src="static/vendor/select2/select2.min.js"></script>
 <script src="static/vendor/datepicker/moment.min.js"></script>
 <script src="static/vendor/datepicker/daterangepicker.js"></script>
 
-<script src="js/global.js"></script><div class="daterangepicker dropdown-menu ltr single opensright show-calendar" style="top: 443px; left: 190.6px; right: auto; display: none;"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini form-control active" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th><th colspan="5" class="month"><select class="monthselect"><option value="0">Jan</option><option value="1">Feb</option><option value="2">Mar</option><option value="3">Apr</option><option value="4">May</option><option value="5">Jun</option><option value="6">Jul</option><option value="7">Aug</option><option value="8" selected="selected">Sep</option><option value="9">Oct</option><option value="10">Nov</option><option value="11">Dec</option></select><select class="yearselect"><option value="1971">1971</option><option value="1972">1972</option><option value="1973">1973</option><option value="1974">1974</option><option value="1975">1975</option><option value="1976">1976</option><option value="1977">1977</option><option value="1978">1978</option><option value="1979">1979</option><option value="1980">1980</option><option value="1981">1981</option><option value="1982">1982</option><option value="1983">1983</option><option value="1984">1984</option><option value="1985">1985</option><option value="1986">1986</option><option value="1987">1987</option><option value="1988">1988</option><option value="1989">1989</option><option value="1990">1990</option><option value="1991">1991</option><option value="1992">1992</option><option value="1993">1993</option><option value="1994">1994</option><option value="1995">1995</option><option value="1996">1996</option><option value="1997">1997</option><option value="1998">1998</option><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021" selected="selected">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select></th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">29</td><td class="off available" data-title="r0c1">30</td><td class="off available" data-title="r0c2">31</td><td class="available" data-title="r0c3">1</td><td class="available" data-title="r0c4">2</td><td class="available" data-title="r0c5">3</td><td class="weekend available" data-title="r0c6">4</td></tr><tr><td class="weekend available" data-title="r1c0">5</td><td class="available" data-title="r1c1">6</td><td class="available" data-title="r1c2">7</td><td class="available" data-title="r1c3">8</td><td class="available" data-title="r1c4">9</td><td class="available" data-title="r1c5">10</td><td class="weekend available" data-title="r1c6">11</td></tr><tr><td class="weekend available" data-title="r2c0">12</td><td class="available" data-title="r2c1">13</td><td class="available" data-title="r2c2">14</td><td class="available" data-title="r2c3">15</td><td class="available" data-title="r2c4">16</td><td class="available" data-title="r2c5">17</td><td class="weekend available" data-title="r2c6">18</td></tr><tr><td class="today weekend active start-date active end-date available" data-title="r3c0">19</td><td class="available" data-title="r3c1">20</td><td class="available" data-title="r3c2">21</td><td class="available" data-title="r3c3">22</td><td class="available" data-title="r3c4">23</td><td class="available" data-title="r3c5">24</td><td class="weekend available" data-title="r3c6">25</td></tr><tr><td class="weekend available" data-title="r4c0">26</td><td class="available" data-title="r4c1">27</td><td class="available" data-title="r4c2">28</td><td class="available" data-title="r4c3">29</td><td class="available" data-title="r4c4">30</td><td class="off available" data-title="r4c5">1</td><td class="weekend off available" data-title="r4c6">2</td></tr><tr><td class="weekend off available" data-title="r5c0">3</td><td class="off available" data-title="r5c1">4</td><td class="off available" data-title="r5c2">5</td><td class="off available" data-title="r5c3">6</td><td class="off available" data-title="r5c4">7</td><td class="off available" data-title="r5c5">8</td><td class="weekend off available" data-title="r5c6">9</td></tr></tbody></table></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month"><select class="monthselect"><option value="0" disabled="disabled">Jan</option><option value="1" disabled="disabled">Feb</option><option value="2" disabled="disabled">Mar</option><option value="3" disabled="disabled">Apr</option><option value="4" disabled="disabled">May</option><option value="5" disabled="disabled">Jun</option><option value="6" disabled="disabled">Jul</option><option value="7" disabled="disabled">Aug</option><option value="8">Sep</option><option value="9" selected="selected">Oct</option><option value="10">Nov</option><option value="11">Dec</option></select><select class="yearselect"><option value="2021" selected="selected">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select></th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">26</td><td class="off available" data-title="r0c1">27</td><td class="off available" data-title="r0c2">28</td><td class="off available" data-title="r0c3">29</td><td class="off available" data-title="r0c4">30</td><td class="available" data-title="r0c5">1</td><td class="weekend available" data-title="r0c6">2</td></tr><tr><td class="weekend available" data-title="r1c0">3</td><td class="available" data-title="r1c1">4</td><td class="available" data-title="r1c2">5</td><td class="available" data-title="r1c3">6</td><td class="available" data-title="r1c4">7</td><td class="available" data-title="r1c5">8</td><td class="weekend available" data-title="r1c6">9</td></tr><tr><td class="weekend available" data-title="r2c0">10</td><td class="available" data-title="r2c1">11</td><td class="available" data-title="r2c2">12</td><td class="available" data-title="r2c3">13</td><td class="available" data-title="r2c4">14</td><td class="available" data-title="r2c5">15</td><td class="weekend available" data-title="r2c6">16</td></tr><tr><td class="weekend available" data-title="r3c0">17</td><td class="available" data-title="r3c1">18</td><td class="available" data-title="r3c2">19</td><td class="available" data-title="r3c3">20</td><td class="available" data-title="r3c4">21</td><td class="available" data-title="r3c5">22</td><td class="weekend available" data-title="r3c6">23</td></tr><tr><td class="weekend available" data-title="r4c0">24</td><td class="available" data-title="r4c1">25</td><td class="available" data-title="r4c2">26</td><td class="available" data-title="r4c3">27</td><td class="available" data-title="r4c4">28</td><td class="available" data-title="r4c5">29</td><td class="weekend available" data-title="r4c6">30</td></tr><tr><td class="weekend available" data-title="r5c0">31</td><td class="off available" data-title="r5c1">1</td><td class="off available" data-title="r5c2">2</td><td class="off available" data-title="r5c3">3</td><td class="off available" data-title="r5c4">4</td><td class="off available" data-title="r5c5">5</td><td class="weekend off available" data-title="r5c6">6</td></tr></tbody></table></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div>
+<script src="js/global.js"></script>
+<div class="daterangepicker dropdown-menu ltr single opensright show-calendar"
+     style="top: 443px; left: 190.6px; right: auto; display: none;">
+    <div class="calendar left single" style="display: block;">
+        <div class="daterangepicker_input"><input class="input-mini form-control active" type="text"
+                                                  name="daterangepicker_start" value="" style="display: none;"><i
+                class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i>
+            <div class="calendar-time" style="display: none;">
+                <div></div>
+                <i class="fa fa-clock-o glyphicon glyphicon-time"></i></div>
+        </div>
+        <div class="calendar-table">
+            <table class="table-condensed">
+                <thead>
+                <tr>
+                    <th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th>
+                    <th colspan="5" class="month"><select class="monthselect">
+                        <option value="0">Jan</option>
+                        <option value="1">Feb</option>
+                        <option value="2">Mar</option>
+                        <option value="3">Apr</option>
+                        <option value="4">May</option>
+                        <option value="5">Jun</option>
+                        <option value="6">Jul</option>
+                        <option value="7">Aug</option>
+                        <option value="8" selected="selected">Sep</option>
+                        <option value="9">Oct</option>
+                        <option value="10">Nov</option>
+                        <option value="11">Dec</option>
+                    </select><select class="yearselect">
+                        <option value="1971">1971</option>
+                        <option value="1972">1972</option>
+                        <option value="1973">1973</option>
+                        <option value="1974">1974</option>
+                        <option value="1975">1975</option>
+                        <option value="1976">1976</option>
+                        <option value="1977">1977</option>
+                        <option value="1978">1978</option>
+                        <option value="1979">1979</option>
+                        <option value="1980">1980</option>
+                        <option value="1981">1981</option>
+                        <option value="1982">1982</option>
+                        <option value="1983">1983</option>
+                        <option value="1984">1984</option>
+                        <option value="1985">1985</option>
+                        <option value="1986">1986</option>
+                        <option value="1987">1987</option>
+                        <option value="1988">1988</option>
+                        <option value="1989">1989</option>
+                        <option value="1990">1990</option>
+                        <option value="1991">1991</option>
+                        <option value="1992">1992</option>
+                        <option value="1993">1993</option>
+                        <option value="1994">1994</option>
+                        <option value="1995">1995</option>
+                        <option value="1996">1996</option>
+                        <option value="1997">1997</option>
+                        <option value="1998">1998</option>
+                        <option value="1999">1999</option>
+                        <option value="2000">2000</option>
+                        <option value="2001">2001</option>
+                        <option value="2002">2002</option>
+                        <option value="2003">2003</option>
+                        <option value="2004">2004</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021" selected="selected">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select></th>
+                    <th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Su</th>
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="weekend off available" data-title="r0c0">29</td>
+                    <td class="off available" data-title="r0c1">30</td>
+                    <td class="off available" data-title="r0c2">31</td>
+                    <td class="available" data-title="r0c3">1</td>
+                    <td class="available" data-title="r0c4">2</td>
+                    <td class="available" data-title="r0c5">3</td>
+                    <td class="weekend available" data-title="r0c6">4</td>
+                </tr>
+                <tr>
+                    <td class="weekend available" data-title="r1c0">5</td>
+                    <td class="available" data-title="r1c1">6</td>
+                    <td class="available" data-title="r1c2">7</td>
+                    <td class="available" data-title="r1c3">8</td>
+                    <td class="available" data-title="r1c4">9</td>
+                    <td class="available" data-title="r1c5">10</td>
+                    <td class="weekend available" data-title="r1c6">11</td>
+                </tr>
+                <tr>
+                    <td class="weekend available" data-title="r2c0">12</td>
+                    <td class="available" data-title="r2c1">13</td>
+                    <td class="available" data-title="r2c2">14</td>
+                    <td class="available" data-title="r2c3">15</td>
+                    <td class="available" data-title="r2c4">16</td>
+                    <td class="available" data-title="r2c5">17</td>
+                    <td class="weekend available" data-title="r2c6">18</td>
+                </tr>
+                <tr>
+                    <td class="today weekend active start-date active end-date available" data-title="r3c0">19</td>
+                    <td class="available" data-title="r3c1">20</td>
+                    <td class="available" data-title="r3c2">21</td>
+                    <td class="available" data-title="r3c3">22</td>
+                    <td class="available" data-title="r3c4">23</td>
+                    <td class="available" data-title="r3c5">24</td>
+                    <td class="weekend available" data-title="r3c6">25</td>
+                </tr>
+                <tr>
+                    <td class="weekend available" data-title="r4c0">26</td>
+                    <td class="available" data-title="r4c1">27</td>
+                    <td class="available" data-title="r4c2">28</td>
+                    <td class="available" data-title="r4c3">29</td>
+                    <td class="available" data-title="r4c4">30</td>
+                    <td class="off available" data-title="r4c5">1</td>
+                    <td class="weekend off available" data-title="r4c6">2</td>
+                </tr>
+                <tr>
+                    <td class="weekend off available" data-title="r5c0">3</td>
+                    <td class="off available" data-title="r5c1">4</td>
+                    <td class="off available" data-title="r5c2">5</td>
+                    <td class="off available" data-title="r5c3">6</td>
+                    <td class="off available" data-title="r5c4">7</td>
+                    <td class="off available" data-title="r5c5">8</td>
+                    <td class="weekend off available" data-title="r5c6">9</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="calendar right" style="display: none;">
+        <div class="daterangepicker_input"><input class="input-mini form-control" type="text" name="daterangepicker_end"
+                                                  value="" style="display: none;"><i
+                class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i>
+            <div class="calendar-time" style="display: none;">
+                <div></div>
+                <i class="fa fa-clock-o glyphicon glyphicon-time"></i></div>
+        </div>
+        <div class="calendar-table">
+            <table class="table-condensed">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="5" class="month"><select class="monthselect">
+                        <option value="0" disabled="disabled">Jan</option>
+                        <option value="1" disabled="disabled">Feb</option>
+                        <option value="2" disabled="disabled">Mar</option>
+                        <option value="3" disabled="disabled">Apr</option>
+                        <option value="4" disabled="disabled">May</option>
+                        <option value="5" disabled="disabled">Jun</option>
+                        <option value="6" disabled="disabled">Jul</option>
+                        <option value="7" disabled="disabled">Aug</option>
+                        <option value="8">Sep</option>
+                        <option value="9" selected="selected">Oct</option>
+                        <option value="10">Nov</option>
+                        <option value="11">Dec</option>
+                    </select><select class="yearselect">
+                        <option value="2021" selected="selected">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select></th>
+                    <th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Su</th>
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="weekend off available" data-title="r0c0">26</td>
+                    <td class="off available" data-title="r0c1">27</td>
+                    <td class="off available" data-title="r0c2">28</td>
+                    <td class="off available" data-title="r0c3">29</td>
+                    <td class="off available" data-title="r0c4">30</td>
+                    <td class="available" data-title="r0c5">1</td>
+                    <td class="weekend available" data-title="r0c6">2</td>
+                </tr>
+                <tr>
+                    <td class="weekend available" data-title="r1c0">3</td>
+                    <td class="available" data-title="r1c1">4</td>
+                    <td class="available" data-title="r1c2">5</td>
+                    <td class="available" data-title="r1c3">6</td>
+                    <td class="available" data-title="r1c4">7</td>
+                    <td class="available" data-title="r1c5">8</td>
+                    <td class="weekend available" data-title="r1c6">9</td>
+                </tr>
+                <tr>
+                    <td class="weekend available" data-title="r2c0">10</td>
+                    <td class="available" data-title="r2c1">11</td>
+                    <td class="available" data-title="r2c2">12</td>
+                    <td class="available" data-title="r2c3">13</td>
+                    <td class="available" data-title="r2c4">14</td>
+                    <td class="available" data-title="r2c5">15</td>
+                    <td class="weekend available" data-title="r2c6">16</td>
+                </tr>
+                <tr>
+                    <td class="weekend available" data-title="r3c0">17</td>
+                    <td class="available" data-title="r3c1">18</td>
+                    <td class="available" data-title="r3c2">19</td>
+                    <td class="available" data-title="r3c3">20</td>
+                    <td class="available" data-title="r3c4">21</td>
+                    <td class="available" data-title="r3c5">22</td>
+                    <td class="weekend available" data-title="r3c6">23</td>
+                </tr>
+                <tr>
+                    <td class="weekend available" data-title="r4c0">24</td>
+                    <td class="available" data-title="r4c1">25</td>
+                    <td class="available" data-title="r4c2">26</td>
+                    <td class="available" data-title="r4c3">27</td>
+                    <td class="available" data-title="r4c4">28</td>
+                    <td class="available" data-title="r4c5">29</td>
+                    <td class="weekend available" data-title="r4c6">30</td>
+                </tr>
+                <tr>
+                    <td class="weekend available" data-title="r5c0">31</td>
+                    <td class="off available" data-title="r5c1">1</td>
+                    <td class="off available" data-title="r5c2">2</td>
+                    <td class="off available" data-title="r5c3">3</td>
+                    <td class="off available" data-title="r5c4">4</td>
+                    <td class="off available" data-title="r5c5">5</td>
+                    <td class="weekend off available" data-title="r5c6">6</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="ranges" style="display: none;">
+        <div class="range_inputs">
+            <button class="applyBtn btn btn-sm btn-success" type="button">Apply</button>
+            <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button>
+        </div>
+    </div>
+</div>
 
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
@@ -187,9 +592,11 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-23581568-13');
-</script>
-<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;rayId&quot;:&quot;691235998e340f8e&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2021.8.1&quot;,&quot;si&quot;:10}"></script>
 
+
+</script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon="{&quot;rayId&quot;:&quot;691235998e340f8e&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2021.8.1&quot;,&quot;si&quot;:10}"></script>
 
 
 <style>
@@ -804,7 +1211,6 @@ input {
   font-size: 24px;
   color: #525252;
   font-weight: 400;
-  margin-bottom: 40px;
 }
 
 /* ==========================================================================
@@ -837,6 +1243,8 @@ input {
     padding: 50px 40px;
   }
 }
+
+
 
 </style>
 
@@ -903,8 +1311,6 @@ input {
     </div>
 </div>
 -->
-
-
 
 
 <div id="dropDownSelect1"></div>

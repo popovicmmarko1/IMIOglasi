@@ -1,4 +1,4 @@
-package t15.Oglasi.appUser;
+package t15.Oglasi.appUser.user;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

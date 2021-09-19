@@ -1,15 +1,13 @@
 package t15.Oglasi.pageControllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import t15.Oglasi.appUser.AppUser;
-import t15.Oglasi.appUser.AppUserRepository;
+import t15.Oglasi.appUser.user.AppUser;
+import t15.Oglasi.appUser.user.AppUserRepository;
 import t15.Oglasi.grad.GradRepository;
 import t15.Oglasi.oglas.Oglas;
 import t15.Oglasi.oglas.OglasRepository;

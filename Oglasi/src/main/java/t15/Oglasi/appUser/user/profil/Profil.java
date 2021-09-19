@@ -1,4 +1,4 @@
-package t15.Oglasi.appUser.profil;
+package t15.Oglasi.appUser.user.profil;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

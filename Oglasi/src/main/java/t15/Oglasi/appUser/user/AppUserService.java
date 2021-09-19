@@ -1,4 +1,4 @@
-package t15.Oglasi.appUser;
+package t15.Oglasi.appUser.user;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +25,14 @@ public class AppUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return appUserRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND, email)));
     }
+
+    /*
+    public AppUser registruj(AppUser user)
+    {
+        return
+    }
+
+     */
 
     public String signUser(AppUser appUser)
     {

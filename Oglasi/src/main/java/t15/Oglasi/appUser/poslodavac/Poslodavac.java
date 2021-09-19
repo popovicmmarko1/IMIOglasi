@@ -1,4 +1,4 @@
-package t15.Oglasi.poslodavac;
+package t15.Oglasi.appUser.poslodavac;
 
 
 import lombok.EqualsAndHashCode;
@@ -19,6 +19,10 @@ public class Poslodavac{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "posGen")
     private Long id;
     private String naziv;
+    private String adresa;
+    private String grad;
+    private String pib;
+    private String telefon;
     @Column(columnDefinition = "TEXT")
     private String opis;
     @Column(columnDefinition = "TEXT")
@@ -26,4 +30,12 @@ public class Poslodavac{
     @Column(columnDefinition = "TEXT")
     private String logo;
 
+
+    public Poslodavac(String naziv, String adresa, String grad, String pib, String telefon) {
+        this.naziv = naziv;
+        this.adresa = adresa;
+        this.grad = grad;
+        this.pib = pib;
+        this.telefon = telefon;
+    }
 }

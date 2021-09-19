@@ -4,17 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import t15.Oglasi.appUser.AppUser;
-import t15.Oglasi.appUser.AppUserRepository;
-import t15.Oglasi.appUser.profil.Profil;
-import t15.Oglasi.appUser.profil.ProfilRepository;
+import t15.Oglasi.appUser.user.AppUser;
+import t15.Oglasi.appUser.user.AppUserRepository;
+import t15.Oglasi.appUser.user.profil.Profil;
+import t15.Oglasi.appUser.user.profil.ProfilRepository;
 import t15.Oglasi.grad.GradRepository;
-import t15.Oglasi.oglas.Oglas;
 import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.oglas.OglasService;
-import t15.Oglasi.poslodavac.Poslodavac;
-import t15.Oglasi.poslodavac.PoslodavacRepository;
+import t15.Oglasi.appUser.poslodavac.PoslodavacRepository;
 import t15.Oglasi.slike.SlikeRepository;
 import t15.Oglasi.tag.oblast.OblastRepository;
 
@@ -52,6 +49,12 @@ public class PageController {
     public String signup()
     {
         return "signup";
+    }
+
+    @GetMapping(value = {"/signup_poslodavac",  "/signup_poslodavac.html"})
+    public String signup_poslodavac()
+    {
+        return "signup_poslodavac";
     }
 
     @GetMapping(value = {"oglas",  "/oglas.html"})
@@ -186,46 +189,6 @@ public class PageController {
     public String napraviOglas() { return "oglas_create"; }
 
 
-    @GetMapping("/oglas/testt")
-    public String oglastestt() { return "oglas"; }
-
-
-
-    @GetMapping("/oglas/pageid={id}")
-    public String oglas(@PathVariable long id, Model model)
-    {
-        Optional<Oglas> o = oglasRepository.findById(id);
-        Optional<AppUser> optionalAppUser;
-        AppUser appUser;
-
-        Oglas oglas;
-        if(o.isPresent())
-        {
-            oglas = o.get();
-            model.addAttribute("naslov", oglas.getName());
-            model.addAttribute("mesto", oglas.getMesto());
-            model.addAttribute("postavljen", oglas.getPostavljen().toString());
-            model.addAttribute("istice", oglas.getVremeIsteka().toString());
-            model.addAttribute("opis", oglas.getOpis());
-
-            Optional <Poslodavac> p = poslodavacRepository.findById(oglas.getPoslodavacId());
-
-            if(p.isPresent())
-            {
-                Poslodavac poslodavac = p.get();
-                model.addAttribute("poslodavac_ime", poslodavac.getNaziv());
-                model.addAttribute("poslodavac_opis", poslodavac.getOpis());
-                model.addAttribute("poslodavac_slika", poslodavac.getBaner());
-                model.addAttribute("poslodavac_slika", poslodavac.getLogo());
-            }else{
-                throw new IllegalStateException("Poslodavac ne postoji!");
-            }
-
-            return "oglas";
-        }else {
-            throw new IllegalStateException("Oglas ne postoji!");
-        }
-    }
 
     @GetMapping("/oglas/test")
     public String test(Model model)
@@ -239,11 +202,4 @@ public class PageController {
         model.addAttribute("poslodavac_opis", "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).");
         return "oglas";
     }
-
-    @GetMapping("/oglas/index")
-    public String oglasindex(Model model)
-    {
-        return "index";
-    }
-
 }

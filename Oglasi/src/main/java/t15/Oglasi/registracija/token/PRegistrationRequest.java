@@ -1,4 +1,4 @@
-package t15.Oglasi.registracija;
+package t15.Oglasi.registracija.token;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -10,10 +10,15 @@ import t15.Oglasi.appUser.user.AppUserRole;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class RegistrationRequest {
+public class PRegistrationRequest {
     private final String fName;
     private final String lName;
     private final String password;
     private final String email;
     private final AppUserRole role;
+    private final String naziv;
+    private final String adresa;
+    private final String grad;
+    private final String PIB;
+    private final String telefon;
 }

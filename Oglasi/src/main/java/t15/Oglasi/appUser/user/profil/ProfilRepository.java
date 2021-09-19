@@ -1,6 +1,5 @@
-package t15.Oglasi.appUser.profil;
+package t15.Oglasi.appUser.user.profil;
 
-import groovy.transform.TailRecursive;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

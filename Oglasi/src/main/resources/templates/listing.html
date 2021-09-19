@@ -99,26 +99,26 @@
                             <p>Pronađite posao koji vas zanima korišćenjem filtera.</p>
                         </div>
                         <!--Hero form -->
-                        <form action="/listing" class="search-box mb-100" id="pretraga" method="GET">
+                        <form action="/listing" methog="GET" id="pretraga" class="search-box mb-40">
                             <div class="input-form">
-                                <input type="text" name="search" value="" placeholder="Pozicija, poslodavac ili ključna reč...">
+                                <input type="text" name="search" placeholder="Pozicija, poslodavac ili ključna reč...">
                             </div>
                             <div class="select-form">
-                                <select id="select1" name="grad" th:field="*{gradovi}" >
-                                    <option value="">Izaberi grad</option>
+                                <select id="select1" th:name="grad">
+                                    <option value="" th:selected th:disabled th:hidden>Izaberi grad</option>
                                     <option th:each="grad : ${gradovi}" th:value="${grad.ime}" th:text="${grad.ime}"></option>
                                 </select>
                             </div>
                             <div class="select-form">
-                                <select name="oblast" id="select2" th:field="*{oblasti}">
+                                <select id="select2" th:name="oblast">
                                     <option value="">Oblast rada</option>
-                                    <option th:each="oblast : ${oblasti}" th:value="${oblast.naziv}" th:text="${oblast.naziv}"></option>
+                                    <option style="height:50px;overflow=auto;" th:each="oblast : ${oblasti}" th:value="${oblast.naziv}" th:text="${oblast.naziv}"></option>
                                 </select>
                             </div>
                             <div class="search-form">
-                                <a href="#" onclick="document.getElementById('pretraga').submit()"><i class="ti-search"></i>PRETRAŽI</a>
+                                <a href="#" onclick="document.getElementById('pretraga').submit()"><i class="ti-search"></i>PRETRAŽI</button></a>
                             </div>
-                        </form>	
+                        </form>
                     </div>
                 </div>
             </div>

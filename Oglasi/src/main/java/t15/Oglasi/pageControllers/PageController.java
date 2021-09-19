@@ -1,37 +1,25 @@
 package t15.Oglasi.pageControllers;
 
-import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import t15.Oglasi.appUser.AppUser;
 import t15.Oglasi.appUser.AppUserRepository;
 import t15.Oglasi.appUser.profil.Profil;
 import t15.Oglasi.appUser.profil.ProfilRepository;
-import t15.Oglasi.grad.Grad;
 import t15.Oglasi.grad.GradRepository;
 import t15.Oglasi.oglas.Oglas;
 import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.oglas.OglasService;
 import t15.Oglasi.poslodavac.Poslodavac;
 import t15.Oglasi.poslodavac.PoslodavacRepository;
-import t15.Oglasi.slike.Slike;
 import t15.Oglasi.slike.SlikeRepository;
-import t15.Oglasi.tag.Tag;
-import t15.Oglasi.tag.TagRepository;
 import t15.Oglasi.tag.oblast.OblastRepository;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -45,8 +33,6 @@ public class PageController {
     private OglasService oglasService;
     @Autowired
     private SlikeRepository slikeRepository;
-    @Autowired
-    private TagRepository tagRepository;
     @Autowired
     private PoslodavacRepository poslodavacRepository;
     @Autowired
@@ -68,52 +54,13 @@ public class PageController {
         return "signup";
     }
 
-    @GetMapping(value = {"/", "/index", "/index.html"})
-    public String home(Model model, Principal principal) {
-
-        try{
-            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
-            if(ulogovan.isPresent())
-            {
-                model.addAttribute("username",ulogovan.get().getFName());
-            }
-        }catch (Exception e){
-            System.out.println("Nije ulogovan!");
-        }
-
-        model.addAttribute("gradovi", gradRepository.findAll());
-        model.addAttribute("oblasti", oblastRepository.findAll());
-
-
-        return "index";
-    }
-
     @GetMapping(value = {"oglas",  "/oglas.html"})
     public String oglas()
     {
         return "oglas";
     }
 
-    @GetMapping(value = {"listing",  "/listing.html"})
-    public String pretraga(@RequestParam Optional<Integer> page, @RequestParam Optional<String> search, @RequestParam Optional<String> grad,
-                           @RequestParam Optional<String> oblast, Model model, Principal principal)
-    {
-        try{
-            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
-            if(ulogovan.isPresent())
-            {
-                model.addAttribute("username",ulogovan.get().getFName());
-            }
-        }catch (Exception e){
-            System.out.println("Nije ulogovan!");
-        }
 
-        model.addAttribute("gradovi", gradRepository.findAll());
-        model.addAttribute("oblasti", oblastRepository.findAll());
-        List<Oglas> strana = oglasRepository.findByKeyword(search.orElse(""), PageRequest.of(page.orElse(0), 6));
-        model.addAttribute("oglasi",strana);
-        return "listing";
-    }
 
     @GetMapping(value = {"employers",  "/employers.html"})
     public String employers(Model model, Principal principal)

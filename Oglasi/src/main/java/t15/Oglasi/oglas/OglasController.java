@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 import t15.Oglasi.slike.FileUploadUtil;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
@@ -26,8 +27,18 @@ public class OglasController {
         return "uspesno";
     }
 
-    @PostMapping()
-    public RedirectView saveOglas(Oglas request, @RequestParam("image") MultipartFile multipartFile) throws IOException
+
+}
+
+@RestController
+@RequestMapping(value = "/postavioglasp", method = RequestMethod.POST)
+@AllArgsConstructor
+class OglasControlerPostavi {
+    @Autowired
+    private OglasService oglasService;
+
+    @PostMapping
+    public void saveOglas(Oglas request, @RequestParam("image") MultipartFile multipartFile, HttpServletResponse response) throws IOException
     {
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         request.setBaner(fileName);
@@ -37,6 +48,6 @@ public class OglasController {
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-        return new RedirectView("/", true);
+        response.sendRedirect("/");
     }
 }

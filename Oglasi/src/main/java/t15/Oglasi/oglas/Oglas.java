@@ -23,7 +23,7 @@ public class Oglas {
     private String mesto;
     @Column(columnDefinition = "TEXT")
     private String opis;
-    private LocalDate vremeIsteka;
+    private String vremeIsteka;
     private String postavljen;
     @Column(nullable = false)
     private Long poslodavacId;
@@ -36,14 +36,22 @@ public class Oglas {
     private String nivoObrazovanja;
     private String baner;
 
-    public Oglas(String name, String mesto, LocalDate vremeIsteka, String opis, Long poslodavacId)
+    public Oglas(String name, String mesto, String opis, String vremeIsteka, Long poslodavacId, String oblast, String pol, String radnoIskustvo, String radnoVreme, String tipZaposlenja,
+                    String visinaPlate, String nivoObrazovanja)
     {
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.name = name;
         this.mesto = mesto;
         this.vremeIsteka = vremeIsteka;
         this.opis = opis;
-        this.poslodavacId = poslodavacId;
+        this.poslodavacId = 1L;
         this.postavljen = LocalDate.now().format(df);
+        this.oblast = oblast;
+        this.pol = pol;
+        this.radnoIskustvo = radnoIskustvo;
+        this.radnoVreme = radnoVreme;
+        this.tipZaposlenja = tipZaposlenja;
+        this.visinaPlate = visinaPlate;
+        this.nivoObrazovanja  = nivoObrazovanja;
     }
 }

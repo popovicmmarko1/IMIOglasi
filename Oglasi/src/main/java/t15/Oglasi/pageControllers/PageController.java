@@ -54,6 +54,32 @@ public class PageController {
         return "signup";
     }
 
+    @GetMapping(value = {"/signup_poslodavac",  "/signup_poslodavac.html"})
+    public String signup_poslodavac()
+    {
+        return "signup_poslodavac";
+    }
+
+    @GetMapping(value = {"/", "/index", "/index.html"})
+    public String home(Model model, Principal principal) {
+
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                model.addAttribute("username",ulogovan.get().getFName());
+            }
+        }catch (Exception e){
+            System.out.println("Nije ulogovan!");
+        }
+
+        model.addAttribute("gradovi", gradRepository.findAll());
+        model.addAttribute("oblasti", oblastRepository.findAll());
+
+
+        return "index";
+    }
+
     @GetMapping(value = {"oglas",  "/oglas.html"})
     public String oglas()
     {

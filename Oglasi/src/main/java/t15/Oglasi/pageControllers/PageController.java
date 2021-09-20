@@ -63,7 +63,11 @@ public class PageController {
         return "oglas";
     }
 
-
+    @GetMapping(value = {"prijavljeni_kandidati",  "/prijavljeni_kandidati.html"})
+    public String prijavljeni_kandidati()
+    {
+        return "prijavljeni_kandidati";
+    }
 
     @GetMapping(value = {"employers",  "/employers.html"})
     public String employers(Model model, Principal principal)

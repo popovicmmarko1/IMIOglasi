@@ -454,7 +454,7 @@ hr{border-bottom:1px solid #eceff8;border-top:0 none;margin:30px 0;padding:0}
 
 .header-area .menu-wrapper .main-menu ul li a{color:#fff;font-weight:400;padding:39px 19px;display:block;font-size:16px;font-family:"Rubik",sans-serif;-webkit-transition:.3s;-moz-transition:.3s;-o-transition:.3s;transition:.3s;text-transform:capitalize}
     @media only screen and (min-width: 992px) and (max-width: 1199px){
-    .header-area .menu-wrapper .main-menu ul li a{padding:39px 9px}
+    .header-area .menu-wrapper .main-menu ul li a{padding:15px 9px}
     }
 
 .header-area .menu-wrapper .main-menu ul li:hover>a{color:#B367FF}
@@ -520,10 +520,10 @@ hr{border-bottom:1px solid #eceff8;border-top:0 none;margin:30px 0;padding:0}
         .slider-height3{height:350px}
     }
 
-.hero-bg1{background-image:url(../img/hero/h1_hero.png);background-size:cover;background-repeat:no-repeat}
-.hero-bg2{background-image:url(../img/hero/h1_hero2.png);background-size:cover;background-repeat:no-repeat}
-.hero-bg3{background-image:url(../img/hero/h1_hero3.png);background-size:cover;background-repeat:no-repeat}
-.hero-bg4{background-image:url(../img/hero/h1_hero4.png);background-size:cover;background-repeat:no-repeat}
+.hero-bg1{background-image:url(https://rowangroup.uk.com/wp-content/uploads/2020/10/https___blogs-images.forbes.com_alejandrocremades_files_2018_07_desk-3139127_1920-1200x773.jpg);background-size:cover;background-repeat:no-repeat}
+.hero-bg2{background-image:url(https://fec.org.au/wp-content/uploads/2016/12/business-3224643_1920.jpg);background-size:cover;background-repeat:no-repeat}
+.hero-bg3{background-image:url(https://rhi-think.com/files/business-1000x500.jpg);background-size:cover;background-repeat:no-repeat}
+.hero-bg4{background-image:url(https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/110378678/original/1e82420552e912b76e3b384d9f6f624cde46416c/give-financial-bissness-consulting.jpg);background-size:cover;background-repeat:no-repeat}
 
 
 .slider-area .hero__caption{text-align:center}
@@ -795,7 +795,7 @@ hr{border-bottom:1px solid #eceff8;border-top:0 none;margin:30px 0;padding:0}
 .our-services .single-services .services-cap h5 a:hover{color:#B367FF}
 .our-services .single-services:hover .services-ion span{color:#B367FF}
 
-.wantToWork-area{padding-bottom:20px}
+.wantToWork-area{padding-bottom:5px}
 .wantToWork-area .wantToWork-caption h2{font-size:35px;line-height:1.5;margin:0}
     @media only screen and (min-width: 768px) and (max-width: 991px){
         .wantToWork-area .wantToWork-caption h2{font-size:30px}

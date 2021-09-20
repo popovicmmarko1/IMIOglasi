@@ -55,14 +55,14 @@
                             <ul id="navigation">
                                 <li><a href="index">Početna</a></li>
                                 <li><a href="listing">Kategorije</a></li>
-                                <li><a href="employers">Poslodavci</a></li>
-<!--                                    <li><a href="signup">Pages</a>-->
-<!--                                        <ul class="submenu">-->
-<!--                                            <li><a href="directory_details">listing Details</a></li>-->
-<!--                                            <li><a href="listing">Catagories</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-                                <li th><a href="blog">Blog</a>
+                                <li><a href="listing">Poslodavci</a></li>
+                                <!--                                    <li><a href="signup">Pages</a>-->
+                                <!--                                        <ul class="submenu">-->
+                                <!--                                            <li><a href="directory_details">listing Details</a></li>-->
+                                <!--                                            <li><a href="listing">Catagories</a></li>-->
+                                <!--                                        </ul>-->
+                                <!--                                    </li>-->
+                                <li><a href="blog">Blog</a>
                                     <ul class="submenu">
                                         <li><a href="blog_details">Blog Details</a></li>
                                         <li><a href="elements">Elements</a></li>
@@ -75,15 +75,13 @@
                     <!-- Header-btn -->
                     <!-- Ako je korisnik prijavljen -->
                     <div th:if="${username}" class="header-btns d-none d-lg-block f-right">
-                        <a href="profil" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
-                        <div th:switch="${role}">
-                            <a th:case="'PUSER'" href="oglas_create" class="btn">Postavite oglas</a>
-                        <div>
+                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
+                        <a href="oglas_create" class="btn">Postavite oglas</a>
                     </div>
                     <!-- Ako korisnik nije prijavljen -->
                     <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">
                         <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>
-<!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
+                        <!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
                     </div>
                     <!-- Mobile Menu -->
                     <div class="col-12">

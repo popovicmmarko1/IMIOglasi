@@ -48,44 +48,33 @@
                 <div class="menu-wrapper d-flex align-items-center justify-content-between">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt="">
+                        <a href="/"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt="">
                             OglasiIMI</a>
                     </div>
                     <!-- Main-menu -->
                     <div class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a href="index">Početna</a></li>
+                                <li><a href="//bootdey.com/img/Content/avatar/avatar7.png">Početna</a></li>
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
-<!--                                    <li><a href="signup">Pages</a>-->
-<!--                                        <ul class="submenu">-->
-<!--                                            <li><a href="directory_details">listing Details</a></li>-->
-<!--                                            <li><a href="listing">Catagories</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-                                <li th><a href="blog">Blog</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog_details">Blog Details</a></li>
-                                        <li><a href="elements">Elements</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="blog">Blog</a></li>
                                 <li><a href="contact">Kontakt</a></li>
                             </ul>
                         </nav>
                     </div>
                     <!-- Header-btn -->
                     <!-- Ako je korisnik prijavljen -->
-                    <div th:if="${username}" class="header-btns d-none d-lg-block f-right">
+                    <div th:if="${username != 'null'}" class="header-btns d-none d-lg-block f-right">
                         <a href="profil" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
-                        <div th:switch="${role}">
-                            <a th:case="'PUSER'" href="oglas_create" class="btn">Postavite oglas</a>
-                        <div>
+                        <div th:if="${role == 'PUSER'}">
+                            <a href="oglas_create" class="btn">Postavite oglas</a>
+                        </div>
+                        <a href="logout" class="btn"> Odjavi se</a>
                     </div>
                     <!-- Ako korisnik nije prijavljen -->
-                    <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">
+                    <div th:if="${username == 'null'}" class="header-btns d-none d-lg-block f-right">
                         <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>
-<!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
                     </div>
                     <!-- Mobile Menu -->
                     <div class="col-12">
@@ -716,7 +705,7 @@
                         <div class="col-xl-8 col-lg-8 col-md-7">
                             <div class="wantToWork-caption wantToWork-caption2">
                                 <div class="logo">
-                                    <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="60px" height="55px">
+                                    <a href="//bootdey.com/img/Content/avatar/avatar7.png"><img src="images/icons/LogoOglasiIMI.png" width="60px" height="55px">
                                         OglasiIMI</a>
                                 </div>
                                 <br>
@@ -758,7 +747,7 @@
                                 <div class="main-menu2">
                                     <nav>
                                         <ul>
-                                            <li><a href="index">Početna</a></li>
+                                            <li><a href="//bootdey.com/img/Content/avatar/avatar7.png">Početna</a></li>
                                             <li><a href="listing">Kategorije</a></li>
                                             <li><a href="employers">Poslodavci</a></li>
                                             <!--                                    <li><a href="signup">Pages</a>-->

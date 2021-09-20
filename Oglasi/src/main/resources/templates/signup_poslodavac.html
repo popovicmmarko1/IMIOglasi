@@ -60,7 +60,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input" data-validate="Unesite naziv firme">
-                            <input class="input100" type="text" name="naziv" id="poslodavac" placeholder="Naziv firme">
+                            <input name="naziv" class="input100" type="text" name="naziv" id="poslodavac" placeholder="Naziv firme">
                             <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                         </div>
                     </div>
@@ -74,15 +74,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input" data-validate="Unesite grad">
-                            <input class="input100" type="text" name="grad" id="grad"  placeholder="Grad">
+                            <input name="grad" class="input100" type="text" name="grad" id="grad"  placeholder="Grad">
                             <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                         </div>
                     </div>
-
-
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input pass" data-validate="Unesite adresu">
-                            <input class="input100" type="text" id="adresaposlodavca" name="adresa"
+                            <input name="adresa"class="input100" type="text" id="adresaposlodavca" name="adresa"
                                    placeholder="Adresa sedišta firme">
                             <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                         </div>
@@ -91,14 +89,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input pass" data-validate="Unesite PIB">
-                            <input class="input100" type="number" id="pib" name="pib"
+                            <input name="PIB" class="input100" type="number" id="pib" name="pib"
                                    placeholder="PIB (Poreski identifikacioni broj)">
                             <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input pass" data-validate="Unesite telefon">
-                            <input class="input100" type="number" id="telefon" name="telefon"
+                            <input name="telefon" class="input100" type="number" id="telefon" name="telefon"
                                    placeholder="Kontakt telefon">
                             <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                         </div>
@@ -121,6 +119,7 @@
                         </div>
                     </div>
                 </div>
+                <div style="display: none;"><input name="role" value="PUSER"></div>
                 <div class="wrap-input100 validate-input" data-validate="Unesite email">
                     <input class="input100" type="email" name="email"  id="email" placeholder="Email">
                     <span class="focus-input100" data-placeholder="&#xe82a;"></span>
@@ -173,6 +172,7 @@
                         </button>
                     </a>
                 </div>
+                
             </form>
         </div>
     </div>

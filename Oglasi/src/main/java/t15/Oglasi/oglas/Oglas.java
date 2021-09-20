@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
+@ToString
 public class Oglas {
 
     @Id

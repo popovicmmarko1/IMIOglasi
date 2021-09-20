@@ -43,8 +43,8 @@ public class PoslodavacPosloviController {
                 model.addAttribute("role", ulogovan.get().getAppUserRole());
 
                 Page<Oglas> strana = oglasRepository.findByPoslodavacId(ulogovan.get().getId(), PageRequest.of(page.orElse(0), 6));
-
-                model.addAttribute("oglasi", strana.getContent());
+                System.out.println(strana.getContent().toString());
+                model.addAttribute("oglasi", strana);
                 model.addAttribute("nop", strana.getTotalPages());
                 model.addAttribute("noe", strana.getTotalElements());
 

@@ -36,14 +36,34 @@
 
     <h2>Tekst Oglasa</h2>
     <div th:text="${opis}" />
-    <form method="POST" action="/prijavise">
-        <div style="display: none;">
-            <input name="idPrijavljen" th:value="${userId}">
-            <input name="idOglas" th:value="${oglasId}">
-        </div>
-        <button type="submit">
-    </form>
+
     
+        
+           
+                    
+    <form method="POST" action="../../prijavise" id="prijava" class="mb-40">
+        <div style="display: none;">
+            <input name="idKorisnika" th:value="${userId}">
+            <input name="idOglasa" th:value="${oglasId}">
+        </div>
+        <div th:if="${role == 'USER'}" class="search-form">
+            <div class="btn btn-primary">
+                <a href="#" onclick="document.getElementById('prijava').submit()">Prijavi se na oglas</button></a>
+            </div>
+        </div>
+    </form>
+                    
+                
+        
+    
+        
+    <div th:if="${role == 'PUSER'}">
+        <div th:if="${ulogovanId == poslodavacId}">
+            <div class="search-form">
+                <a href="#"><i class="ti-search"></i>Prikaži prijavljene</button></a>
+            </div>
+        <div>
+    </div>
 </div>
 </body>
 </html>

@@ -10,7 +10,6 @@ import t15.Oglasi.appUser.user.profil.ProfilRepository;
 import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.oglas.OglasService;
 import t15.Oglasi.appUser.poslodavac.PoslodavacRepository;
-import t15.Oglasi.slike.SlikeRepository;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -25,8 +24,6 @@ public class PageController {
     private OglasRepository oglasRepository;
     @Autowired
     private OglasService oglasService;
-    @Autowired
-    private SlikeRepository slikeRepository;
     @Autowired
     private PoslodavacRepository poslodavacRepository;
     @Autowired

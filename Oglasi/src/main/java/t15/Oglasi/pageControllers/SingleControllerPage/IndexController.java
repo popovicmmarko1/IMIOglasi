@@ -20,7 +20,7 @@ public class IndexController {
     OglasRepository oglasRepository;
 
 
-    @GetMapping(value = {"/", "/index", "/index.html"})
+    @GetMapping(value = {"/"})
     public String home(Model model, Principal principal) {
 
         try{
@@ -29,10 +29,15 @@ public class IndexController {
             {
                 model.addAttribute("username",ulogovan.get().getFName());
                 model.addAttribute("userId", ulogovan.get().getId());
-                model.addAttribute("role", ulogovan.get().getAppUserRole());
+                model.addAttribute("role", ulogovan.get().getAppUserRole().toString());
+                System.out.println(ulogovan.get().getAppUserRole().toString());
+            }else
+            {
+                System.out.println("Korisnik nije ulogovan!");
+                model.addAttribute("username", "null");
             }
         }catch (Exception e){
-            System.out.println("Nije ulogovan!");
+            System.out.println("Naisao sam na gresku!");
         }
 
         System.out.println(oglasRepository.findTop6().toString());

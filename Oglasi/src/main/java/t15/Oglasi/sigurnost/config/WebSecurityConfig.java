@@ -26,11 +26,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/registrationp/**", "/signup_poslodavac/**").permitAll()
                 .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
                 .antMatchers( "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**",
-                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**").permitAll()
+                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/prijavljeni_kandidati/**").permitAll()
 
                 .antMatchers("/profil/**").hasAnyAuthority("PUSER","USER")
 
-                .antMatchers("/postavioglas/**", "/dodaj_oglas/**","/objavljeni_poslovi/**", "/prijavljeni_kandidati/**").hasAuthority("PUSER")
+                .antMatchers("/postavioglas/**", "/dodaj_oglas/**","/objavljeni_poslovi/**").hasAuthority("PUSER")
 
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")

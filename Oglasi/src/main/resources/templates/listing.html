@@ -113,15 +113,27 @@
                                 <input type="text" name="search" placeholder="Pozicija, poslodavac ili ključna reč...">
                             </div>
                             <div class="select-form">
-                                <select id="select1" th:name="grad">
-                                    <option value="" th:selected th:disabled th:hidden>Izaberi grad</option>
-                                    <option th:each="grad : ${gradovi}" th:value="${grad.ime}" th:text="${grad.ime}"></option>
+                                <select id="select1" name="grad">
+                                    <option value="" selected hidden disabled>Lokacija</option>
+                                    <option value="Beograd">Beograd</option>
+                                    <option value="Novi Sad">Novi Sad</option>
+                                    <option value="Kragujevac">Kragujevac</option>
+                                    <option value="Nis">Niš</option>
+                                    <option value="Subotica">Subotica</option>
+                                    <option value="Pozerevac">Požarevac</option>
+                                    <option value="Kraljevo">Kraljevo</option>
+                                    <option value="Krusevac">Kruševac</option>
+                                    <option value="Jagodina">Jagodina</option>
                                 </select>
                             </div>
                             <div class="select-form">
                                 <select id="select2" th:name="oblast">
-                                    <option value="">Oblast rada</option>
-                                    <option style="height:50px;overflow=auto;" th:each="oblast : ${oblasti}" th:value="${oblast.naziv}" th:text="${oblast.naziv}"></option>
+                                    <option value="" selected hidden disabled>Oblast rada</option>
+                                    <option value="IT">IT</option>
+                                    <option value="Trgovina">Trgovina, prodaja</option>
+                                    <option value="Masinstvo">Mašinstvo</option>
+                                    <option value="Administracija">Administracija</option>
+                                    <option value="Bankarstvo">Bankarstvo</option>
                                 </select>
                             </div>
                             <div class="search-form">

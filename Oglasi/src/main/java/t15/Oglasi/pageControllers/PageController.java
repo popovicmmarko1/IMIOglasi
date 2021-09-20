@@ -11,7 +11,6 @@ import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.oglas.OglasService;
 import t15.Oglasi.appUser.poslodavac.PoslodavacRepository;
 import t15.Oglasi.slike.SlikeRepository;
-import t15.Oglasi.tag.oblast.OblastRepository;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -32,8 +31,6 @@ public class PageController {
     private PoslodavacRepository poslodavacRepository;
     @Autowired
     private ProfilRepository profilRepository;
-    @Autowired
-    private OblastRepository oblastRepository;
 
     @GetMapping("/login")
     public String login()

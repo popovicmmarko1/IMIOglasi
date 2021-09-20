@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import t15.Oglasi.appUser.user.AppUser;
 import t15.Oglasi.appUser.user.AppUserRepository;
 import t15.Oglasi.oglas.OglasRepository;
-import t15.Oglasi.tag.oblast.OblastRepository;
 
 import java.security.Principal;
 import java.util.Optional;
@@ -17,8 +16,6 @@ public class IndexController {
 
     @Autowired
     AppUserRepository appUserRepository;
-    @Autowired
-    OblastRepository oblastRepository;
     @Autowired
     OglasRepository oglasRepository;
 
@@ -38,8 +35,7 @@ public class IndexController {
             System.out.println("Nije ulogovan!");
         }
 
-        model.addAttribute("oblasti", oblastRepository.findAll());
-
+        System.out.println(oglasRepository.findTop6().toString());
         model.addAttribute("poslovi6", oglasRepository.findTop6());
 
         return "index";

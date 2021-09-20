@@ -11,7 +11,6 @@ import t15.Oglasi.appUser.user.AppUserRepository;
 import t15.Oglasi.oglas.Oglas;
 import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.oglas.OglasService;
-import t15.Oglasi.tag.oblast.OblastRepository;
 
 import java.security.Principal;
 import java.util.List;
@@ -24,8 +23,6 @@ public class ListingController {
     AppUserRepository appUserRepository;
     @Autowired
     OglasRepository oglasRepository;
-    @Autowired
-    OblastRepository oblastRepository;
     @Autowired
     OglasService oglasService;
 
@@ -56,7 +53,6 @@ public class ListingController {
         String pol1 = pol.orElse(null);
         String rv1 = rv.orElse(null);
 
-        model.addAttribute("oblasti", oblastRepository.findAll());
 
         List<Oglas> oglasi = oglasService.findByPagingCriteria(search1, grad1, oblast1, obrazovanje1, ri1, tip1, pol1, rv1, PageRequest.of(page.orElse(0), 6));
         //List<Oglas> oglasi = oglasService.findByPagingCriteria(null, null, null, null, null, null, null, null, PageRequest.of(page.orElse(1), 6));

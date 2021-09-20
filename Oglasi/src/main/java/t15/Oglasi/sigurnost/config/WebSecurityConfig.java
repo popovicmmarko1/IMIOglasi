@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import t15.Oglasi.appUser.user.AppUserService;
-import t15.Oglasi.sigurnost.PasswordEncoder;
 
 @Configuration
 @AllArgsConstructor
@@ -28,6 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
                 .antMatchers( "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**",
                         "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**").permitAll()
+
                 .antMatchers("/profil/**").hasAnyAuthority("PUSER","USER")
 
                 .antMatchers("/postavioglas/**", "/dodaj_oglas/**","/objavljeni_poslovi/**").hasAuthority("PUSER")

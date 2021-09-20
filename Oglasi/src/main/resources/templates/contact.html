@@ -35,54 +35,62 @@
     </div>
     <!-- Preloader Start -->
     <header>
-        <!-- Header Start -->
-        <div class="header-area header-transparent">
-            <div class="main-header header-sticky">
-                <div class="container-fluid">
-                    <div class="menu-wrapper d-flex align-items-center justify-content-between">
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt="">
-                                OglasiIMI</a>
-                        </div>
-                        <!-- Main-menu -->
-                        <div class="main-menu f-right d-none d-lg-block">
-                            <nav>
-                                <ul id="navigation">
-                                    <li><a href="index">Početna</a></li>
-                                    <li><a href="listing">Kategorije</a></li>
-                                    <li><a href="employers">Poslodavci</a></li>
-                                    <!--                                    <li><a href="signup">Pages</a>-->
-                                    <!--                                        <ul class="submenu">-->
-                                    <!--                                            <li><a href="directory_details">listing Details</a></li>-->
-                                    <!--                                            <li><a href="listing">Catagories</a></li>-->
-                                    <!--                                        </ul>-->
-                                    <!--                                    </li>-->
-                                    <li><a href="blog">Blog</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog_details">Blog Details</a></li>
-                                            <li><a href="elements">Elements</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact">Kontakt</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- Header-btn -->
-                        <div class="header-btns d-none d-lg-block f-right">
-                            <a href="login" class="mr-40"><i class="ti-user"></i> Prijavite se</a>
-                            <a href="oglas_create" class="btn">Postavite oglas</a>
-                        </div>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt="">
+                            OglasiIMI</a>
+                    </div>
+                    <!-- Main-menu -->
+                    <div class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation">
+                                <li><a href="index">Početna</a></li>
+                                <li><a href="listing">Kategorije</a></li>
+                                <li><a href="employers">Poslodavci</a></li>
+<!--                                    <li><a href="signup">Pages</a>-->
+<!--                                        <ul class="submenu">-->
+<!--                                            <li><a href="directory_details">listing Details</a></li>-->
+<!--                                            <li><a href="listing">Catagories</a></li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+                                <li th><a href="blog">Blog</a>
+                                    <ul class="submenu">
+                                        <li><a href="blog_details">Blog Details</a></li>
+                                        <li><a href="elements">Elements</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact">Kontakt</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Header-btn -->
+                    <!-- Ako je korisnik prijavljen -->
+                    <div th:if="${username}" class="header-btns d-none d-lg-block f-right">
+                        <a href="profil" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
+                        <div th:switch="${role}">
+                            <a th:case="'PUSER'" href="oglas_create" class="btn">Postavite oglas</a>
+                        <div>
+                    </div>
+                    <!-- Ako korisnik nije prijavljen -->
+                    <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">
+                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>
+<!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Header End -->
-     </header>
+    </div>
+    <!-- Header End -->
+</header>
     <main>
         <!--? Hero Start -->
         <div class="slider-area2">

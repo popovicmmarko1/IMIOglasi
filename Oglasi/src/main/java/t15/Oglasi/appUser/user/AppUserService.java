@@ -10,6 +10,7 @@ import t15.Oglasi.registracija.token.ConfirmationToken;
 import t15.Oglasi.registracija.token.ConfirmationTokenService;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -21,22 +22,10 @@ public class AppUserService implements UserDetailsService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return appUserRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND, email)));
-    }
-
-    /*
-    public AppUser registruj(AppUser user)
-    {
-        return
-    }
-
-     */
 
     public String signUser(AppUser appUser)
     {
-        boolean userExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
+        boolean userExists = appUserRepository.findByEmail1(appUser.getEmail()).isPresent();
 
         if(userExists)
         {
@@ -58,8 +47,32 @@ public class AppUserService implements UserDetailsService {
         return token;
     }
 
+    public Optional<AppUser> findUser(String email)
+    {
+        return appUserRepository.findByEmail1(email);
+    }
+
     public int enableAppUser(String email)
     {
         return appUserRepository.enableAppUser(email);
+    }
+
+    public void updateIme(String ime, Long id)
+    {
+        appUserRepository.updateIme(ime, id);
+    }
+
+    public void updatePrezime(String prezime, Long id) {
+        appUserRepository.updatePrezime(prezime, id);
+    }
+
+    public void updateEmail(String email, Long id)
+    {
+        appUserRepository.updateEmail(email, id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return appUserRepository.findByEmail(s);
     }
 }

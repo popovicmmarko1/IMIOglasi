@@ -1,4 +1,4 @@
-package t15.Oglasi.pageControllers;
+package t15.Oglasi.pageControllers.Oglas;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,8 +38,9 @@ public class OglasPageController {
             model.addAttribute("postavljen", oglas.getPostavljen().toString());
             model.addAttribute("istice", oglas.getVremeIsteka().toString());
             model.addAttribute("opis", oglas.getOpis());
+            model.addAttribute("oglasId", oglas.getId());
 
-            Optional <Poslodavac> p = poslodavacRepository.findById(oglas.getPoslodavacId());
+            Optional <Poslodavac> p = poslodavacRepository.findByID(oglas.getPoslodavacId());
 
             if(p.isPresent())
             {

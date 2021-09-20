@@ -44,8 +44,13 @@ public class Oglas {
         this.mesto = mesto;
         this.vremeIsteka = vremeIsteka;
         this.opis = opis;
-        this.poslodavacId = 1L;
-        this.postavljen = LocalDate.now().format(df);
+        this.poslodavacId = poslodavacId;
+
+        LocalDateTime now = LocalDateTime.now();
+        this.postavljen = now.format(df);
+
+        System.out.println("trenutno vreme!");
+
         this.oblast = oblast;
         this.pol = pol;
         this.radnoIskustvo = radnoIskustvo;

@@ -6,9 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import t15.Oglasi.appUser.user.AppUser;
 import t15.Oglasi.appUser.user.AppUserRepository;
-import t15.Oglasi.appUser.user.profil.Profil;
 import t15.Oglasi.appUser.user.profil.ProfilRepository;
-import t15.Oglasi.grad.GradRepository;
 import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.oglas.OglasService;
 import t15.Oglasi.appUser.poslodavac.PoslodavacRepository;
@@ -34,8 +32,6 @@ public class PageController {
     private PoslodavacRepository poslodavacRepository;
     @Autowired
     private ProfilRepository profilRepository;
-    @Autowired
-    private GradRepository gradRepository;
     @Autowired
     private OblastRepository oblastRepository;
 
@@ -69,7 +65,7 @@ public class PageController {
     public String employers(Model model, Principal principal)
     {
         try{
-            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail1(principal.getName());
             if(ulogovan.isPresent())
             {
                 model.addAttribute("username",ulogovan.get().getFName());
@@ -89,7 +85,7 @@ public class PageController {
     public String blog(Model model, Principal principal)
     {
         try{
-            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail1(principal.getName());
             if(ulogovan.isPresent())
             {
                 model.addAttribute("username",ulogovan.get().getFName());
@@ -111,7 +107,7 @@ public class PageController {
     public String contact(Model model, Principal principal)
     {
         try{
-            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail1(principal.getName());
             if(ulogovan.isPresent())
             {
                 model.addAttribute("username",ulogovan.get().getFName());
@@ -139,49 +135,6 @@ public class PageController {
     public String elements()
     {
         return "elements";
-    }
-
-    @GetMapping(value = {"dodaj_oglas",  "/dodaj_oglas.html"})
-    public String dodaj_oglas()
-    {
-        return "dodaj_oglas";
-    }
-
-    @GetMapping(value = {"profil",  "/profil.html"})
-    public String profil(Model model)
-    {
-        model.addAttribute("ime", "ime1");
-        model.addAttribute("prezmi", "prezime1");
-        model.addAttribute("mesto", "mesto1");
-        model.addAttribute("bio", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis elit mi, vel imperdiet metus condimentum ac. Suspendisse ut efficitur sem, dapibus dapibus urna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque sagittis mattis arcu, vitae dictum risus tristique sed. Donec nec dictum orci. Pellentesque malesuada nulla sem. Sed eu nisi nec felis cursus ultricies at in lacus. Nulla id est a nisi mattis rutrum. Integer ipsum turpis, fringilla vel pulvinar in, mollis ut tortor.");
-        model.addAttribute("email", "email@email.com");
-        model.addAttribute("telefon", "065065065");
-        return "profil";
-    }
-
-    @GetMapping(value = {"myprofile"})
-    public String profilTest(Model model, Principal principal)
-    {
-        AppUser user;
-        Profil profil;
-        try{
-            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
-            if(ulogovan.isPresent())
-            {
-                user = ulogovan.get();
-                profil = profilRepository.findByAppUserId(user.getId());
-                model.addAttribute("username",user.getFName());
-                model.addAttribute("ime", user.getFName());
-                model.addAttribute("prezime", user.getLName());
-                model.addAttribute("mesto", profil.getMesto());
-                model.addAttribute("bio", profil.getOpis());
-                model.addAttribute("email", user.getEmail());
-                model.addAttribute("telefon", profil.getBrTelefona());
-            }
-        }catch (Exception e){
-            System.out.println("Nije ulogovan!");
-        }
-        return "profil";
     }
 
 

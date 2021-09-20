@@ -13,12 +13,34 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 
-    Optional<AppUser> findByEmail(String email);
+    @Query(value = "SELECT * FROM app_user a WHERE a.email = ?1", nativeQuery = true)
+    Optional<AppUser> findByEmail1(String email);
 
     @Transactional
     @Modifying
-    @Query("UPDATE AppUser a " +
-            "SET a.enabled = TRUE " +
-            "WHERE a.email = ?1")
+    @Query("UPDATE AppUser a SET a.enabled = TRUE WHERE a.email = ?1")
     int enableAppUser(String email);
+
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE App_User a SET a.f_name = ?1 WHERE a.id = ?2", nativeQuery = true)
+    public void updateIme(String ime, Long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE App_User a SET a.l_name = ?1 WHERE a.id = ?2", nativeQuery = true)
+    public void updatePrezime(String prezime, Long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE App_User a SET a.f_name = ?1 WHERE a.id = ?2", nativeQuery = true)
+    public void updateBio(String prezime, Long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE App_User a SET a.email = ?1 WHERE a.id = ?2", nativeQuery = true)
+    public void updateEmail(String email, Long id);
+
+    AppUser findByEmail(String s);
 }

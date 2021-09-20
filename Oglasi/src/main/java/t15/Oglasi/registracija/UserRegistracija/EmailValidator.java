@@ -1,4 +1,4 @@
-package t15.Oglasi.registracija;
+package t15.Oglasi.registracija.UserRegistracija;
 
 import org.springframework.stereotype.Service;
 

@@ -21,11 +21,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers("/registration/**").permitAll()
+        http.csrf().disable().authorizeRequests().antMatchers("/registration/**", "/registrationp/**", "/signup_poslodavac/**").permitAll()
                 .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
                 .antMatchers("/register/**", "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**",
-                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/dodaj_oglas/**", "/profil/**", "/myprofile/**", "/signup/**",
-                        "/signup_poslodavac/**","/postavioglas/**").permitAll()
+                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/dodaj_oglas/**", "/profil/**", "/signup/**").permitAll()
+                .antMatchers("/postavioglas/**", "/dodaj_oglas/**").hasRole("PUSER")
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();

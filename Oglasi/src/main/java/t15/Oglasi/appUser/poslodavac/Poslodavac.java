@@ -18,6 +18,7 @@ public class Poslodavac{
     @SequenceGenerator(name="posGen", sequenceName = "posGen", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "posGen")
     private Long id;
+    private Long appUserId;
     private String naziv;
     private String adresa;
     private String grad;
@@ -31,7 +32,8 @@ public class Poslodavac{
     private String logo;
 
 
-    public Poslodavac(String naziv, String adresa, String grad, String pib, String telefon) {
+    public Poslodavac(Long appUserId, String naziv, String adresa, String grad, String pib, String telefon) {
+        this.appUserId = appUserId;
         this.naziv = naziv;
         this.adresa = adresa;
         this.grad = grad;

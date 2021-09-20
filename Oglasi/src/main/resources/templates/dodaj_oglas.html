@@ -55,7 +55,7 @@
 
                     <form action="/postavioglas" method="POST" enctype="multipart/form-data">
                         <h5 class="mb-3 text-uppercase bg-light p-2"> Dodaj oglas</h5>
-                        <div style="display: none;"><input value="1" name="poslodavacId"></div>
+                        <div style="display: none;"><input th:value="${userId}" name="poslodavacId"></div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

@@ -36,6 +36,14 @@
 
     <h2>Tekst Oglasa</h2>
     <div th:text="${opis}" />
+    <form method="POST" action="/prijavise">
+        <div style="display: none;">
+            <input name="idPrijavljen" th:value="${userId}">
+            <input name="idOglas" th:value="${oglasId}">
+        </div>
+        <button type="submit">
+    </form>
+    
 </div>
 </body>
 </html>

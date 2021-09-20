@@ -77,8 +77,10 @@
                     <!-- Header-btn -->
                     <!-- Ako je korisnik prijavljen -->
                     <div th:if="${username}" class="header-btns d-none d-lg-block f-right">
-                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
-                        <a href="oglas_create" class="btn">Postavite oglas</a>
+                        <a href="profil" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
+                        <div th:switch="${role}">
+                            <a th:case="'PUSER'" href="oglas_create" class="btn">Postavite oglas</a>
+                        <div>
                     </div>
                     <!-- Ako korisnik nije prijavljen -->
                     <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">

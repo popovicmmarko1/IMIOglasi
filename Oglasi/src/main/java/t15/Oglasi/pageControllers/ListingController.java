@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import t15.Oglasi.appUser.user.AppUser;
 import t15.Oglasi.appUser.user.AppUserRepository;
-import t15.Oglasi.grad.GradRepository;
 import t15.Oglasi.oglas.Oglas;
 import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.oglas.OglasService;
@@ -24,8 +23,6 @@ public class ListingController {
     @Autowired
     AppUserRepository appUserRepository;
     @Autowired
-    GradRepository gradRepository;
-    @Autowired
     OglasRepository oglasRepository;
     @Autowired
     OblastRepository oblastRepository;
@@ -40,7 +37,7 @@ public class ListingController {
                            Model model, Principal principal)
     {
         try{
-            Optional<AppUser> ulogovan = appUserRepository.findByEmail(principal.getName());
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail1(principal.getName());
             if(ulogovan.isPresent())
             {
                 model.addAttribute("username",ulogovan.get().getFName());
@@ -59,7 +56,6 @@ public class ListingController {
         String pol1 = pol.orElse(null);
         String rv1 = rv.orElse(null);
 
-        model.addAttribute("gradovi", gradRepository.findAll());
         model.addAttribute("oblasti", oblastRepository.findAll());
 
         List<Oglas> oglasi = oglasService.findByPagingCriteria(search1, grad1, oblast1, obrazovanje1, ri1, tip1, pol1, rv1, PageRequest.of(page.orElse(0), 6));

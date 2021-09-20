@@ -8,7 +8,6 @@ import t15.Oglasi.appUser.poslodavac.Poslodavac;
 import t15.Oglasi.appUser.poslodavac.PoslodavacRepository;
 import t15.Oglasi.appUser.user.AppUser;
 import t15.Oglasi.appUser.user.AppUserService;
-import t15.Oglasi.registracija.token.PRegistrationRequest;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

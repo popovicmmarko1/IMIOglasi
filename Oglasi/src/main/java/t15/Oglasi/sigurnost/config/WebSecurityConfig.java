@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import t15.Oglasi.appUser.user.AppUserService;
+import t15.Oglasi.sigurnost.PasswordEncoder;
 
 @Configuration
 @AllArgsConstructor
@@ -21,19 +22,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers("/registration/**", "/registrationp/**", "/signup_poslodavac/**").permitAll()
+        http.csrf().disable().authorizeRequests()
+                .antMatchers("/registration/**", "/signup/**").permitAll()
+                .antMatchers( "/registrationp/**", "/signup_poslodavac/**").permitAll()
                 .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
-                .antMatchers("/register/**", "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**",
-                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/dodaj_oglas/**", "/profil/**", "/signup/**").permitAll()
-                .antMatchers("/postavioglas/**", "/dodaj_oglas/**").hasRole("PUSER")
+                .antMatchers( "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**",
+                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**").permitAll()
+                .antMatchers("/profil/**").hasAuthority("PUSER")
+
+                .antMatchers("/postavioglas/**", "/dodaj_oglas/**").hasAuthority("PUSER")
+
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();
     }
 
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider());
+        auth.authenticationProvider(daoAuthenticationProvider())
+                .inMemoryAuthentication().withUser("admin").password(bCryptPasswordEncoder.encode("admin")).roles("ADMIN");;
     }
 
     @Bean
@@ -44,6 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         provider.setUserDetailsService(appUserService);
         return provider;
     }
+
 
 
 }

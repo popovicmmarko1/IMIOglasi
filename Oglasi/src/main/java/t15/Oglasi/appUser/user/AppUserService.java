@@ -1,6 +1,7 @@
 package t15.Oglasi.appUser.user;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -73,6 +74,12 @@ public class AppUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return appUserRepository.findByEmail(s);
+        final AppUser appUser = appUserRepository.findByEmail(s);
+        if (appUser == null)
+        {
+            throw new UsernameNotFoundException(s);
+        }
+        UserDetails user = User.withUsername(appUser.getUsername()).password(appUser.getPassword()).authorities(appUser.getAuthorities()).build();
+        return user;
     }
 }

@@ -1,4 +1,4 @@
-package t15.Oglasi.registracija.token;
+package t15.Oglasi.registracija.PoslodavacRegistracija;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

@@ -1,4 +1,4 @@
-package t15.Oglasi.pageControllers;
+package t15.Oglasi.pageControllers.SingleControllerPage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

@@ -47,39 +47,42 @@
                                 OglasiIMI</a>
                         </div>
                         <!-- Main-menu -->
-                        <div class="main-menu f-right d-none d-lg-block">
+                        <div th:if="${username != 'null'}" class="main-menu f-right d-none d-lg-block">
                             <nav>
-                                <ul id="navigation">
+                                <ul id="navigation_prijavljen">
                                     <li><a href="index">Početna</a></li>
                                     <li><a href="listing">Kategorije</a></li>
                                     <li><a href="employers">Poslodavci</a></li>
-                                    <!--                                    <li><a href="signup">Pages</a>-->
-                                    <!--                                        <ul class="submenu">-->
-                                    <!--                                            <li><a href="directory_details">listing Details</a></li>-->
-                                    <!--                                            <li><a href="listing">Catagories</a></li>-->
-                                    <!--                                        </ul>-->
-                                    <!--                                    </li>-->
-                                    <li><a href="blog">Blog</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog_details">Blog Details</a></li>
-                                            <li><a href="elements">Elements</a></li>
-                                        </ul>
-                                    </li>
                                     <li><a href="contact">Kontakt</a></li>
+                                    <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
+                                    <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
+                                    <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                    <li th:if="${username}"><a href="logout">Odjavi se</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div th:if="${username == 'null'}" class="main-menu f-right d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation_neprijavljen">
+                                    <li><a href="index">Početna</a></li>
+                                    <li><a href="listing">Kategorije</a></li>
+                                    <li><a href="employers">Poslodavci</a></li>
+                                    <li><a href="contact">Kontakt</a></li>
+                                    <li><a href="login"> Prijavi se</a></li>
                                 </ul>
                             </nav>
                         </div>
                         <!-- Header-btn -->
                         <!-- Ako je korisnik prijavljen -->
-                        <div th:if="${username}" class="header-btns d-none d-lg-block f-right">
-                            <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
-                            <a href="oglas_create" class="btn">Postavite oglas</a>
-                        </div>
-                        <!-- Ako korisnik nije prijavljen -->
-                        <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">
-                            <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>
-                            <!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
-                        </div>
+<!--                        <div th:if="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                            <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>-->
+<!--                            <a href="oglas_create" class="btn">Postavite oglas</a>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Ako korisnik nije prijavljen &ndash;&gt;-->
+<!--                        <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                            <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>-->
+<!--                            &lt;!&ndash;                        <a href="oglas_create" class="btn">Postavite oglas</a>&ndash;&gt;-->
+<!--                        </div>-->
                         <!-- Mobile Menu -->
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
@@ -261,9 +264,9 @@
                                 <br>
                                 <h2>Kontakt</h2>
                                 <br>
-                                <p><i class="material-icons" style="color:#B367FF;position:relative;top:7px;">local_phone</i>  +381 (0) 61 11 22 333</p>
-                                <p><i class="material-icons" style="color:#B367FF;position:relative;top:7px;">local_phone</i>  +381 (0) 65 11 22 333</p>
-                                <p style="color:#000033"><i class="material-icons" style="color:#B367FF;position:relative;top:7px;">email</i> <a href="#" style="color:#000033">  OglasiIMI@pmf.kg.ac.rs</a></p>
+                                <p><i class="material-icons" style="color:#1f3654;position:relative;top:7px;">local_phone</i>  +381 (0) 61 11 22 333</p>
+                                <p><i class="material-icons" style="color:#1f3654;position:relative;top:7px;">local_phone</i>  +381 (0) 65 11 22 333</p>
+                                <p style="color:#000033"><i class="material-icons" style="color:#1f3654;position:relative;top:7px;">email</i> <a href="#" style="color:#000033">  OglasiIMI@pmf.kg.ac.rs</a></p>
                             </div>
                         </div>
                     </div>

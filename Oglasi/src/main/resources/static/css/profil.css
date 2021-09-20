@@ -1,7 +1,7 @@
 body{
     color: #6c757d;
     background-color: #f5f6f8;
-    margin-top:20px;
+    margin-top:0px;
 }
 .card-box {
     background-color: #fff;
@@ -20,7 +20,7 @@ body{
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #1abc9c;
+    background-color: #1f3654;
 }
 .nav-pills .nav-link {
     border-radius: .25rem;

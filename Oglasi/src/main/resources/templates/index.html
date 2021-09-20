@@ -52,30 +52,55 @@
                             OglasiIMI</a>
                     </div>
                     <!-- Main-menu -->
-                    <div class="main-menu f-right d-none d-lg-block">
+<!--                    <div class="main-menu f-right d-none d-lg-block">-->
+<!--                        <nav>-->
+<!--                            <ul id="navigation">-->
+<!--                                <li><a href="index">Početna</a></li>-->
+<!--                                <li><a href="listing">Kategorije</a></li>-->
+<!--                                <li><a href="employers">Poslodavci</a></li>-->
+<!--                                <li><a href="contact">Kontakt</a></li>-->
+<!--                                <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>-->
+<!--                                <li th:unless="${username}"><a href="login"> Prijavi se</a></li>-->
+<!--                                <li th:if="${username}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>-->
+<!--                            </ul>-->
+<!--                        </nav>-->
+<!--                    </div>-->
+                    <div th:if="${username != 'null'}" class="main-menu f-right d-none d-lg-block">
                         <nav>
-                            <ul id="navigation">
-                                <li><a href="//bootdey.com/img/Content/avatar/avatar7.png">Početna</a></li>
+                            <ul id="navigation_prijavljen">
+                                <li><a href="index">Početna</a></li>
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
-                                <li><a href="blog">Blog</a></li>
                                 <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
+                                <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                <li th:if="${username}"><a href="logout">Odjavi se</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div th:if="${username == 'null'}" class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation_neprijavljen">
+                                <li><a href="index">Početna</a></li>
+                                <li><a href="listing">Kategorije</a></li>
+                                <li><a href="employers">Poslodavci</a></li>
+                                <li><a href="contact">Kontakt</a></li>
+                                <li><a href="login"> Prijavi se</a></li>
                             </ul>
                         </nav>
                     </div>
                     <!-- Header-btn -->
                     <!-- Ako je korisnik prijavljen -->
-                    <div th:if="${username != 'null'}" class="header-btns d-none d-lg-block f-right">
-                        <a href="profil" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
-                        <div th:if="${role == 'PUSER'}">
-                            <a href="oglas_create" class="btn">Postavite oglas</a>
-                        </div>
-                        <a href="logout" class="btn"> Odjavi se</a>
-                    </div>
-                    <!-- Ako korisnik nije prijavljen -->
-                    <div th:if="${username == 'null'}" class="header-btns d-none d-lg-block f-right">
-                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>
-                    </div>
+<!--                    <div th:if="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                        <a href="profil_cela_strana" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>-->
+<!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; Ako korisnik nije prijavljen &ndash;&gt;-->
+<!--                    <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>-->
+<!--&lt;!&ndash;                        <a href="oglas_create" class="btn">Postavite oglas</a>&ndash;&gt;-->
+<!--                    </div>-->
                     <!-- Mobile Menu -->
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
@@ -653,49 +678,49 @@
         <!--        </div>-->
         <!-- Popular Directory End -->
         <!--? Popular Locations Start 01-->
-        <div class="popular-location border-bottom section-padding50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle text-center mb-40">
-                            <h2>Vesti o zapošljavanju</h2>
-<!--                            <p>Budite prvi koji će saznati najnovije vesti u svetu zapošljavanja.</p>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/home-blog1.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <a href="#" class="location-btn">Tips</a>
-                                <ul>
-                                    <li>12 March I by Alan</li>
-                                </ul>
-                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/home-blog2.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <a href="#" class="location-btn">Tips</a>
-                                <ul>
-                                    <li>12 March I by Alan</li>
-                                </ul>
-                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--        <div class="popular-location border-bottom section-padding50">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-12">-->
+<!--                        &lt;!&ndash; Section Tittle &ndash;&gt;-->
+<!--                        <div class="section-tittle text-center mb-40">-->
+<!--                            <h2>Vesti o zapošljavanju</h2>-->
+<!--&lt;!&ndash;                            <p>Budite prvi koji će saznati najnovije vesti u svetu zapošljavanja.</p>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-6 col-md-6 col-sm-12">-->
+<!--                        <div class="single-location mb-30">-->
+<!--                            <div class="location-img">-->
+<!--                                <img src="assets/img/gallery/home-blog1.png" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="location-details">-->
+<!--                                <a href="#" class="location-btn">Tips</a>-->
+<!--                                <ul>-->
+<!--                                    <li>12 March I by Alan</li>-->
+<!--                                </ul>-->
+<!--                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-6 col-md-6 col-sm-12">-->
+<!--                        <div class="single-location mb-30">-->
+<!--                            <div class="location-img">-->
+<!--                                <img src="assets/img/gallery/home-blog2.png" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="location-details">-->
+<!--                                <a href="#" class="location-btn">Tips</a>-->
+<!--                                <ul>-->
+<!--                                    <li>12 March I by Alan</li>-->
+<!--                                </ul>-->
+<!--                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <!-- Popular Locations End -->
         <!--? Want To work 02-->
         <section class="wantToWork-area">
@@ -705,7 +730,7 @@
                         <div class="col-xl-8 col-lg-8 col-md-7">
                             <div class="wantToWork-caption wantToWork-caption2">
                                 <div class="logo">
-                                    <a href="//bootdey.com/img/Content/avatar/avatar7.png"><img src="images/icons/LogoOglasiIMI.png" width="60px" height="55px">
+                                    <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="60px" height="55px">
                                         OglasiIMI</a>
                                 </div>
                                 <br>
@@ -727,9 +752,9 @@
                                 <br>
                                 <h2>Kontakt</h2>
                                 <br>
-                                <p><i class="material-icons" style="color:#B367FF">local_phone</i> +381 (0) 61 11 22 333</p>
-                                <p><i class="material-icons" style="color:#B367FF">local_phone</i> +381 (0) 65 11 22 333</p>
-                                <p style="color:#000033"><i class="material-icons" style="color:#B367FF">email</i> <a href="#" style="color:#000033">OglasiIMI@pmf.kg.ac.rs</a></p>
+                                <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 61 11 22 333</p>
+                                <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 65 11 22 333</p>
+                                <p style="color:#000033"><i class="material-icons" style="color:#1f3654">email</i> <a href="#" style="color:#000033">OglasiIMI@pmf.kg.ac.rs</a></p>
                             </div>
                         </div>
                     </div>
@@ -747,7 +772,7 @@
                                 <div class="main-menu2">
                                     <nav>
                                         <ul>
-                                            <li><a href="//bootdey.com/img/Content/avatar/avatar7.png">Početna</a></li>
+                                            <li><a href="index">Početna</a></li>
                                             <li><a href="listing">Kategorije</a></li>
                                             <li><a href="employers">Poslodavci</a></li>
                                             <!--                                    <li><a href="signup">Pages</a>-->

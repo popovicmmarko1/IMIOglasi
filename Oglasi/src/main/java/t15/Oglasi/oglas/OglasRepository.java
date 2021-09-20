@@ -25,4 +25,7 @@ public interface OglasRepository extends JpaRepository<Oglas, Long>, JpaSpecific
 
     public Page<Oglas> findAll(Specification<Oglas> oglasSpecification, Pageable pageable);
 
+    @Query(value = "SELECT * FROM oglas o WHERE o.poslodavac_id = ?1", nativeQuery = true)
+    public Page<Oglas> findByPoslodavacId(Long id, Pageable pageable);
+
 }

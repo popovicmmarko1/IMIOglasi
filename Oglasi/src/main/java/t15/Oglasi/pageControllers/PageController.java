@@ -163,6 +163,12 @@ public class PageController {
         return "profil";
     }
 
+    @GetMapping(value = {"profil_cela_strana",  "/profil.html"})
+    public String profil_cela_strana(Model model)
+    {
+        return "profil_cela_strana";
+    }
+
     @GetMapping(value = {"myprofile"})
     public String profilTest(Model model, Principal principal)
     {

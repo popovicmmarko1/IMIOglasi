@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
                 .antMatchers("/register/**", "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**",
                         "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/dodaj_oglas/**", "/profil/**", "/myprofile/**", "/signup/**",
-                        "/signup_poslodavac/**","/postavioglas/**","/prijavljeni_kandidati/**").permitAll()
+                        "/signup_poslodavac/**","/postavioglas/**","/prijavljeni_kandidati/**", "/profil_cela_strana/**").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();

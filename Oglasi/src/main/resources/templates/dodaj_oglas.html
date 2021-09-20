@@ -18,10 +18,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
           integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous"/>
     <link rel="stylesheet" href="assets/css/style.css">
+    <!--    <link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">-->
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <!--    <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/gijgo.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/animate.min.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/animated-headline.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/magnific-popup.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/themify-icons.css">-->
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <!--    <link rel="stylesheet" href="assets/css/nice-select.css">-->
+
 </head>
 <body>
-
-<!-- ? Preloader Start -->
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-inner position-relative">
@@ -33,9 +45,81 @@
     </div>
 </div>
 <!-- Preloader Start -->
-<main>
-    <div class="container align-items-center justify-content-center">
-        <div class="col-lg-8 col-xl-8">
+<header>
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt="">
+                            OglasiIMI</a>
+                    </div>
+                    <!-- Main-menu -->
+                    <div th:if="${username != 'null'}" class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation_prijavljen">
+                                <li><a href="index">Početna</a></li>
+                                <li><a href="listing">Kategorije</a></li>
+                                <li><a href="employers">Poslodavci</a></li>
+                                <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
+                                <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                <li th:if="${username}"><a href="logout">Odjavi se</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div th:if="${username == 'null'}" class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation_neprijavljen">
+                                <li><a href="index">Početna</a></li>
+                                <li><a href="listing">Kategorije</a></li>
+                                <li><a href="employers">Poslodavci</a></li>
+                                <li><a href="contact">Kontakt</a></li>
+                                <li><a href="login"> Prijavi se</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Header-btn -->
+                    <!-- Ako je korisnik prijavljen -->
+<!--                    <div th:if="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>-->
+<!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; Ako korisnik nije prijavljen &ndash;&gt;-->
+<!--                    <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>-->
+<!--                        &lt;!&ndash;                        <a href="oglas_create" class="btn">Postavite oglas</a>&ndash;&gt;-->
+<!--                    </div>-->
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>
+<!--? Hero Start -->
+<div class="slider-area2">
+    <div class="slider-height3  hero-overly hero-bg3 d-flex align-items-center"> <!-- hero-bg4 treba da bude -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap2 pt-20 text-center">
+                        <h2>Dodavanje oglasa</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="container align-items-center justify-content-center container pt-15">
+        <div class="container" style="max-width:960px">
             <div class="card-box align-items-center justify-content-center">
                 <!-- <ul class="nav nav-pills navtab-bg">-->
                 <!--  <li class="nav-item">
@@ -56,26 +140,20 @@
                     <form action="/postavioglas" method="POST" enctype="multipart/form-data">
                         <h5 class="mb-3 text-uppercase bg-light p-2"> Dodaj oglas</h5>
                         <div style="display: none;"><input value="1" name="poslodavacId"></div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="naslov">Naslov</label>
-                                    <input name="name" type="text" class="form-control" id="naslov" placeholder="Unesi naslov oglasa">
-                                </div>
-                            </div>
-                            <!--  <div class="col-md-6">
-                                  <div class="form-group">
-                                      <label for="lastname">Prezime</label>
-                                      <input type="text" class="form-control" id="lastname" placeholder="Unesi prezime">
-                                  </div>
-                              </div>--> <!-- end col -->
-                        </div> <!-- end row -->
+
+                        <div class="form-group">
+                            <label for="naslov">Naslov</label>
+                            <input name="name" type="text" class="form-control" id="naslov"
+                                   placeholder="Unesi naslov oglasa">
+                        </div>
+
 
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="opis">Opis oglasa</label>
-                                    <textarea name="opis" class="form-control" id="opis" rows="4" placeholder="Opis oglasa..."></textarea>
+                                    <textarea name="opis" class="form-control" id="opis" rows="4"
+                                              placeholder="Opis oglasa..."></textarea>
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
@@ -84,7 +162,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="datumisteka">Datum isteka oglasa</label>
-                                    <input name="vremeIsteka" type="date" class="form-control" id="datumisteka" placeholder="Unesi dat">
+                                    <input name="vremeIsteka" type="date" class="form-control" id="datumisteka"
+                                           placeholder="Unesi dat">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -152,7 +231,9 @@
                                 <div class="form-group">
                                     <div class="select-job-items2 nice-select">
                                         <select name="nivoObrazovanja" style="color:#6c757d;" class="form-control">
-                                            <option value="" selected hidden disabled>Nivo obrazovanja (Stručna sprema)</option>
+                                            <option value="" selected hidden disabled>Nivo obrazovanja (Stručna
+                                                sprema)
+                                            </option>
                                             <option value="1">Osnovna škola</option>
                                             <option value="2">Srednja škola</option>
                                             <option value="3">Visoka škola / Viša</option>
@@ -276,11 +357,11 @@
                                 <br>
                                 <h2>Kontakt</h2>
                                 <br>
-                                <p><i class="material-icons" style="color:#B367FF">local_phone</i> +381 (0) 61 11 22 333
+                                <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 61 11 22 333
                                 </p>
-                                <p><i class="material-icons" style="color:#B367FF">local_phone</i> +381 (0) 65 11 22 333
+                                <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 65 11 22 333
                                 </p>
-                                <p style="color:#000033"><i class="material-icons" style="color:#B367FF">email</i> <a
+                                <p style="color:#000033"><i class="material-icons" style="color:#1f3654">email</i> <a
                                         href="#" style="color:#000033">OglasiIMI@pmf.kg.ac.rs</a></p>
                             </div>
                         </div>
@@ -328,7 +409,6 @@
             </div>
         </section>
     </div>
-</main>
 <footer>
     <div class="footer-wrapper pt-5">
         <!-- footer-bottom -->
@@ -366,7 +446,6 @@
 body{
     color: #6c757d;
     background-color: #f5f6f8;
-    margin-top:20px;
 }
 .card-box {
     background-color: #fff;
@@ -610,6 +689,7 @@ body{
 
 
 
+
 </style>
 
 <!-- JS here -->
@@ -660,6 +740,7 @@ $(".custom-file-input").on("change", function() {
   var fileName = $(this).val().split("\\").pop();
   $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
+
 </script>
 </body>
 </html>

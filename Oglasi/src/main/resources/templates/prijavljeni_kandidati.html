@@ -77,39 +77,42 @@
                             OglasiIMI</a>
                     </div>
                     <!-- Main-menu -->
-                    <div class="main-menu f-right d-none d-lg-block">
+                    <div th:if="${username != 'null'}" class="main-menu f-right d-none d-lg-block">
                         <nav>
-                            <ul id="navigation">
-                                <li><a href="../../">Početna</a></li>
-                                <li><a href="../../listing">Kategorije</a></li>
-                                <li><a href="../../employers">Poslodavci</a></li>
-                                <!--                                    <li><a href="signup">Pages</a>-->
-                                <!--                                        <ul class="submenu">-->
-                                <!--                                            <li><a href="directory_details">listing Details</a></li>-->
-                                <!--                                            <li><a href="listing">Catagories</a></li>-->
-                                <!--                                        </ul>-->
-                                <!--                                    </li>-->
-                                <li th><a href="blog">Blog</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog_details">Blog Details</a></li>
-                                        <li><a href="elements">Elements</a></li>
-                                    </ul>
-                                </li>
+                            <ul id="navigation_prijavljen">
+                                <li><a href="index">Početna</a></li>
+                                <li><a href="listing">Kategorije</a></li>
+                                <li><a href="employers">Poslodavci</a></li>
                                 <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
+                                <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                <li th:if="${username}"><a href="logout">Odjavi se</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div th:if="${username == 'null'}" class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation_neprijavljen">
+                                <li><a href="index">Početna</a></li>
+                                <li><a href="listing">Kategorije</a></li>
+                                <li><a href="employers">Poslodavci</a></li>
+                                <li><a href="contact">Kontakt</a></li>
+                                <li><a href="login"> Prijavi se</a></li>
                             </ul>
                         </nav>
                     </div>
                     <!-- Header-btn -->
                     <!-- Ako je korisnik prijavljen -->
-                    <div th:if="${username}" class="header-btns d-none d-lg-block f-right">
-                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
-                        <a href="oglas_create" class="btn">Postavite oglas</a>
-                    </div>
-                    <!-- Ako korisnik nije prijavljen -->
-                    <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">
-                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>
-                        <!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
-                    </div>
+<!--                    <div th:if="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>-->
+<!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; Ako korisnik nije prijavljen &ndash;&gt;-->
+<!--                    <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>-->
+<!--                        &lt;!&ndash;                        <a href="oglas_create" class="btn">Postavite oglas</a>&ndash;&gt;-->
+<!--                    </div>-->
                     <!-- Mobile Menu -->
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
@@ -124,41 +127,55 @@
 
 
     <!--? Hero Area Start-->
-
-    <div class="slider-area hero-bg3 hero-overly">
-        <div class="single-slider   slider-height2 d-flex align-items-end">
+    <!--? Hero Start -->
+    <div class="slider-area2">
+        <div class="slider-height3  hero-overly hero-bg4 d-flex align-items-center">
             <div class="container">
-                <div class="directory-details-head">
-                    <section class="wantToWork-area">
-                        <div class="wants-wrapper w-padding3">
-                            <div class="row align-items-center justify-content-between">
-                                <div class="col-xl-8">
-                                    <div class="details-cap d-flex">
-                                        <!-- <div class="icon">
-                                             <img src="../assets/img/gallery/categori_icon1.png" alt="">
-                                         </div>
-                                         -->
-                                        <!--  <div class="properties__caption">
-                                              <h3><a href="#">Urban areas</a></h3>
-                                              <p>Let's uncover the best places to eat, drink</p>
-                                          </div>
-                                          -->
-                                    </div>
-                                </div>
-                                <!--   <div class="col-xl-4">
-                                       <div class="double-btn f-right  d-flex flex-wrap">
-                                           <a href="#" class="border-btn w-btn wantToWork-btn mr-20"><i class="fas fa-globe"></i>Website</a>
-                                           <a href="#" class="btn w-btn wantToWork-btn"><i class="fas fa-phone"></i>Call Now</a>
-                                       </div>
-                                   </div>
-                                   -->
-                            </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap2 pt-20 text-center">
+                            <h2>Prijavljeni kandidati na vaš oglas:</h2>
+                            <p>OGLAS</p>
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+<!--    <div class="slider-area hero-bg3 hero-overly">-->
+<!--        <div class="single-slider   slider-height2 d-flex align-items-end">-->
+<!--            <div class="container">-->
+<!--                <div class="directory-details-head">-->
+<!--                    <section class="wantToWork-area">-->
+<!--                        <div class="wants-wrapper w-padding3">-->
+<!--                            <div class="row align-items-center justify-content-between">-->
+<!--                                <div class="col-xl-8">-->
+<!--                                    <div class="details-cap d-flex">-->
+<!--                                        &lt;!&ndash; <div class="icon">-->
+<!--                                             <img src="../assets/img/gallery/categori_icon1.png" alt="">-->
+<!--                                         </div>-->
+<!--                                         &ndash;&gt;-->
+<!--                                        &lt;!&ndash;  <div class="properties__caption">-->
+<!--                                              <h3><a href="#">Urban areas</a></h3>-->
+<!--                                              <p>Let's uncover the best places to eat, drink</p>-->
+<!--                                          </div>-->
+<!--                                          &ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash;   <div class="col-xl-4">-->
+<!--                                       <div class="double-btn f-right  d-flex flex-wrap">-->
+<!--                                           <a href="#" class="border-btn w-btn wantToWork-btn mr-20"><i class="fas fa-globe"></i>Website</a>-->
+<!--                                           <a href="#" class="btn w-btn wantToWork-btn"><i class="fas fa-phone"></i>Call Now</a>-->
+<!--                                       </div>-->
+<!--                                   </div>-->
+<!--                                   &ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </section>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <section class="u-align-center u-clearfix u-palette-5-dark-3 u-valign-middle u-section-6" id="carousel_2ff3">
         <div class="u-expanded-height u-palette-3-base u-shape u-shape-rectangle u-shape-1"></div>
@@ -269,9 +286,9 @@
                             <br>
                             <h2>Kontakt</h2>
                             <br>
-                            <p><i class="material-icons" style="color:#B367FF;position:relative;top:7px;">local_phone</i>  +381 (0) 61 11 22 333</p>
-                            <p><i class="material-icons" style="color:#B367FF;position:relative;top:7px;">local_phone</i>  +381 (0) 65 11 22 333</p>
-                            <p style="color:#000033"><i class="material-icons" style="color:#B367FF;position:relative;top:7px;">email</i> <a href="#" style="color:#000033">  OglasiIMI@pmf.kg.ac.rs</a></p>
+                            <p><i class="material-icons" style="color:#1f3654;position:relative;top:7px;">local_phone</i>  +381 (0) 61 11 22 333</p>
+                            <p><i class="material-icons" style="color:#1f3654;position:relative;top:7px;">local_phone</i>  +381 (0) 65 11 22 333</p>
+                            <p style="color:#000033"><i class="material-icons" style="color:#1f3654;position:relative;top:7px;">email</i> <a href="#" style="color:#000033">  OglasiIMI@pmf.kg.ac.rs</a></p>
                         </div>
                     </div>
                 </div>

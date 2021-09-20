@@ -56,7 +56,7 @@
 					Registruj se kao poslodavac
 				</span>
             <form th:action="@{/registration}" method="post" class="login100-form validate-form p-b-33 p-t-5">
-                <h3 class="title m-t-40 p-l-30 m-r-30" style="text-align:center">Osnovni podaci kompanije</h3> <br>
+                <h3 class="title m-t-40 p-l-30 m-r-30" style="text-align:center;color:#122033">Osnovni podaci kompanije</h3> <br>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input" data-validate="Unesite naziv firme">
@@ -105,7 +105,7 @@
                     </div>
                 </div>
 
-                <h3 class="title m-t-40 p-l-30 m-r-30" style="text-align:center;color:green">Podaci kontakt osobe</h3> <br>
+                <h3 class="title m-t-40 p-l-30 m-r-30" style="text-align:center;color:#122033">Podaci kontakt osobe</h3> <br>
 
                 <div class="row">
                     <div class="col-md-6">
@@ -166,10 +166,19 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="container-login100-form-btn m-t-15 pl-2 pr-2">
                     <a href="/signup">
                         <button type="button" value="signup" class="login100-form-btn">
                             Registruj se kao kandidat
+                        </button>
+                    </a>
+                </div>
+                <div class="container-login100-form-btn m-t-15 pl-2 pr-2">
+                    <a href="/index">
+                        <button value="Pocetna" type="button" id="pocetna" name="pocetna"
+                                class="login100-form-btn">
+                            Vrati se na početnu
                         </button>
                     </a>
                 </div>

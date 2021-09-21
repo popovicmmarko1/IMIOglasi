@@ -1,4 +1,5 @@
-package t15.Oglasi.pageControllers;
+package t15.Oglasi.pageControllers.Admin;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Controller
-public class PageController {
+public class AdminController {
 
     @Autowired
     private AppUserRepository appUserRepository;
@@ -29,39 +30,23 @@ public class PageController {
     @Autowired
     private ProfilRepository profilRepository;
 
-    @GetMapping("/login")
-    public String login()
+
+    @GetMapping(value = {"admin_korisnici",  "/admin_korisnici.html"})
+    public String admin_korisnici()
     {
-        return "login";
+        return "admin_korisnici";
     }
 
-
-    @GetMapping(value = {"blog",  "/blog.html"})
-    public String blog(Model model, Principal principal)
+    @GetMapping(value = {"admin_oglasi",  "/admin_oglasi.html"})
+    public String admin_oglasi()
     {
-        try{
-            Optional<AppUser> ulogovan = appUserRepository.findByEmail1(principal.getName());
-            if(ulogovan.isPresent())
-            {
-                model.addAttribute("username",ulogovan.get().getFName());
-            }
-        }catch (Exception e){
-            System.out.println("Nije ulogovan!");
-        }
-
-        return "blog";
+        return "admin_oglasi";
     }
 
-    @GetMapping(value = {"blog_details",  "/blog_details.html"})
-    public String blog_details()
+    @GetMapping(value = {"admin_poslodavci",  "/admin_poslodavci.html"})
+    public String admin_poslodavci()
     {
-        return "blog_details";
-    }
-
-    @GetMapping(value = {"_layout",  "/_layout.html"})
-    public String layout()
-    {
-        return "_layout";
+        return "admin_poslodavci";
     }
 
 

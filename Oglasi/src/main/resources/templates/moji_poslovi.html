@@ -27,34 +27,6 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 
 </head>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>OglasiIMI</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="icon" type="image/png" href="images/icons/LogoOglasiIMI.png"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-    <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.css">
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
-    <link rel="stylesheet" href="assets/css/gijgo.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/animated-headline.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-</head>
 <body>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
@@ -87,6 +59,7 @@
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
                                 <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a></li>
                                 <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
                                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
                                 <li th:if="${role == 'PUSER' && username}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
@@ -94,18 +67,6 @@
                             </ul>
                         </nav>
                     </div>
-                    <!-- Header-btn -->
-                    <!-- Ako je korisnik prijavljen -->
-                    <div th:if="${username}" class="header-btns d-none d-lg-block f-right">
-                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>
-                        <a href="oglas_create" class="btn">Postavite oglas</a>
-                    </div>
-                    <!-- Ako korisnik nije prijavljen -->
-                    <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">
-                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>
-<!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
-                    </div>
-                    <!-- Mobile Menu -->
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
@@ -115,43 +76,20 @@
     </div>
         <!-- Header End -->
     </header>
-    <main>
     <!--? Hero Area Start-->
-
-    <div class="slider-area hero-bg3 hero-overly">
-        <div class="single-slider   slider-height2 d-flex align-items-end">
-            <div class="container">
-                <div class="directory-details-head">
-                    <section class="wantToWork-area">
-                        <div class="wants-wrapper w-padding3">
-                            <div class="row align-items-center justify-content-between">
-                                <div class="col-xl-8">
-                                  <div class="details-cap d-flex">
-                                   <!-- <div class="icon">
-                                        <img src="../assets/img/gallery/categori_icon1.png" alt="">
-                                    </div>
-                                    -->
-                                  <!--  <div class="properties__caption">
-                                        <h3><a href="#">Urban areas</a></h3>
-                                        <p>Let's uncover the best places to eat, drink</p>
-                                    </div>
-                                    -->
-                                  </div>
-                                </div>
-                             <!--   <div class="col-xl-4">
-                                    <div class="double-btn f-right  d-flex flex-wrap">
-                                        <a href="#" class="border-btn w-btn wantToWork-btn mr-20"><i class="fas fa-globe"></i>Website</a>
-                                        <a href="#" class="btn w-btn wantToWork-btn"><i class="fas fa-phone"></i>Call Now</a>
-                                    </div>
-                                </div>
-                                -->
+        <div class="slider-area2">
+            <div class="slider-height3  hero-overly hero-bg4 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap2 pt-20 text-center">
+                                <h2 th:text="' ' + ${ime} + ' ' + ${prezime}"></h2>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
    <!-- Directory Details start -->
    <div>
@@ -255,18 +193,6 @@
                                             <li><a href="index">Početna</a></li>
                                             <li><a href="listing">Kategorije</a></li>
                                             <li><a href="employers">Poslodavci</a></li>
-                                            <!--                                    <li><a href="signup">Pages</a>-->
-                                            <!--                                        <ul class="submenu">-->
-                                            <!--                                            <li><a href="directory_details">listing Details</a></li>-->
-                                            <!--                                            <li><a href="listing">Catagories</a></li>-->
-                                            <!--                                        </ul>-->
-                                            <!--                                    </li>-->
-                                            <li><a href="blog">Blog</a>
-                                                <!--                                                <ul class="submenu">-->
-                                                <!--                                                    <li><a href="blog_details">Blog Details</a></li>-->
-                                                <!--                                                    <li><a href="elements">Elements</a></li>-->
-                                                <!--                                                </ul>-->
-                                            </li>
                                             <li><a href="contact">Kontakt</a></li>
                                         </ul>
                                     </nav>
@@ -278,7 +204,7 @@
             </div>
         </section>
         <!-- Want To work End -->
-    </main>
+
     <footer>
     <div class="footer-wrapper pt-5">
         <!-- footer-bottom -->
@@ -289,12 +215,7 @@
                         <div class="col-xl-10 col-lg-9 ">
                             <div class="footer-copy-right">
                                 <p>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     Copyright &copy; <script>document.write(new Date().getFullYear());</script> | <a href="#">OglasiIMI</a> | All rights reserved.<!-- <a href="#"target="_blank">OglasiIMI</a>-->
-                                    <!--                                    This template is made with <i class="fa fa-heart"-->
-                                    <!--                                                                                        aria-hidden="true"></i> by <a-->
-                                    <!--                                        href="https://colorlib.com" target="_blank">Colorlib</a>-->
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </p>
                             </div>
                         </div>

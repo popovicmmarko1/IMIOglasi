@@ -83,22 +83,14 @@
                     <div class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a href="">Početna</a></li>
+                                <li><a href="index">Početna</a></li>
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
-<!--                                    <li><a href="signup">Pages</a>-->
-<!--                                        <ul class="submenu">-->
-<!--                                            <li><a href="directory_details">listing Details</a></li>-->
-<!--                                            <li><a href="listing">Catagories</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-                                <li th><a href="blog">Blog</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog_details">Blog Details</a></li>
-                                        <li><a href="elements">Elements</a></li>
-                                    </ul>
-                                </li>
                                 <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
+                                <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
+                                <li th:if="${role == 'PUSER' && username}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                <li th:if="${username}"><a href="logout">Odjavi se</a></li>
                             </ul>
                         </nav>
                     </div>

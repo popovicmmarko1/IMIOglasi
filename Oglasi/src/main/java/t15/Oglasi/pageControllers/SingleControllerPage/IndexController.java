@@ -20,7 +20,7 @@ public class IndexController {
     OglasRepository oglasRepository;
 
 
-    @GetMapping(value = {"/"})
+    @GetMapping(value = {"/", "/index"})
     public String home(Model model, Principal principal) {
 
         try{

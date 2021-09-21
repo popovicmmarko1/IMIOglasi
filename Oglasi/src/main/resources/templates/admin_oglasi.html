@@ -97,7 +97,7 @@
     <!--? Hero Area Start-->
     <!--? Hero Start -->
     <div class="slider-area2">
-        <div class="slider-height3  hero-overly hero-bg4 d-flex align-items-center">
+        <div class="slider-height3  hero-overly hero-bg5 d-flex align-items-center">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -189,7 +189,7 @@
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <!-- <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>-->                                   
+                                    <!-- <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>-->
                                     <a th:href="@{/oglas/(pageid=${posao.id})}"><img th:src="${'/slike/baneri/null/' + posao.baner}" alt=""></a>
                                     <div class="icon">
                                         <img src="assets/img/gallery/categori_icon1.png" alt="">
@@ -200,7 +200,7 @@
                                 </div>
                                 <div class="properties__caption">
                                     <h3><a th:href="@{/oglas/(pageid=${posao.id})}" th:text="${posao.name}"></a></h3>
-                                    <p th:text="${posao.opis}"></p>
+                                    <p th:text="${posao.opis}" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"></p>
                                 </div>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="restaurant-name">

@@ -189,9 +189,8 @@
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                                                        <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>
-                                    <a th:href="@{/oglas/(pageid=${posao.id})}"><img
-                                            th:src="${'/slike/baneri/null/' + posao.baner}" alt=""></a>
+                                    <!-- <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>-->                                   
+                                    <a th:href="@{/oglas/(pageid=${posao.id})}"><img th:src="${'/slike/baneri/null/' + posao.baner}" alt=""></a>
                                     <div class="icon">
                                         <img src="assets/img/gallery/categori_icon1.png" alt="">
 
@@ -212,8 +211,7 @@
                                     </div>
                                 </div>
                                 <div class="obriši-btn pb-3" style="margin:auto">
-                                    <a href="#" onclick="document.getElementById('pretraga').submit()"><i
-                                            class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button></a>
+                                    <a href="#" ><i class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button></a>
                                 </div>
                             </div>
                         </div>

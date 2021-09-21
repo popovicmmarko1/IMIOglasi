@@ -89,7 +89,7 @@ public class AdminController {
             System.out.println("Naisao sam na gresku!");
         }
         System.out.println(oglasRepository.findAll().toString());
-        model.addAttribute("oglasi", oglasRepository.findAll());
+        model.addAttribute("sviOglasi", oglasRepository.findAll());
         return "admin_oglasi";
     }
 

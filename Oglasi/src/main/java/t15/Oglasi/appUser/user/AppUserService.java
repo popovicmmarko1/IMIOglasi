@@ -79,7 +79,8 @@ public class AppUserService implements UserDetailsService {
         {
             throw new UsernameNotFoundException(s);
         }
-        UserDetails user = User.withUsername(appUser.getUsername()).password(appUser.getPassword()).authorities(appUser.getAuthorities()).build();
+        UserDetails user = User.withUsername(appUser.getUsername()).password(appUser.getPassword()).authorities(appUser.getAppUserRole().name()).build();
+        System.out.println("Ima on svoje nesto " + user.getAuthorities());
         return user;
     }
 }

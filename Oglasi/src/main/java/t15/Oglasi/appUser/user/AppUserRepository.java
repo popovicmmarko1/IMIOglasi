@@ -20,8 +20,8 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     @Query(value = "SELECT * FROM app_user a WHERE a.id = ?1", nativeQuery = true)
     AppUser findById1(Long id);
 
-    @Query(value = "SELECT * FROM app_user a WHERE a.role = 'USER'", nativeQuery = true)
-    List<AppUser> dajSveKorisnike();
+    @Query(value = "SELECT * FROM app_user a WHERE a.app_user_role = 'USER'", nativeQuery = true)
+    List<Long> findAllByRole();
 
     @Transactional
     @Modifying

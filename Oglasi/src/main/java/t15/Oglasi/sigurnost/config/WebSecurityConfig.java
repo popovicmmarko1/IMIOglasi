@@ -26,11 +26,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/registrationp/**", "/signup_poslodavac/**").permitAll()
                 .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
                 .antMatchers( "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**",
-                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**", "/prijavljeni_kandidati/**", "/admin_korisnici/**", "/admin_oglasi/**", "/admin_poslodavci/**").permitAll()
+                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**").permitAll()
 
-                .antMatchers("/profil/**").hasAnyAuthority("PUSER","USER")
+                .antMatchers("/profil/**").hasAuthority("USER")
 
-                .antMatchers("/postavioglas/**", "/dodaj_oglas/**","/objavljeni_poslovi/**", "/profil_poslodavac/**", "/profilpromenap/**").hasAuthority("PUSER")
+                .antMatchers("/postavioglas/**", "/dodaj_oglas/**","/objavljeni_poslovi/**", "/profil_poslodavac/**", "/profilpromenap/**"
+                        , "/prijavljeni_kandidati/**").hasAuthority("PUSER")
 
                 .antMatchers("/admin_korisnici/**", "/admin_oglasi/**", "/admin_poslodavci/**").hasAuthority("ADMIN")
 
@@ -43,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(daoAuthenticationProvider())
-                .inMemoryAuthentication().withUser("admin@admin.com").password(bCryptPasswordEncoder.encode("admin")).authorities("ADMIN");;
+                .inMemoryAuthentication();
     }
 
     @Bean

@@ -6,14 +6,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import t15.Oglasi.appUser.user.AppUser;
+import t15.Oglasi.appUser.user.AppUserNova;
 import t15.Oglasi.appUser.user.AppUserRepository;
+import t15.Oglasi.appUser.user.profil.Profil;
 import t15.Oglasi.appUser.user.profil.ProfilRepository;
 import t15.Oglasi.oglas.OglasRepository;
 import t15.Oglasi.oglas.OglasService;
 import t15.Oglasi.appUser.poslodavac.PoslodavacRepository;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -34,6 +37,9 @@ public class AdminController {
     @GetMapping(value = {"admin_korisnici",  "/admin_korisnici.html"})
     public String admin_korisnici(Model model, Principal principal)
     {
+        AppUser pomA;
+        Profil pomP;
+        List<AppUserNova> lista = new ArrayList<AppUserNova>();
         try{
             Optional<AppUser> ulogovan = appUserRepository.findByEmail1(principal.getName());
             if(ulogovan.isPresent())
@@ -49,9 +55,20 @@ public class AdminController {
         }catch (Exception e){
             System.out.println("Naisao sam na gresku!");
         }
-        model.addAttribute("korisnici", appUserRepository.dajSveKorisnike());
+        List<Long> idi = appUserRepository.findAllByRole();
+        for (Long i : idi)
+        {
+            pomA = appUserRepository.findById1(i);
+            pomP = profilRepository.findByAppUserId(i);
+
+            lista.add(new AppUserNova(pomA.getId(), pomA.getFName(), pomA.getLName(), pomA.getEmail(), pomP.getSlika(), pomP.getOpis(), pomP.getBrTelefona()));
+
+        }
+        model.addAttribute("korisnici", lista);
         return "admin_korisnici";
     }
+
+
 
     @GetMapping(value = {"admin_oglasi",  "/admin_oglasi.html"})
     public String admin_oglasi(Model model, Principal principal)
@@ -71,6 +88,7 @@ public class AdminController {
         }catch (Exception e){
             System.out.println("Naisao sam na gresku!");
         }
+        System.out.println(oglasRepository.findAll().toString());
         model.addAttribute("oglasi", oglasRepository.findAll());
         return "admin_oglasi";
     }

@@ -1,6 +1,8 @@
 package t15.Oglasi.pageControllers.SingleControllerPage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +44,6 @@ public class IndexController {
         }catch (Exception e){
             System.out.println("Naisao sam na gresku!");
         }
-
         model.addAttribute("poslodavci5", poslodavacRepository.dajPet());
         model.addAttribute("poslovi6", oglasRepository.findTop6());
 

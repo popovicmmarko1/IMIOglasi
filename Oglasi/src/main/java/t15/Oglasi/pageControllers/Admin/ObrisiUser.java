@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
-@RequestMapping(value = "/obrisiuser", method = RequestMethod.GET)
+@RequestMapping(value = "/obrisiuser/", method = RequestMethod.GET)
 @AllArgsConstructor
 public class ObrisiUser {
     @Autowired

@@ -23,7 +23,7 @@ public class UserRegistrationController {
         System.out.println(request);
         registrationService.register(request);
 
-        profilRepository.save(new Profil(appUserRepository.findByEmail1(request.getEmail()).get().getId(), "", "", "", null));
+        profilRepository.save(new Profil(appUserRepository.findByEmail1(request.getEmail()).get().getId(), "", "", "", null, ""));
 
         response.sendRedirect("/login");
     }

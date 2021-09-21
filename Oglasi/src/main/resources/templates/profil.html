@@ -254,7 +254,7 @@
                     </div>
                     <!-- end timeline content-->
                     <div class="tab-pane" id="settings">
-                        <form method="POST" action="/profilpromena">
+                        <form method="POST" action="/profilpromena" enctype="multipart/form-data">
                             <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle mr-1"></i>
                                 Lični podaci</h5>
 
@@ -262,15 +262,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="firstname">Ime</label>
-                                        <input name="ime" type="text" class="form-control" id="firstname" name="ime"
-                                               placeholder="Unesi ime">
+                                        <input name="ime" type="text" class="form-control" id="firstname" placeholder="Unesi ime">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="lastname">Prezime</label>
-                                        <input name="prezime" type="text" class="form-control" id="lastname"
-                                               name="prezime" placeholder="Unesi prezime">
+                                        <input name="prezime" type="text" class="form-control" id="lastname" placeholder="Unesi prezime">
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -279,8 +277,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="userbio">Biografija</label>
-                                        <textarea name="bio" class="form-control" id="userbio" rows="4" name="bio"
-                                                  placeholder="Upiši nešto o sebi..."></textarea>
+                                        <textarea name="bio" class="form-control" id="userbio" rows="4" placeholder="Upiši nešto o sebi..."></textarea>
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -289,15 +286,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="numberphone">Broj telefona</label>
-                                        <input type="text" class="form-control" id="numberphone" name="telofon"
-                                               placeholder="Unesi broj telefona">
+                                        <input type="text" class="form-control" id="numberphone" name="telefon" placeholder="Unesi broj telefona">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="location">Lokacija</label>
-                                        <input type="text" class="form-control" id="location" name="mesto"
-                                               placeholder="Unesi lokaciju">
+                                        <input type="text" class="form-control" id="location" name="mesto" placeholder="Unesi lokaciju">
                                     </div>
                                 </div> <!-- end col -->
                             </div>
@@ -306,8 +301,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="useremail">E-mail</label>
-                                        <input type="email" class="form-control" id="useremail" name="email"
-                                               placeholder="Unesi e-mail">
+                                        <input type="email" class="form-control" id="useremail" name="email" placeholder="Unesi e-mail">
                                         <span class="form-text text-muted"><small>Ako želiš da promeniš svoju e-mail adresu klikni ovde.</small></span>
                                     </div>
                                 </div>

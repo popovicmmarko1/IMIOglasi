@@ -51,10 +51,4 @@ public class ProfilController {
         }
         return "profil";
     }
-
-    @GetMapping("/profil_poslodavac")
-    public String profil_poslodavac()
-    {
-        return "profil_poslodavac";
-    }
 }

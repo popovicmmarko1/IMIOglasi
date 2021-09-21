@@ -32,20 +32,68 @@ public class AdminController {
 
 
     @GetMapping(value = {"admin_korisnici",  "/admin_korisnici.html"})
-    public String admin_korisnici()
+    public String admin_korisnici(Model model, Principal principal)
     {
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail1(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                model.addAttribute("username",ulogovan.get().getFName());
+                model.addAttribute("userId", ulogovan.get().getId());
+                model.addAttribute("role", ulogovan.get().getAppUserRole().toString());
+            }else
+            {
+                System.out.println("Korisnik nije ulogovan!");
+                model.addAttribute("username", "null");
+            }
+        }catch (Exception e){
+            System.out.println("Naisao sam na gresku!");
+        }
+        model.addAttribute("korisnici", appUserRepository.dajSveKorisnike());
         return "admin_korisnici";
     }
 
     @GetMapping(value = {"admin_oglasi",  "/admin_oglasi.html"})
-    public String admin_oglasi()
+    public String admin_oglasi(Model model, Principal principal)
     {
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail1(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                model.addAttribute("username",ulogovan.get().getFName());
+                model.addAttribute("userId", ulogovan.get().getId());
+                model.addAttribute("role", ulogovan.get().getAppUserRole().toString());
+            }else
+            {
+                System.out.println("Korisnik nije ulogovan!");
+                model.addAttribute("username", "null");
+            }
+        }catch (Exception e){
+            System.out.println("Naisao sam na gresku!");
+        }
+        model.addAttribute("oglasi", oglasRepository.findAll());
         return "admin_oglasi";
     }
 
     @GetMapping(value = {"admin_poslodavci",  "/admin_poslodavci.html"})
-    public String admin_poslodavci()
+    public String admin_poslodavci(Model model, Principal principal)
     {
+        try{
+            Optional<AppUser> ulogovan = appUserRepository.findByEmail1(principal.getName());
+            if(ulogovan.isPresent())
+            {
+                model.addAttribute("username",ulogovan.get().getFName());
+                model.addAttribute("userId", ulogovan.get().getId());
+                model.addAttribute("role", ulogovan.get().getAppUserRole().toString());
+            }else
+            {
+                System.out.println("Korisnik nije ulogovan!");
+                model.addAttribute("username", "null");
+            }
+        }catch (Exception e){
+            System.out.println("Naisao sam na gresku!");
+        }
+        model.addAttribute("poslodavci", poslodavacRepository.findAll());
         return "admin_poslodavci";
     }
 

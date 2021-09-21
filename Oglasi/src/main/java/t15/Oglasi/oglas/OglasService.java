@@ -35,6 +35,11 @@ public class OglasService {
         return oglasRepository.save(request);
     }
 
+    public void obrisiOglas(Long id)
+    {
+        oglasRepository.delete(oglasRepository.findById(id).get());
+    }
+
     public Page<Oglas> findByPagingCriteria(String search, String grad, String oblast, String obrazovanje, String ri, String tip, String pol, String rv, Pageable pageable) {
 
         Page<Oglas> page = oglasRepository.findAll(new Specification<Oglas>() {

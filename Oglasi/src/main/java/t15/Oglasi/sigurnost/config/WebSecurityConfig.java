@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/profil/**").hasAnyAuthority("PUSER","USER")
 
-                .antMatchers("/postavioglas/**", "/dodaj_oglas/**","/objavljeni_poslovi/**", "/profil_poslodavac/**").hasAuthority("PUSER")
+                .antMatchers("/postavioglas/**", "/dodaj_oglas/**","/objavljeni_poslovi/**", "/profil_poslodavac/**", "/profilpromenap/**").hasAuthority("PUSER")
 
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="/application/cache/161857018305c9ee1d92400fef3d75b46e2c7541f6.css"
+          media="screen"/>
+    <link type="text/css" rel="stylesheet" href="/application/cache/1624885721aee4292b01e72c9e22289dc47b0ee027.css"
+          media="screen"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" type="text/css" href="static/css/oglas.css">-->
+</head>
+<body style="background: #f1f3f7"> <!-- ;-->
+<div layout:fragment="content" class="back"
+     style="background-color:white; border: 1px solid #e5e5e5; width: 1200px; margin: auto; margin-top:30px; margin-bottom:30px; padding-left: 40px; padding-right: 30px; padding-top:30px; padding-bottom:30px;">
+
+    <header>
+        <div style="width: 900px; float:left;">
+            <h1 style="font-weight: 700;" th:text="${naslov}"></h1>
+            <h2 th:text="${poslodavac_ime}"></h2>
+            <div style="float:left"><i class="glyphicon glyphicon-map-marker"> </i></div>
+            <div class="place" style="float:left" th:text="${mesto}">
+            </div>
+            <br><br>
+            <div style="float:left"><i class="glyphicon glyphicon-time"></i></div>
+            <div class="date" style=" font-weight: 700; float:left" th:text="${istice}">
+            </div>
+        </div>
+        <div id="logo_ogl"
+             style=" width:120px; height: 120px; float:right; border:1px solid black; background-color:red; ">
+            <img width="120px" height="120px" th:src="${poslodavac_slika}">
+        </div>
+        <br>
+        <div style="border:1px solid #A9A9A9;  clear:both;">
+        </div>
+    </header>
+    <h2>O Poslodavcu</h2>
+    <div th:text="${poslodavac_opis}"/>
+
+    <h2>Tekst Oglasa</h2>
+    <div th:text="${opis}"/>
+
+
+    <form method="POST" action="../../prijavise" id="prijava" class="mb-40">
+        <div style="display: none;">
+            <input name="idKorisnika" th:value="${userId}">
+            <input name="idOglasa" th:value="${oglasId}">
+        </div>
+        <div th:if="${role == 'USER'}" class="search-form">
+            <div class="btn btn-primary">
+                <a href="#" onclick="document.getElementById('prijava').submit()">Prijavi se na oglas</button></a>
+            </div>
+        </div>
+    </form>
+
+
+    <div th:if="${role == 'PUSER'}">
+        <div th:if="${ulogovanId == poslodavacId}">
+            <div class="search-form">
+                <a href="#"><i class="ti-search"></i>Prikaži prijavljene</button></a>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@ package t15.Oglasi.registracija.token;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import t15.Oglasi.appUser.AppUser;
+import t15.Oglasi.appUser.user.AppUser;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

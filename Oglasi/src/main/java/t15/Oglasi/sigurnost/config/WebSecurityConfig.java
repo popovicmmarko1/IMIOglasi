@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import t15.Oglasi.appUser.AppUserService;
+import t15.Oglasi.appUser.user.AppUserService;
 
 @Configuration
 @AllArgsConstructor
@@ -21,21 +21,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/registration/**").permitAll()
-                .antMatchers("/css/**").permitAll().antMatchers("/js/**").permitAll()
-                .antMatchers("/fonts/**").permitAll().antMatchers("/images/**").permitAll()
-                .antMatchers("/scss/**").permitAll().antMatchers("/vendor/**").permitAll()
+        http.csrf().disable().authorizeRequests()
+                .antMatchers("/registration/**", "/signup/**").permitAll()
+                .antMatchers( "/registrationp/**", "/signup_poslodavac/**").permitAll()
+                .antMatchers("/assets/**", "/css/**", "/Doc/**", "/fonts/**", "/images/**","/js/**","/slike/**", "/vendor/**").permitAll()
+                .antMatchers( "/",  "/_layout/**","/blog/**", "/blog_details/**","/contact/**", "/directory_details/**","/elements/**",
+                        "/employers/**", "/index/**", "/listing/**", "/login/**","/oglas/**").permitAll()
+
+                .antMatchers("/profil/**").hasAuthority("USER")
+
+                .antMatchers("/postavioglas/**", "/dodaj_oglas/**","/objavljeni_poslovi/**", "/profil_poslodavac/**", "/profilpromenap/**"
+                        , "/prijavljeni_kandidati/**").hasAuthority("PUSER")
+
+                .antMatchers("/admin_korisnici/**", "/admin_oglasi/**", "/admin_poslodavci/**").hasAuthority("ADMIN")
+
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();
-
-        http.csrf().disable();
-
     }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider());
+        auth.authenticationProvider(daoAuthenticationProvider())
+                .inMemoryAuthentication();
     }
 
     @Bean
@@ -46,6 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         provider.setUserDetailsService(appUserService);
         return provider;
     }
+
 
 
 }

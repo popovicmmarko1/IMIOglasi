@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OglasiIMI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/png" href="images/icons/LogoOglasiIMI.png"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+          integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+          integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--    <link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">-->
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <!--    <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/gijgo.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/animate.min.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/animated-headline.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/magnific-popup.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">-->
+    <!--    <link rel="stylesheet" href="assets/css/themify-icons.css">-->
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <!--    <link rel="stylesheet" href="assets/css/nice-select.css">-->
+
+</head>
+<body>
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="images/icons/LogoOglasiIMI.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Preloader Start -->
+<header>
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt="">
+                            OglasiIMI</a>
+                    </div>
+                    <!-- Main-menu -->
+                    <div class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation">
+                                <li><a href="index">Početna</a></li>
+                                <li><a href="listing">Kategorije</a></li>
+                                <li><a href="employers">Poslodavci</a></li>
+                                <li th:if="${role == 'ADMIN'}"><a href="admin_korisnici">Upravljaj korisnicima</a></li>
+                                <li th:if="${role == 'ADMIN'}"><a href="admin_poslodavci">Upravljaj poslodavcima</a></li>
+                                <li th:if="${role == 'ADMIN'}"><a href="admin_oglasi">Upravljaj oglasima</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a>
+                                </li>
+                                <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${username}">
+                                    <a th:if="${role == 'USER'}" href="profil" th:text="' '+${username}"></a>
+                                    <a th:if="${role == 'PUSER'}" href="profil_poslodavac"
+                                       th:text="' '+${username}"></a>
+                                </li>
+                                <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                <li th:if="${username}"><a href="logout">Odjavi se</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Header-btn -->
+                    <!-- Ako je korisnik prijavljen -->
+<!--                    <div th:if="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>-->
+<!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; Ako korisnik nije prijavljen &ndash;&gt;-->
+<!--                    <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">-->
+<!--                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>-->
+<!--                        &lt;!&ndash;                        <a href="oglas_create" class="btn">Postavite oglas</a>&ndash;&gt;-->
+<!--                    </div>-->
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>
+<!--? Hero Start -->
+<div class="slider-area2">
+    <div class="slider-height3  hero-overly hero-bg3 d-flex align-items-center"> <!-- hero-bg4 treba da bude -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap2 pt-20 text-center">
+                        <h2>Dodavanje oglasa</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="container align-items-center justify-content-center container pt-15">
+        <div class="container" style="max-width:960px">
+            <div class="card-box align-items-center justify-content-center">
+                <!-- <ul class="nav nav-pills navtab-bg">-->
+                <!--  <li class="nav-item">
+                      <a href="#about-me" data-toggle="tab" aria-expanded="true" class="nav-link ml-0 active">
+                          <i class="mdi mdi-face-profile mr-1"></i>O meni
+                      </a>
+                  </li> -->
+                <!--  <li class="nav-item">
+                      <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
+                          <i class="mdi mdi-settings-outline mr-1"></i>Podesavanja
+                      </a>
+                  </li>
+                  -->
+                <!--   </ul> -->
+
+                <div class="tab-content">
+
+                    <form action="/postavioglas" method="POST" enctype="multipart/form-data">
+                        <h5 class="mb-3 text-uppercase bg-light p-2"> Dodaj oglas</h5>
+                        <div style="display: none;"><input th:value="${userId}" name="poslodavacId"></div>
+
+                        <div class="form-group">
+                            <label for="naslov">Naslov</label>
+                            <input name="name" type="text" class="form-control" id="naslov"
+                                   placeholder="Unesi naslov oglasa">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="opis">Opis oglasa</label>
+                                    <textarea name="opis" class="form-control" id="opis" rows="4"
+                                              placeholder="Opis oglasa..."></textarea>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="datumisteka">Datum isteka oglasa</label>
+                                    <input name="vremeIsteka" type="date" class="form-control" id="datumisteka"
+                                           placeholder="Unesi dat">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Lokacija</label>
+                                    <div class="select-job-items2 nice-select">
+                                        <select name="mesto" style="color:#6c757d;" class="form-control">
+                                            <option value="" selected hidden disabled>Lokacija</option>
+                                            <option value="Beograd">Beograd</option>
+                                            <option value="Novi Sad">Novi Sad</option>
+                                            <option value="Kragujevac">Kragujevac</option>
+                                            <option value="Nis">Niš</option>
+                                            <option value="Subotica">Subotica</option>
+                                            <option value="Pozerevac">Požarevac</option>
+                                            <option value="Kraljevo">Kraljevo</option>
+                                            <option value="Krusevac">Kruševac</option>
+                                            <option value="Jagodina">Jagodina</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="customFile" name="image">
+                            <label class="custom-file-label" for="customFile">Izaberite sliku</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Kategorije</label>
+                                    <div class="select-job-items2 nice-select">
+                                        <select name="oblast" style="color:#6c757d;" class="form-control">
+                                            <option value="" selected hidden disabled>Oblast rada</option>
+                                            <option value="IT">IT</option>
+                                            <option value="Trgovina">Trgovina, prodaja</option>
+                                            <option value="Masinstvo">Mašinstvo</option>
+                                            <option value="Administracija">Administracija</option>
+                                            <option value="Bankarstvo">Bankarstvo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group pt-30">
+
+                                    <div class="select-job-items2 nice-select">
+                                        <select name="tipZaposlenja" style="color:#6c757d;" class="form-control">
+                                            <option value="" selected hidden disabled>Tip zaposlenja</option>
+                                            <option value="1">Ugovor na neodređeno vreme</option>
+                                            <option value="2">Ugovor na određeno vreme</option>
+                                            <option value="3">Praksa (plaćena i/ili mogućnost zaposlenja)</option>
+                                            <option value="4">Honorarno</option>
+                                            <option value="5">Sezonski</option>
+                                            <option value="6">Volontiranje</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="select-job-items2 nice-select">
+                                        <select name="nivoObrazovanja" style="color:#6c757d;" class="form-control">
+                                            <option value="" selected hidden disabled>Nivo obrazovanja (Stručna
+                                                sprema)
+                                            </option>
+                                            <option value="1">Osnovna škola</option>
+                                            <option value="2">Srednja škola</option>
+                                            <option value="3">Visoka škola / Viša</option>
+                                            <option value="4">Master / Fakultet</option>
+                                            <option value="5">Magistratura / Specijalizacija</option>
+                                            <option value="6">Doktorske studije / PhD</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="select-job-items2 nice-select">
+                                        <select name="radnoIskustvo" style="color:#6c757d;" class="form-control">
+                                            <option value="" selected hidden disabled>Radno iskustvo</option>
+                                            <option value="1">Bez ograničenja iskustva</option>
+                                            <option value="2">Bez iskustva</option>
+                                            <option value="3">Manje od jedne (1) godine</option>
+                                            <option value="4">Više od jedne (1) godine</option>
+                                            <option value="5">Više od dve (2) godine</option>
+                                            <option value="6">Više od tri (3) godine</option>
+                                            <option value="7">Više od pet (5) godina</option>
+                                            <option value="8">Više od deset (10) godina</option>
+                                            <option value="9">Više od šest (6) meseci</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="select-job-items2 nice-select">
+                                        <select name="pol" class="form-control">
+                                            <option value="" selected hidden disabled>Pol</option>
+                                            <option value="M">Muški</option>
+                                            <option value="F">Ženski</option>
+                                            <option value="B">Oba</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="select-job-items2 nice-select">
+                                        <select name="radnoVreme" class="form-control">
+                                            <option value="" selected hidden disabled>Radno vreme</option>
+                                            <option value="P">Puno radno vreme</option>
+                                            <option value="N">Nepuno radno vreme</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="select-job-items2 nice-select">
+                                        <select name="visinaPlate" class="form-control">
+                                            <option value="" selected hidden disabled>Visina plate</option>
+                                            <option value="1">20 000 - 30 000 RSD</option>
+                                            <option value="2">30 000 - 45 000 RSD</option>
+                                            <option value="3">45 000 - 60 000 RSD</option>
+                                            <option value="4">60 000 - 85 000 RSD</option>
+                                            <option value="5">85 000 - 110 000 RSD</option>
+                                            <option value="6">preko 110 000 RSD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
+                                    class="mdi mdi-content-save"></i> Dodaj oglas
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--? Want To work 02-->
+        <section class="wantToWork-area">
+            <div class="container">
+                <div class="wants-wrapper w-padding2">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-8 col-lg-8 col-md-7">
+                            <div class="wantToWork-caption wantToWork-caption2">
+                                <div class="logo">
+                                    <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="60px"
+                                                         height="55px">
+                                        OglasiIMI</a>
+                                </div>
+                                <br>
+                                <p>Dobro došli na stranicu portala <a href="#">OglasiIMI</a></p>
+
+                                <p>Portal <a href="#">OglasiIMI</a> je online berza poslova, nastao kao potreba za
+                                    uspostavljanjem profesionalnog poslovnog sistema koji će pomoći Srbiji da poveća
+                                    stopu zaposlenosti.</p>
+
+                                <p><a href="#">OglasiIMI</a> je namenjen poslodavcima i kandidatima, kao i svima onima
+                                    koji imaju interesovanja za domen ljudskih resursa i praćenje uticaja koju ova
+                                    oblast ima u razvoju privrede i društva u celini.</p>
+
+                                <p>Od samog početka rada portala <a href="#">OglasiIMI</a>, cilj nam je da pomognemo
+                                    svojim kandidatima da nađu posao, da povećamo stopu zaposlenosti, kao i da
+                                    postavljamo iznova standarde u oblasti ljudskih resursa. Naša vizija je da pomognemo
+                                    i olakšamo poslodavcima potragu za kvalitetnim i pravim kadrom, koji će doprineti
+                                    rastu i razvoju kompanije.</p>
+
+                                <p>Teoriju ćemo ostaviti drugima, a Vama ćemo pomoći da na praktičan način dođete do
+                                    ostvarenja svog cilja - bilo da ste poslodavac ili budući zaposleni.</p>
+
+                                <p>Biće nam zadovoljstvo da budemo deo i Vašeg poslovnog uspeha. </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-5">
+                            <div class="footer-social f-right sm-left">
+                                <br>
+                                <h2>Kontakt</h2>
+                                <br>
+                                <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 61 11 22 333
+                                </p>
+                                <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 65 11 22 333
+                                </p>
+                                <p style="color:#000033"><i class="material-icons" style="color:#1f3654">email</i> <a
+                                        href="#" style="color:#000033">OglasiIMI@pmf.kg.ac.rs</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Want To work End -->
+        <!--? Want To work 01-->
+        <section class="wantToWork-area">
+            <div class="container">
+                <div class="wants-wrapper">
+                    <div class="row align-items-center justify-content-center text-center">
+                        <div class="col-xl-7 col-lg-9 col-md-8">
+                            <div class="wantToWork-caption wantToWork-caption2">
+                                <div class="main-menu2">
+                                    <nav>
+                                        <ul>
+                                            <li><a href="index">Početna</a></li>
+                                            <li><a href="listing">Kategorije</a></li>
+                                            <li><a href="employers">Poslodavci</a></li>
+                                            <li><a href="contact">Kontakt</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+<footer>
+    <div class="footer-wrapper pt-5">
+        <!-- footer-bottom -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-10 col-lg-9 ">
+                            <div class="footer-copy-right">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script>
+                                    | <a href="#">OglasiIMI</a> | All rights reserved.
+                                    <!-- <a href="#"target="_blank">OglasiIMI</a>-->
+                                    <!--                                    This template is made with <i class="fa fa-heart"-->
+                                    <!--                                                                                        aria-hidden="true"></i> by <a-->
+                                    <!--                                        href="https://colorlib.com" target="_blank">Colorlib</a>-->
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll Up -->
+<div id="back-top">
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+<style>
+body{
+    color: #6c757d;
+    background-color: #f5f6f8;
+}
+.card-box {
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e7eaed;
+    padding: 1.5rem;
+    margin-bottom: 24px;
+    border-radius: .25rem;
+}
+.avatar-xl {
+    height: 6rem;
+    width: 6rem;
+}
+.rounded-circle {
+    border-radius: 50%!important;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #1abc9c;
+}
+.nav-pills .nav-link {
+    border-radius: .25rem;
+}
+.navtab-bg li>a {
+    background-color: #f7f7f7;
+    margin: 0 5px;
+}
+.nav-pills>li>a, .nav-tabs>li>a {
+    color: #6c757d;
+    font-weight: 600;
+}
+.mb-4, .my-4 {
+    margin-bottom: 2.25rem!important;
+}
+.tab-content {
+    padding: 20px 0 0 0;
+}
+.progress-sm {
+    height: 5px;
+}
+.m-0 {
+    margin: 0!important;
+}
+.table .thead-light th {
+    color: #6c757d;
+    background-color: #f1f5f7;
+    border-color: #dee2e6;
+}
+.social-list-item {
+    height: 2rem;
+    width: 2rem;
+    line-height: calc(2rem - 4px);
+    display: block;
+    border: 2px solid #adb5bd;
+    border-radius: 50%;
+    color: #adb5bd;
+}
+
+.text-purple {
+    color: #6559cc!important;
+}
+.border-purple {
+    border-color: #6559cc!important;
+}
+
+.timeline {
+    margin-bottom: 50px;
+    position: relative;
+}
+.timeline:before {
+    background-color: #dee2e6;
+    bottom: 0;
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 30px;
+    width: 2px;
+    z-index: 0;
+}
+.timeline .time-show {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    position: relative;
+}
+.timeline .timeline-box {
+    background: #fff;
+    display: block;
+    margin: 15px 0;
+    position: relative;
+    padding: 20px;
+}
+.timeline .timeline-album {
+    margin-top: 12px;
+}
+.timeline .timeline-album a {
+    display: inline-block;
+    margin-right: 5px;
+}
+.timeline .timeline-album img {
+    height: 36px;
+    width: auto;
+    border-radius: 3px;
+}
+@media (min-width: 768px) {
+    .timeline .time-show {
+        margin-right: -69px;
+        text-align: right;
+    }
+    .timeline .timeline-box {
+        margin-left: 45px;
+    }
+    .timeline .timeline-icon {
+        background: #dee2e6;
+        border-radius: 50%;
+        display: block;
+        height: 20px;
+        left: -54px;
+        margin-top: -10px;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: 20px;
+    }
+    .timeline .timeline-icon i {
+        color: #98a6ad;
+        font-size: 13px;
+        position: absolute;
+        left: 4px;
+    }
+    .timeline .timeline-desk {
+        display: table-cell;
+        vertical-align: top;
+        width: 50%;
+    }
+    .timeline-item {
+        display: table-row;
+    }
+    .timeline-item:before {
+        content: "";
+        display: block;
+        width: 50%;
+    }
+    .timeline-item .timeline-desk .arrow {
+        border-bottom: 12px solid transparent;
+        border-right: 12px solid #fff !important;
+        border-top: 12px solid transparent;
+        display: block;
+        height: 0;
+        left: -12px;
+        margin-top: -12px;
+        position: absolute;
+        top: 50%;
+        width: 0;
+    }
+    .timeline-item.timeline-item-left:after {
+        content: "";
+        display: block;
+        width: 50%;
+    }
+    .timeline-item.timeline-item-left .timeline-desk .arrow-alt {
+        border-bottom: 12px solid transparent;
+        border-left: 12px solid #fff !important;
+        border-top: 12px solid transparent;
+        display: block;
+        height: 0;
+        left: auto;
+        margin-top: -12px;
+        position: absolute;
+        right: -12px;
+        top: 50%;
+        width: 0;
+    }
+    .timeline-item.timeline-item-left .timeline-desk .album {
+        float: right;
+        margin-top: 20px;
+    }
+    .timeline-item.timeline-item-left .timeline-desk .album a {
+        float: right;
+        margin-left: 5px;
+    }
+    .timeline-item.timeline-item-left .timeline-icon {
+        left: auto;
+        right: -56px;
+    }
+    .timeline-item.timeline-item-left:before {
+        display: none;
+    }
+    .timeline-item.timeline-item-left .timeline-box {
+        margin-right: 45px;
+        margin-left: 0;
+        text-align: right;
+    }
+}
+@media (max-width: 767.98px) {
+    .timeline .time-show {
+        text-align: center;
+        position: relative;
+    }
+    .timeline .timeline-icon {
+        display: none;
+    }
+}
+.timeline-sm {
+    padding-left: 110px;
+}
+.timeline-sm .timeline-sm-item {
+    position: relative;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    border-left: 2px solid #dee2e6;
+}
+.timeline-sm .timeline-sm-item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: -7px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #1abc9c;
+}
+.timeline-sm .timeline-sm-item .timeline-sm-date {
+    position: absolute;
+    left: -104px;
+}
+@media (max-width: 420px) {
+    .timeline-sm {
+        padding-left: 0;
+    }
+    .timeline-sm .timeline-sm-date {
+        position: relative !important;
+        display: block;
+        left: 0 !important;
+        margin-bottom: 10px;
+    }
+}
+
+.select-job-items2 .nice-select{width:100%;height:45px;background:#fff;border-radius:5px;padding:11px 19px 11px 18px;color:#616875;line-height:20px;border:1px solid #ededed;margin-bottom:20px}
+
+
+
+
+</style>
+
+<!-- JS here -->
+
+<!--<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>-->
+<!--&lt;!&ndash; Jquery, Popper, Bootstrap &ndash;&gt;-->
+<!--<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>-->
+<!--<script src="./assets/js/popper.min.js"></script>-->
+<!--<script src="./assets/js/bootstrap.min.js"></script>-->
+<!--&lt;!&ndash; Jquery Mobile Menu &ndash;&gt;-->
+<!--<script src="./assets/js/jquery.slicknav.min.js"></script>-->
+
+<!--&lt;!&ndash; Jquery Slick , Owl-Carousel Plugins &ndash;&gt;-->
+<!--<script src="./assets/js/owl.carousel.min.js"></script>-->
+<!--<script src="./assets/js/slick.min.js"></script>-->
+<!--&lt;!&ndash; One Page, Animated-HeadLin &ndash;&gt;-->
+<!--<script src="./assets/js/wow.min.js"></script>-->
+<!--<script src="./assets/js/animated.headline.js"></script>-->
+<!--<script src="./assets/js/jquery.magnific-popup.js"></script>-->
+
+<!--&lt;!&ndash; Date Picker &ndash;&gt;-->
+<!--<script src="./assets/js/gijgo.min.js"></script>-->
+<!--&lt;!&ndash; Nice-select, sticky &ndash;&gt;-->
+<!--<script src="./assets/js/jquery.nice-select.min.js"></script>-->
+<!--<script src="./assets/js/jquery.sticky.js"></script>-->
+<!--&lt;!&ndash; Progress &ndash;&gt;-->
+<!--<script src="./assets/js/jquery.barfiller.js"></script>-->
+
+<!--&lt;!&ndash; counter , waypoint,Hover Direction &ndash;&gt;-->
+<!--<script src="./assets/js/jquery.counterup.min.js"></script>-->
+<!--<script src="./assets/js/waypoints.min.js"></script>-->
+<!--<script src="./assets/js/jquery.countdown.min.js"></script>-->
+<!--<script src="./assets/js/hover-direction-snake.min.js"></script>-->
+
+<!--&lt;!&ndash; contact js &ndash;&gt;-->
+<!--<script src="./assets/js/contact.js"></script>-->
+<!--<script src="./assets/js/jquery.form.js"></script>-->
+<!--<script src="./assets/js/jquery.validate.min.js"></script>-->
+<!--<script src="./assets/js/mail-script.js"></script>-->
+<!--<script src="./assets/js/jquery.ajaxchimp.min.js"></script>-->
+
+<!--&lt;!&ndash; Jquery Plugins, main Jquery &ndash;&gt;-->
+<!--<script src="./assets/js/plugins.js"></script>-->
+<script src="./assets/js/main.js"></script>
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+
+</script>
+</body>
+</html>

@@ -180,7 +180,7 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 390px;
+  width: 790px;
   border-radius: 10px;
   overflow: hidden;
 
@@ -226,7 +226,16 @@ iframe {
   display: block;
 }
 
+.login100-form-login-register {
+  font-family: Ubuntu-Bold;
+  font-size: 18px;
+  color: black;
+  line-height: 1.2;
+  text-align: center;
 
+
+  display: block;
+}
 /*------------------------------------------------------------------
 [ Input ]*/
 
@@ -365,7 +374,7 @@ iframe {
   border-radius: 21px;
 
   background: #d41872;
-  background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
+  background: -webkit-linear-gradient(left, #2162b7, #1858ab, #25446d);
   background: -o-linear-gradient(left, #a445b2, #d41872, #fa4299);
   background: -moz-linear-gradient(left, #a445b2, #d41872, #fa4299);
   background: linear-gradient(left, #a445b2, #d41872, #fa4299);

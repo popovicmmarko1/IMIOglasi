@@ -42,4 +42,8 @@ public class PoslodavacService {
     public void updateLogo(String logo, Long id) {
         poslodavacRepository.promeniLogo(logo, id);
     }
+
+    public void obirsiPoslodavca(Long id){
+        poslodavacRepository.delete(poslodavacRepository.getById(id));
+    }
 }

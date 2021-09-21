@@ -12,13 +12,13 @@ import java.io.IOException;
 @RestController
 @RequestMapping(value = "/obrisiuser", method = RequestMethod.GET)
 @AllArgsConstructor
-public class ObrisiUser {
+public class ObrisiPoslodavac {
     @Autowired
     private AppUserService appUserService;
 
     @GetMapping()
     public void obrisiOglas(@RequestParam Long id, HttpServletResponse response) throws IOException {
         appUserService.obrisiUser(id);
-        response.sendRedirect("/admin_korisnici");
+        response.sendRedirect("/admin_poslodavci");
     }
 }

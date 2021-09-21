@@ -32,6 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/postavioglas/**", "/dodaj_oglas/**","/objavljeni_poslovi/**", "/profil_poslodavac/**", "/profilpromenap/**").hasAuthority("PUSER")
 
+                .antMatchers("/admin_korisnici/**", "/admin_oglasi/**", "/admin_poslodavci/**").hasAuthority("ADMIN")
+
                 .anyRequest().authenticated().and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .usernameParameter("email").passwordParameter("password").permitAll();
@@ -41,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(daoAuthenticationProvider())
-                .inMemoryAuthentication().withUser("admin@admin.com").password(bCryptPasswordEncoder.encode("admin")).roles("ADMIN");;
+                .inMemoryAuthentication().withUser("admin@admin.com").password(bCryptPasswordEncoder.encode("admin")).authorities("ADMIN");;
     }
 
     @Bean

@@ -56,6 +56,7 @@
                                     <li><a href="listing">Kategorije</a></li>
                                     <li><a href="employers">Poslodavci</a></li>
                                     <li><a href="contact">Kontakt</a></li>
+                                    <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a></li>
                                     <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
                                     <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
                                     <li th:if="${role == 'PUSER' && username}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
@@ -63,17 +64,6 @@
                                 </ul>
                             </nav>
                         </div>
-                        <!-- Header-btn -->
-                        <!-- Ako je korisnik prijavljen -->
-<!--                        <div th:if="${username}" class="header-btns d-none d-lg-block f-right">-->
-<!--                            <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>-->
-<!--                            <a href="oglas_create" class="btn">Postavite oglas</a>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; Ako korisnik nije prijavljen &ndash;&gt;-->
-<!--                        <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">-->
-<!--                            <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>-->
-<!--                            &lt;!&ndash;                        <a href="oglas_create" class="btn">Postavite oglas</a>&ndash;&gt;-->
-<!--                        </div>-->
                         <!-- Mobile Menu -->
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
@@ -495,27 +485,13 @@
                                             <li><a href="index">Početna</a></li>
                                             <li><a href="listing">Kategorije</a></li>
                                             <li><a href="employers">Poslodavci</a></li>
-                                            <!--                                    <li><a href="signup">Pages</a>-->
-                                            <!--                                        <ul class="submenu">-->
-                                            <!--                                            <li><a href="directory_details">listing Details</a></li>-->
-                                            <!--                                            <li><a href="listing">Catagories</a></li>-->
-                                            <!--                                        </ul>-->
-                                            <!--                                    </li>-->
-                                            <li><a href="blog">Blog</a>
-                                                <!--                                                <ul class="submenu">-->
-                                                <!--                                                    <li><a href="blog_details">Blog Details</a></li>-->
-                                                <!--                                                    <li><a href="elements">Elements</a></li>-->
-                                                <!--                                                </ul>-->
-                                            </li>
                                             <li><a href="contact">Kontakt</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
                         </div>
-                        <!--                        <div class="col-xl-2 col-lg-3 col-md-4">-->
-                        <!--                            <a href="/signup" class="btn f-right sm-left">Add Listing</a>-->
-                        <!--                        </div>-->
+
                     </div>
                 </div>
             </div>
@@ -532,12 +508,7 @@
                             <div class="col-xl-10 col-lg-9 ">
                                 <div class="footer-copy-right">
                                     <p>
-                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                         Copyright &copy; <script>document.write(new Date().getFullYear());</script> | <a href="#">OglasiIMI</a> | All rights reserved.<!-- <a href="#"target="_blank">OglasiIMI</a>-->
-                                        <!--                                    This template is made with <i class="fa fa-heart"-->
-                                        <!--                                                                                        aria-hidden="true"></i> by <a-->
-                                        <!--                                        href="https://colorlib.com" target="_blank">Colorlib</a>-->
-                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     </p>
                                 </div>
                             </div>

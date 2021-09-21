@@ -84,6 +84,7 @@
                 <li><a href="listing">Kategorije</a></li>
                 <li><a href="employers">Poslodavci</a></li>
                 <li><a href="contact">Kontakt</a></li>
+                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a></li>
                 <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
                 <li th:if="${role == 'PUSER' && username}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
@@ -91,17 +92,6 @@
               </ul>
             </nav>
           </div>
-          <!-- Header-btn -->
-          <!-- Ako je korisnik prijavljen -->
-          <!--                    <div th:if="${username}" class="header-btns d-none d-lg-block f-right">-->
-          <!--                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"  th:text="' '+${username}"></i></a>-->
-          <!--                        <a href="oglas_create" class="btn">Postavite oglas</a>-->
-          <!--                    </div>-->
-          <!--                    &lt;!&ndash; Ako korisnik nije prijavljen &ndash;&gt;-->
-          <!--                    <div th:unless="${username}" class="header-btns d-none d-lg-block f-right">-->
-          <!--                        <a href="login" class="mr-40 prijava"><i class="ti-user header-btns"> Prijavi se</i></a>-->
-          <!--                        &lt;!&ndash;                        <a href="oglas_create" class="btn">Postavite oglas</a>&ndash;&gt;-->
-          <!--                    </div>-->
           <!-- Mobile Menu -->
           <div class="col-12">
             <div class="mobile_menu d-block d-lg-none"></div>
@@ -170,14 +160,14 @@
     <div class="u-expanded-height u-shape u-shape-rectangle u-shape-1"></div>
     <div class="u-list u-list-1">
       <div class="u-repeater u-repeater-1">
-        <div th:each="${korisnik : korisnici}"class="u-align-center-s u-container-style u-list-item u-repeater-item border border-secondary">
+        <div th:each="korisnik : ${korisnici}"class="u-align-center-s u-container-style u-list-item u-repeater-item border border-secondary">
           <div class="u-container-layout u-similar-container u-valign-bottom-lg u-valign-top-xl u-container-layout-1">
             <div alt="" class="u-image u-image-circle u-image-1" style="background-image:url('https://thumbs.dreamstime.com/b/happy-person-portrait-smiling-woman-tanned-skin-curly-hair-happy-person-portrait-smiling-young-friendly-woman-197501184.jpg')"></div>
             <div class="u-align-center-xs u-container-style u-group u-group-1">
               <div class="u-container-layout u-container-layout-2">
-                <h4 class="u-custom-font u-font-oswald u-text u-text-1" th:text="${korisnik.fName + ' ' + korisnik.lName}">Jeffrey Brown</h4>
-                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Email: 'korisnik.email}"></h5>
-                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Telefon: 'korisnik.telefon}"></h5>
+                <h4 class="u-custom-font u-font-oswald u-text u-text-1" th:text="${korisnik.fname + ' ' + korisnik.lname}"></h4>
+                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Email: ' + korisnik.email}"></h5>
+                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Telefon: ' + korisnik.telefon}"></h5>
                 <p class="u-text u-text-black-10 u-text-3" th:text="${korisnik.bio}"></p>
               </div>
             </div>
@@ -240,18 +230,6 @@
                     <li><a href="/">Početna</a></li>
                     <li><a href="listing">Kategorije</a></li>
                     <li><a href="employers">Poslodavci</a></li>
-                    <!--                                    <li><a href="signup">Pages</a>-->
-                    <!--                                        <ul class="submenu">-->
-                    <!--                                            <li><a href="directory_details">listing Details</a></li>-->
-                    <!--                                            <li><a href="listing">Catagories</a></li>-->
-                    <!--                                        </ul>-->
-                    <!--                                    </li>-->
-                    <li><a href="blog">Blog</a>
-                      <!--                                                <ul class="submenu">-->
-                      <!--                                                    <li><a href="blog_details">Blog Details</a></li>-->
-                      <!--                                                    <li><a href="elements">Elements</a></li>-->
-                      <!--                                                </ul>-->
-                    </li>
                     <li><a href="contact">Kontakt</a></li>
                   </ul>
                 </nav>
@@ -274,12 +252,7 @@
             <div class="col-xl-10 col-lg-9 ">
               <div class="footer-copy-right">
                 <p>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                   Copyright &copy; <script>document.write(new Date().getFullYear());</script> | <a href="#">OglasiIMI</a> | All rights reserved.<!-- <a href="#"target="_blank">OglasiIMI</a>-->
-                  <!--                                    This template is made with <i class="fa fa-heart"-->
-                  <!--                                                                                        aria-hidden="true"></i> by <a-->
-                  <!--                                        href="https://colorlib.com" target="_blank">Colorlib</a>-->
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
               </div>
             </div>

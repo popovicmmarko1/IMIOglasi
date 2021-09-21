@@ -9,7 +9,7 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="icon" type="image/png" href="images/icons/LogoOglasiIMI.png"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
 </head>
 <body>
 <!-- ? Preloader Start -->
@@ -59,39 +59,17 @@
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
                                 <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a>
+                                </li>
                                 <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
                                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
-                                <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                <li th:if="${role == 'PUSER' && username}"><a href="dodaj_oglas" class="">Postavite
+                                    oglas</a></li>
                                 <li th:if="${username}"><a href="logout">Odjavi se</a></li>
                             </ul>
                         </nav>
                     </div>
-<!--                    <div th:if="${username != 'null'}" class="main-menu f-right d-none d-lg-block">-->
-<!--                        <nav>-->
-<!--                            <ul id="navigation_prijavljen">-->
-<!--                                <li><a href="index">Početna</a></li>-->
-<!--                                <li><a href="listing">Kategorije</a></li>-->
-<!--                                <li><a href="employers">Poslodavci</a></li>-->
-<!--                                <li><a href="contact">Kontakt</a></li>-->
-<!--                                <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>-->
-<!--                                <li th:unless="${username}"><a href="login"> Prijavi se</a></li>-->
-<!--                                <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>-->
-<!--                                <li th:if="${username}"><a href="logout">Odjavi se</a></li>-->
-<!--                            </ul>-->
-<!--                        </nav>-->
-<!--                    </div>-->
-<!--                    <div th:if="${username == 'null'}" class="main-menu f-right d-none d-lg-block">-->
-<!--                        <nav>-->
-<!--                            <ul id="navigation_neprijavljen">-->
-<!--                                <li><a href="index">Početna</a></li>-->
-<!--                                <li><a href="listing">Kategorije</a></li>-->
-<!--                                <li><a href="employers">Poslodavci</a></li>-->
-<!--                                <li><a href="contact">Kontakt</a></li>-->
-<!--                                <li><a href="login"> Prijavi se</a></li>-->
-<!--                            </ul>-->
-<!--                        </nav>-->
-<!--                    </div>-->
-                    
+
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
@@ -144,7 +122,8 @@
                                 </select>
                             </div>
                             <div class="search-form">
-                                <a href="#" onclick="document.getElementById('pretraga').submit()"><i class="ti-search"></i>PRETRAŽI</button></a>
+                                <a href="#" onclick="document.getElementById('pretraga').submit()"><i
+                                        class="ti-search"></i>PRETRAŽI</button></a>
                             </div>
                         </form>
 
@@ -175,18 +154,6 @@
                         <div class="hero__caption3">
                             <p>Najpopularnije kategorije</p>
                         </div>
-<!--                        <div class="popular-location text-center section-padding40"text-center  position="center" text-align="center" align-items="center" align-conten="center">-->
-<!--                            <div class="container">-->
-<!--                                <div class="single-location text-center" text-center text-align="center" position="center" align-items="center" align-conten="center">-->
-<!--                                    <div class="location-details text-center pb-20" position="center" >-->
-<!--                                        <a href="profil" class="location-btn">50 <i class="ti-plus"></i> Listing</a>-->
-<!--                                        <a href="#" class="location-btn">50 <i class="ti-plus"></i> Listing</a>-->
-<!--                                        <a href="#" class="location-btn">50 <i class="ti-plus"></i> Listing</a>-->
-<!--                                        <a href="#" class="location-btn">50 <i class="ti-plus"></i> Listing</a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
                         <div class="najpopularnije text-center pb-20">
                             <a href="#" class="location-btn mb-2">Programiranje</a>
                             <a href="#" class="location-btn mb-2">Trgovina / Prodaja</a>
@@ -195,614 +162,494 @@
                             <a href="#" class="location-btn mb-2">Marketing</a>
                             <a href="#" class="location-btn mb-2">Medicina</a>
                         </div>
-<!--                            <div class="category-img text-center pb-20">-->
-<!--                                <a href="listing"> <img src="assets/img/gallery/hero_category1.png" alt=""></a>-->
-<!--                                <a href="listing"> <img src="assets/img/gallery/hero_category2.png" alt=""></a>-->
-<!--                                <a href="listing"> <img src="assets/img/gallery/hero_category3.png" alt=""></a>-->
-<!--                            </div>-->
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Hero Area End-->
-        <!--? Popular Locations Start 01-->
-        <div class="popular-location border-bottom section-padding50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle text-center mb-40">
-                            <h2>Najnoviji poslovi</h2>
-<!--                            <p>Pogledajte poslednje postavljene oglase, možda baš vi dobijete posao.</p>-->
-                        </div>
+    </div>
+    <!--Hero Area End-->
+    <!--? Popular Locations Start 01-->
+    <div class="popular-location border-bottom section-padding50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-40">
+                        <h2>Najnoviji poslovi</h2>
+                        <!--                            <p>Pogledajte poslednje postavljene oglase, možda baš vi dobijete posao.</p>-->
                     </div>
                 </div>
-                <div class="popular-directorya-area fix">
-                    <div class="row" >
-                        <div class="col-lg-4" th:each="posao : ${poslovi6}">
-                            <div class="properties properties2 mb-30">
-                                <div class="properties__card">
-                                    <div class="properties__img overlay1">
-                                        <a th:href="@{/oglas/(pageid=${posao.id})}"><img th:src="${'/slike/baneri/null/' + posao.baner}" alt=""></a>
-                                        <div class="icon">
-                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                        </div>
+            </div>
+            <div class="popular-directorya-area fix">
+                <div class="row">
+                    <div class="col-lg-4" th:each="posao : ${poslovi6}">
+                        <div class="properties properties2 mb-30">
+                            <div class="properties__card">
+                                <div class="properties__img overlay1">
+<!--                                    <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>-->
+                                    <a th:href="@{/oglas/(pageid=${posao.id})}"><img
+                                            th:src="${'/slike/baneri/null/' + posao.baner}" alt=""></a>
+                                    <div class="icon">
+                                        <a th:href="@{/oglas/(pageid=${posao.id})}">
+                                            <img th:src="${'/slike/baneri/null/' + posao.icon}" alt=""></a>
                                     </div>
+                                </div>
                                 <div class="properties__caption">
                                     <h3><a th:href="@{/oglas/(pageid=${posao.id})}" th:text="${posao.name}"></a></h3>
-                                        <p th:text="${posao.opis}"></p>
+                                    <p th:text="${posao.opis}"></p>
                                 </div>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="restaurant-name">
+                                        <img src="assets/img/gallery/city2.png" width="40px" height="35px" alt="">
+<!--                                        <img src="assets/img/gallery/city3.png" width="50px" height="45px" alt="">-->
                                         <h3 th:text="${posao.mesto}"></h3>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <!---
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location1.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>New York</p>
-                                <a href="#" class="location-btn">65 <i class="ti-plus"></i> Listing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location2.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Paris</p>
-                                <a href="#" class="location-btn">60 <i class="ti-plus"></i> Listing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location3.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Rome</p>
-                                <a href="#" class="location-btn">50 <i class="ti-plus"></i> Listing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location4.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Italy</p>
-                                <a href="#" class="location-btn">28 <i class="ti-plus"></i> Location</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location5.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Nepal</p>
-                                <a href="#" class="location-btn">99 <i class="ti-plus"></i> Listing</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location1.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>New York</p>
-                                <a href="#" class="location-btn">65 <i class="ti-plus"></i> Listing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location2.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Paris</p>
-                                <a href="#" class="location-btn">60 <i class="ti-plus"></i> Listing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location3.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Rome</p>
-                                <a href="#" class="location-btn">50 <i class="ti-plus"></i> Listing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location4.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Italy</p>
-                                <a href="#" class="location-btn">28 <i class="ti-plus"></i> Location</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-location mb-30">
-                            <div class="location-img">
-                                <img src="assets/img/gallery/location5.png" alt="">
-                            </div>
-                            <div class="location-details">
-                                <p>Nepal</p>
-                                <a href="#" class="location-btn">99 <i class="ti-plus"></i> Listing</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                -->
             </div>
         </div>
-        <!-- Popular Locations End -->
-        <!--? Popular Directory Start -->
-        <div class="popular-directorya-area  border-bottom section-padding50 fix">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle text-center mb-40">
-                            <h2>Istaknuti poslodavci</h2>
-                            <!--                            <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>-->
+    </div>
+    <!-- Popular Locations End -->
+    <!--? Popular Directory Start -->
+    <div class="popular-directorya-area  border-bottom section-padding50 fix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-40">
+                        <h2>Istaknuti poslodavci</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="directory-active">
+                <!-- Single -->
+                <div class="properties pb-20">
+                    <div class="properties__card">
+                        <div class="properties__img overlay1">
+                            <a href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>
+                            <div class="img-text">
+                                <span>$$$</span>
+                                <span>Closed</span>
+                            </div>
+                            <div class="icon">
+                                <img src="assets/img/gallery/categori_icon1.png" alt="">
+                            </div>
+                        </div>
+                        <div class="properties__caption">
+                            <h3><a href="#">Ime poslodavca</a></h3>
+                            <p>Kratak opis poslodavca i cime se bavi</p>
+                        </div>
+                        <div class="properties__footer d-flex justify-content-between align-items-center">
+                            <div class="restaurant-name">
+                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                <h3>Oblast rada</h3>
+                            </div>
+                            <div class="heart">
+                                <img src="assets/img/gallery/heart1.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="directory-active">
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>
-                                <div class="img-text">
-                                    <span>$$$</span>
-                                    <span>Closed</span>
-                                </div>
-                                <div class="icon">
-                                    <img src="assets/img/gallery/categori_icon1.png" alt="">
-                                </div>
+                <!-- Single -->
+                <div class="properties pb-20">
+                    <div class="properties__card">
+                        <div class="properties__img overlay1">
+                            <a href="#"><img src="assets/img/gallery/properties2.png" alt=""></a>
+                            <div class="img-text">
+                                <span>$$$</span>
+                                <span>Closed</span>
                             </div>
-                            <div class="properties__caption">
-                                <h3><a href="#">Ime poslodavca</a></h3>
-                                <p>Kratak opis poslodavca i cime se bavi</p>
+                            <div class="icon">
+                                <img src="assets/img/gallery/categori_icon1.png" alt="">
                             </div>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                    <h3>Oblast rada</h3>
-                                </div>
-                                <div class="heart">
-                                    <img src="assets/img/gallery/heart1.png" alt="">
-                                </div>
+                        </div>
+                        <div class="properties__caption">
+                            <h3><a href="#">Urban areas</a></h3>
+                            <p>Let's uncover the best places to eat, drink</p>
+                        </div>
+                        <div class="properties__footer d-flex justify-content-between align-items-center">
+                            <div class="restaurant-name">
+                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                <h3>Food & Restaurant</h3>
+                            </div>
+                            <div class="heart">
+                                <img src="assets/img/gallery/heart1.png" alt="">
                             </div>
                         </div>
                     </div>
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="assets/img/gallery/properties2.png" alt=""></a>
-                                <div class="img-text">
-                                    <span>$$$</span>
-                                    <span>Closed</span>
-                                </div>
-                                <div class="icon">
-                                    <img src="assets/img/gallery/categori_icon1.png" alt="">
-                                </div>
+                </div>
+                <!-- Single -->
+                <div class="properties pb-20">
+                    <div class="properties__card">
+                        <div class="properties__img overlay1">
+                            <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>
+                            <div class="img-text">
+                                <span>$$$</span>
+                                <span>Closed</span>
                             </div>
-                            <div class="properties__caption">
-                                <h3><a href="#">Urban areas</a></h3>
-                                <p>Let's uncover the best places to eat, drink</p>
+                            <div class="icon">
+                                <img src="assets/img/gallery/categori_icon1.png" alt="">
                             </div>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                    <h3>Food & Restaurant</h3>
-                                </div>
-                                <div class="heart">
-                                    <img src="assets/img/gallery/heart1.png" alt="">
-                                </div>
+                        </div>
+                        <div class="properties__caption">
+                            <h3><a href="#">Urban areas</a></h3>
+                            <p>Let's uncover the best places to eat, drink</p>
+                        </div>
+                        <div class="properties__footer d-flex justify-content-between align-items-center">
+                            <div class="restaurant-name">
+                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                <h3>Food & Restaurant</h3>
+                            </div>
+                            <div class="heart">
+                                <img src="assets/img/gallery/heart1.png" alt="">
                             </div>
                         </div>
                     </div>
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>
-                                <div class="img-text">
-                                    <span>$$$</span>
-                                    <span>Closed</span>
-                                </div>
-                                <div class="icon">
-                                    <img src="assets/img/gallery/categori_icon1.png" alt="">
-                                </div>
+                </div>
+                <!-- Single -->
+                <div class="properties pb-20">
+                    <div class="properties__card">
+                        <div class="properties__img overlay1">
+                            <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>
+                            <div class="img-text">
+                                <span>$$$</span>
+                                <span>Closed</span>
                             </div>
-                            <div class="properties__caption">
-                                <h3><a href="#">Urban areas</a></h3>
-                                <p>Let's uncover the best places to eat, drink</p>
-                            </div>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                    <h3>Food & Restaurant</h3>
-                                </div>
-                                <div class="heart">
-                                    <img src="assets/img/gallery/heart1.png" alt="">
-                                </div>
+                            <div class="icon">
+                                <img src="assets/img/gallery/categori_icon1.png" alt="">
                             </div>
                         </div>
-                    </div>
-                    <!-- Single -->
-                    <div class="properties pb-20">
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>
-                                <div class="img-text">
-                                    <span>$$$</span>
-                                    <span>Closed</span>
-                                </div>
-                                <div class="icon">
-                                    <img src="assets/img/gallery/categori_icon1.png" alt="">
-                                </div>
+                        <div class="properties__caption">
+                            <h3><a href="#">Urban areas</a></h3>
+                            <p>Let's uncover the best places to eat, drink</p>
+                        </div>
+                        <div class="properties__footer d-flex justify-content-between align-items-center">
+                            <div class="restaurant-name">
+                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                <h3>Food & Restaurant</h3>
                             </div>
-                            <div class="properties__caption">
-                                <h3><a href="#">Urban areas</a></h3>
-                                <p>Let's uncover the best places to eat, drink</p>
-                            </div>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                    <h3>Food & Restaurant</h3>
-                                </div>
-                                <div class="heart">
-                                    <img src="assets/img/gallery/heart1.png" alt="">
-                                </div>
+                            <div class="heart">
+                                <img src="assets/img/gallery/heart1.png" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--? Popular Directory End -->
-        <!--? Want To work 01-->
-        <!--        <section class="wantToWork-area">-->
-        <!--            <div class="container">-->
-        <!--                <div class="wants-wrapper w-padding2">-->
-        <!--                    <div class="row align-items-center justify-content-between">-->
-        <!--                        <div class="col-xl-7 col-lg-9 col-md-8">-->
-        <!--                            <div class="wantToWork-caption wantToWork-caption2">-->
-        <!--                                <h2>How it works</h2>-->
-        <!--                                <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                        <div class="col-xl-2 col-lg-3 col-md-4">-->
-        <!--                            <a href="#" class="btn f-right sm-left">Explore Listing</a>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </section>-->
-        <!--        &lt;!&ndash; Want To work End &ndash;&gt;-->
-        <!--        &lt;!&ndash;? Our Services Start &ndash;&gt;-->
-        <!--        <div class="our-services  border-bottom">-->
-        <!--            <div class="container">-->
-        <!--                <div class="row">-->
-        <!--                    <div class=" col-lg-4 col-md-6 col-sm-6">-->
-        <!--                        <div class="single-services mb-30">-->
-        <!--                            <div class="services-ion">-->
-        <!--                                <span>01</span>-->
-        <!--                            </div>-->
-        <!--                            <div class="services-cap">-->
-        <!--                                <h5><a href="#">Find Businesses</a></h5>-->
-        <!--                                <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                    <div class=" col-lg-4 col-md-6 col-sm-6">-->
-        <!--                        <div class="single-services mb-30">-->
-        <!--                            <div class="services-ion">-->
-        <!--                                <span>02</span>-->
-        <!--                            </div>-->
-        <!--                            <div class="services-cap">-->
-        <!--                                <h5><a href="#">Review Listings</a></h5>-->
-        <!--                                <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                    <div class=" col-lg-4 col-md-6 col-sm-6">-->
-        <!--                        <div class="single-services mb-30">-->
-        <!--                            <div class="services-ion">-->
-        <!--                                <span>03</span>-->
-        <!--                            </div>-->
-        <!--                            <div class="services-cap">-->
-        <!--                                <h5><a href="#">Make a Reservation</a></h5>-->
-        <!--                                <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--        &lt;!&ndash; Our Services End &ndash;&gt;-->
-        <!--        &lt;!&ndash;? Popular Directory Start &ndash;&gt;-->
-        <!--        <div class="popular-directorya-area section-padding40 border-bottom fix">-->
-        <!--            <div class="container">-->
-        <!--                <div class="row">-->
-        <!--                    <div class="col-lg-12">-->
-        <!--                        &lt;!&ndash; Section Tittle &ndash;&gt;-->
-        <!--                        <div class="section-tittle text-center mb-80">-->
-        <!--                            <h2>New Directory</h2>-->
-        <!--                            <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--                <div class="directory-active">-->
-        <!--                    &lt;!&ndash; Single &ndash;&gt;-->
-        <!--                    <div class="properties pb-20">-->
-        <!--                        <div class="properties__card">-->
-        <!--                            <div class="properties__img overlay1">-->
-        <!--                                <a href="#"><img src="assets/img/gallery/newDirectory1.png" alt=""></a>-->
-        <!--                                <div class="img-text">-->
-        <!--                                    <span>$$$</span>-->
-        <!--                                    <span>Closed</span>-->
-        <!--                                </div>-->
-        <!--                                <div class="icon">-->
-        <!--                                    <img src="assets/img/gallery/categori_icon1.png" alt=""> -->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                            <div class="properties__caption">-->
-        <!--                                <h3><a href="#">Urban areas</a></h3>-->
-        <!--                                <p>Let's uncover the best places to eat, drink</p>-->
-        <!--                            </div>-->
-        <!--                            <div class="properties__footer d-flex justify-content-between align-items-center">-->
-        <!--                                <div class="restaurant-name">-->
-        <!--                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">-->
-        <!--                                    <h3>Food & Restaurant</h3>-->
-        <!--                                </div>-->
-        <!--                                <div class="heart">-->
-        <!--                                    <img src="assets/img/gallery/heart1.png" alt="">-->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                    &lt;!&ndash; Single &ndash;&gt;-->
-        <!--                    <div class="properties pb-20">-->
-        <!--                        <div class="properties__card">-->
-        <!--                            <div class="properties__img overlay1">-->
-        <!--                                <a href="#"><img src="assets/img/gallery/newDirectory2.png" alt=""></a>-->
-        <!--                                <div class="img-text">-->
-        <!--                                    <span>$$$</span>-->
-        <!--                                    <span>Closed</span>-->
-        <!--                                </div>-->
-        <!--                                <div class="icon">-->
-        <!--                                    <img src="assets/img/gallery/categori_icon1.png" alt=""> -->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                            <div class="properties__caption">-->
-        <!--                                <h3><a href="#">Urban areas</a></h3>-->
-        <!--                                <p>Let's uncover the best places to eat, drink</p>-->
-        <!--                            </div>-->
-        <!--                            <div class="properties__footer d-flex justify-content-between align-items-center">-->
-        <!--                                <div class="restaurant-name">-->
-        <!--                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">-->
-        <!--                                    <h3>Food & Restaurant</h3>-->
-        <!--                                </div>-->
-        <!--                                <div class="heart">-->
-        <!--                                    <img src="assets/img/gallery/heart1.png" alt="">-->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                    &lt;!&ndash; Single &ndash;&gt;-->
-        <!--                    <div class="properties pb-20">-->
-        <!--                        <div class="properties__card">-->
-        <!--                            <div class="properties__img overlay1">-->
-        <!--                                <a href="#"><img src="assets/img/gallery/newDirectory3.png" alt=""></a>-->
-        <!--                                <div class="img-text">-->
-        <!--                                    <span>$$$</span>-->
-        <!--                                    <span>Closed</span>-->
-        <!--                                </div>-->
-        <!--                                <div class="icon">-->
-        <!--                                    <img src="assets/img/gallery/categori_icon1.png" alt=""> -->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                            <div class="properties__caption">-->
-        <!--                                <h3><a href="#">Urban areas</a></h3>-->
-        <!--                                <p>Let's uncover the best places to eat, drink</p>-->
-        <!--                            </div>-->
-        <!--                            <div class="properties__footer d-flex justify-content-between align-items-center">-->
-        <!--                                <div class="restaurant-name">-->
-        <!--                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">-->
-        <!--                                    <h3>Food & Restaurant</h3>-->
-        <!--                                </div>-->
-        <!--                                <div class="heart">-->
-        <!--                                    <img src="assets/img/gallery/heart1.png" alt="">-->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                    &lt;!&ndash; Single &ndash;&gt;-->
-        <!--                    <div class="properties pb-20">-->
-        <!--                        <div class="properties__card">-->
-        <!--                            <div class="properties__img overlay1">-->
-        <!--                                <a href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>-->
-        <!--                                <div class="img-text">-->
-        <!--                                    <span>$$$</span>-->
-        <!--                                    <span>Closed</span>-->
-        <!--                                </div>-->
-        <!--                                <div class="icon">-->
-        <!--                                    <img src="assets/img/gallery/categori_icon1.png" alt=""> -->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                            <div class="properties__caption">-->
-        <!--                                <h3><a href="#">Urban areas</a></h3>-->
-        <!--                                <p>Let's uncover the best places to eat, drink</p>-->
-        <!--                            </div>-->
-        <!--                            <div class="properties__footer d-flex justify-content-between align-items-center">-->
-        <!--                                <div class="restaurant-name">-->
-        <!--                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">-->
-        <!--                                    <h3>Food & Restaurant</h3>-->
-        <!--                                </div>-->
-        <!--                                <div class="heart">-->
-        <!--                                    <img src="assets/img/gallery/heart1.png" alt="">-->
-        <!--                                </div>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!-- Popular Directory End -->
-        <!--? Popular Locations Start 01-->
-<!--        <div class="popular-location border-bottom section-padding50">-->
-<!--            <div class="container">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-12">-->
-<!--                        &lt;!&ndash; Section Tittle &ndash;&gt;-->
-<!--                        <div class="section-tittle text-center mb-40">-->
-<!--                            <h2>Vesti o zapošljavanju</h2>-->
-<!--&lt;!&ndash;                            <p>Budite prvi koji će saznati najnovije vesti u svetu zapošljavanja.</p>&ndash;&gt;-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-6 col-md-6 col-sm-12">-->
-<!--                        <div class="single-location mb-30">-->
-<!--                            <div class="location-img">-->
-<!--                                <img src="assets/img/gallery/home-blog1.png" alt="">-->
-<!--                            </div>-->
-<!--                            <div class="location-details">-->
-<!--                                <a href="#" class="location-btn">Tips</a>-->
-<!--                                <ul>-->
-<!--                                    <li>12 March I by Alan</li>-->
-<!--                                </ul>-->
-<!--                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-6 col-md-6 col-sm-12">-->
-<!--                        <div class="single-location mb-30">-->
-<!--                            <div class="location-img">-->
-<!--                                <img src="assets/img/gallery/home-blog2.png" alt="">-->
-<!--                            </div>-->
-<!--                            <div class="location-details">-->
-<!--                                <a href="#" class="location-btn">Tips</a>-->
-<!--                                <ul>-->
-<!--                                    <li>12 March I by Alan</li>-->
-<!--                                </ul>-->
-<!--                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!-- Popular Locations End -->
-        <!--? Want To work 02-->
-        <section class="wantToWork-area">
-            <div class="container">
-                <div class="wants-wrapper w-padding2">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-8 col-lg-8 col-md-7">
-                            <div class="wantToWork-caption wantToWork-caption2">
-                                <div class="logo">
-                                    <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="60px" height="55px">
-                                        OglasiIMI</a>
-                                </div>
-                                <br>
-                                <p>Dobro došli na stranicu portala <a href="#">OglasiIMI</a></p>
-
-                                <p>Portal <a href="#">OglasiIMI</a> je online berza poslova, nastao kao potreba za uspostavljanjem profesionalnog poslovnog sistema koji će pomoći Srbiji da poveća stopu zaposlenosti.</p>
-
-                                <p><a href="#">OglasiIMI</a> je namenjen poslodavcima i kandidatima, kao i svima onima koji imaju interesovanja za domen ljudskih resursa i praćenje uticaja koju ova oblast ima u razvoju privrede i društva u celini.</p>
-
-                                <p>Od samog početka rada portala <a href="#">OglasiIMI</a>, cilj nam je da pomognemo svojim kandidatima da nađu posao, da povećamo stopu zaposlenosti, kao i da postavljamo iznova standarde u oblasti ljudskih resursa. Naša vizija je da pomognemo i olakšamo poslodavcima potragu za kvalitetnim i pravim kadrom, koji će doprineti rastu i razvoju kompanije.</p>
-
-                                <p>Teoriju ćemo ostaviti drugima, a Vama ćemo pomoći da na praktičan način dođete do ostvarenja svog cilja - bilo da ste poslodavac ili budući zaposleni.</p>
-
-                                <p>Biće nam zadovoljstvo da budemo deo i Vašeg poslovnog uspeha. </p>
+    </div>
+    <!--? Popular Directory End -->
+    <!--? Want To work 01-->
+    <!--        <section class="wantToWork-area">-->
+    <!--            <div class="container">-->
+    <!--                <div class="wants-wrapper w-padding2">-->
+    <!--                    <div class="row align-items-center justify-content-between">-->
+    <!--                        <div class="col-xl-7 col-lg-9 col-md-8">-->
+    <!--                            <div class="wantToWork-caption wantToWork-caption2">-->
+    <!--                                <h2>How it works</h2>-->
+    <!--                                <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="col-xl-2 col-lg-3 col-md-4">-->
+    <!--                            <a href="#" class="btn f-right sm-left">Explore Listing</a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </section>-->
+    <!--        &lt;!&ndash; Want To work End &ndash;&gt;-->
+    <!--        &lt;!&ndash;? Our Services Start &ndash;&gt;-->
+    <!--        <div class="our-services  border-bottom">-->
+    <!--            <div class="container">-->
+    <!--                <div class="row">-->
+    <!--                    <div class=" col-lg-4 col-md-6 col-sm-6">-->
+    <!--                        <div class="single-services mb-30">-->
+    <!--                            <div class="services-ion">-->
+    <!--                                <span>01</span>-->
+    <!--                            </div>-->
+    <!--                            <div class="services-cap">-->
+    <!--                                <h5><a href="#">Find Businesses</a></h5>-->
+    <!--                                <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class=" col-lg-4 col-md-6 col-sm-6">-->
+    <!--                        <div class="single-services mb-30">-->
+    <!--                            <div class="services-ion">-->
+    <!--                                <span>02</span>-->
+    <!--                            </div>-->
+    <!--                            <div class="services-cap">-->
+    <!--                                <h5><a href="#">Review Listings</a></h5>-->
+    <!--                                <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class=" col-lg-4 col-md-6 col-sm-6">-->
+    <!--                        <div class="single-services mb-30">-->
+    <!--                            <div class="services-ion">-->
+    <!--                                <span>03</span>-->
+    <!--                            </div>-->
+    <!--                            <div class="services-cap">-->
+    <!--                                <h5><a href="#">Make a Reservation</a></h5>-->
+    <!--                                <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        &lt;!&ndash; Our Services End &ndash;&gt;-->
+    <!--        &lt;!&ndash;? Popular Directory Start &ndash;&gt;-->
+    <!--        <div class="popular-directorya-area section-padding40 border-bottom fix">-->
+    <!--            <div class="container">-->
+    <!--                <div class="row">-->
+    <!--                    <div class="col-lg-12">-->
+    <!--                        &lt;!&ndash; Section Tittle &ndash;&gt;-->
+    <!--                        <div class="section-tittle text-center mb-80">-->
+    <!--                            <h2>New Directory</h2>-->
+    <!--                            <p>Let's uncover the best places to eat, drink, and shop nearest to you.</p>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="directory-active">-->
+    <!--                    &lt;!&ndash; Single &ndash;&gt;-->
+    <!--                    <div class="properties pb-20">-->
+    <!--                        <div class="properties__card">-->
+    <!--                            <div class="properties__img overlay1">-->
+    <!--                                <a href="#"><img src="assets/img/gallery/newDirectory1.png" alt=""></a>-->
+    <!--                                <div class="img-text">-->
+    <!--                                    <span>$$$</span>-->
+    <!--                                    <span>Closed</span>-->
+    <!--                                </div>-->
+    <!--                                <div class="icon">-->
+    <!--                                    <img src="assets/img/gallery/categori_icon1.png" alt=""> -->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="properties__caption">-->
+    <!--                                <h3><a href="#">Urban areas</a></h3>-->
+    <!--                                <p>Let's uncover the best places to eat, drink</p>-->
+    <!--                            </div>-->
+    <!--                            <div class="properties__footer d-flex justify-content-between align-items-center">-->
+    <!--                                <div class="restaurant-name">-->
+    <!--                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">-->
+    <!--                                    <h3>Food & Restaurant</h3>-->
+    <!--                                </div>-->
+    <!--                                <div class="heart">-->
+    <!--                                    <img src="assets/img/gallery/heart1.png" alt="">-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    &lt;!&ndash; Single &ndash;&gt;-->
+    <!--                    <div class="properties pb-20">-->
+    <!--                        <div class="properties__card">-->
+    <!--                            <div class="properties__img overlay1">-->
+    <!--                                <a href="#"><img src="assets/img/gallery/newDirectory2.png" alt=""></a>-->
+    <!--                                <div class="img-text">-->
+    <!--                                    <span>$$$</span>-->
+    <!--                                    <span>Closed</span>-->
+    <!--                                </div>-->
+    <!--                                <div class="icon">-->
+    <!--                                    <img src="assets/img/gallery/categori_icon1.png" alt=""> -->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="properties__caption">-->
+    <!--                                <h3><a href="#">Urban areas</a></h3>-->
+    <!--                                <p>Let's uncover the best places to eat, drink</p>-->
+    <!--                            </div>-->
+    <!--                            <div class="properties__footer d-flex justify-content-between align-items-center">-->
+    <!--                                <div class="restaurant-name">-->
+    <!--                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">-->
+    <!--                                    <h3>Food & Restaurant</h3>-->
+    <!--                                </div>-->
+    <!--                                <div class="heart">-->
+    <!--                                    <img src="assets/img/gallery/heart1.png" alt="">-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    &lt;!&ndash; Single &ndash;&gt;-->
+    <!--                    <div class="properties pb-20">-->
+    <!--                        <div class="properties__card">-->
+    <!--                            <div class="properties__img overlay1">-->
+    <!--                                <a href="#"><img src="assets/img/gallery/newDirectory3.png" alt=""></a>-->
+    <!--                                <div class="img-text">-->
+    <!--                                    <span>$$$</span>-->
+    <!--                                    <span>Closed</span>-->
+    <!--                                </div>-->
+    <!--                                <div class="icon">-->
+    <!--                                    <img src="assets/img/gallery/categori_icon1.png" alt=""> -->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="properties__caption">-->
+    <!--                                <h3><a href="#">Urban areas</a></h3>-->
+    <!--                                <p>Let's uncover the best places to eat, drink</p>-->
+    <!--                            </div>-->
+    <!--                            <div class="properties__footer d-flex justify-content-between align-items-center">-->
+    <!--                                <div class="restaurant-name">-->
+    <!--                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">-->
+    <!--                                    <h3>Food & Restaurant</h3>-->
+    <!--                                </div>-->
+    <!--                                <div class="heart">-->
+    <!--                                    <img src="assets/img/gallery/heart1.png" alt="">-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    &lt;!&ndash; Single &ndash;&gt;-->
+    <!--                    <div class="properties pb-20">-->
+    <!--                        <div class="properties__card">-->
+    <!--                            <div class="properties__img overlay1">-->
+    <!--                                <a href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>-->
+    <!--                                <div class="img-text">-->
+    <!--                                    <span>$$$</span>-->
+    <!--                                    <span>Closed</span>-->
+    <!--                                </div>-->
+    <!--                                <div class="icon">-->
+    <!--                                    <img src="assets/img/gallery/categori_icon1.png" alt=""> -->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div class="properties__caption">-->
+    <!--                                <h3><a href="#">Urban areas</a></h3>-->
+    <!--                                <p>Let's uncover the best places to eat, drink</p>-->
+    <!--                            </div>-->
+    <!--                            <div class="properties__footer d-flex justify-content-between align-items-center">-->
+    <!--                                <div class="restaurant-name">-->
+    <!--                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">-->
+    <!--                                    <h3>Food & Restaurant</h3>-->
+    <!--                                </div>-->
+    <!--                                <div class="heart">-->
+    <!--                                    <img src="assets/img/gallery/heart1.png" alt="">-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!-- Popular Directory End -->
+    <!--? Popular Locations Start 01-->
+    <!--        <div class="popular-location border-bottom section-padding50">-->
+    <!--            <div class="container">-->
+    <!--                <div class="row">-->
+    <!--                    <div class="col-lg-12">-->
+    <!--                        &lt;!&ndash; Section Tittle &ndash;&gt;-->
+    <!--                        <div class="section-tittle text-center mb-40">-->
+    <!--                            <h2>Vesti o zapošljavanju</h2>-->
+    <!--&lt;!&ndash;                            <p>Budite prvi koji će saznati najnovije vesti u svetu zapošljavanja.</p>&ndash;&gt;-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="row">-->
+    <!--                    <div class="col-lg-6 col-md-6 col-sm-12">-->
+    <!--                        <div class="single-location mb-30">-->
+    <!--                            <div class="location-img">-->
+    <!--                                <img src="assets/img/gallery/home-blog1.png" alt="">-->
+    <!--                            </div>-->
+    <!--                            <div class="location-details">-->
+    <!--                                <a href="#" class="location-btn">Tips</a>-->
+    <!--                                <ul>-->
+    <!--                                    <li>12 March I by Alan</li>-->
+    <!--                                </ul>-->
+    <!--                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="col-lg-6 col-md-6 col-sm-12">-->
+    <!--                        <div class="single-location mb-30">-->
+    <!--                            <div class="location-img">-->
+    <!--                                <img src="assets/img/gallery/home-blog2.png" alt="">-->
+    <!--                            </div>-->
+    <!--                            <div class="location-details">-->
+    <!--                                <a href="#" class="location-btn">Tips</a>-->
+    <!--                                <ul>-->
+    <!--                                    <li>12 March I by Alan</li>-->
+    <!--                                </ul>-->
+    <!--                                <p><a href="blog_details">The Best SPA Salons For Your Relaxation</a></p>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!-- Popular Locations End -->
+    <!--? Want To work 02-->
+    <section class="wantToWork-area">
+        <div class="container">
+            <div class="wants-wrapper w-padding2">
+                <div class="row justify-content-between">
+                    <div class="col-xl-8 col-lg-8 col-md-7">
+                        <div class="wantToWork-caption wantToWork-caption2">
+                            <div class="logo">
+                                <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="60px" height="55px">
+                                    OglasiIMI</a>
                             </div>
+                            <br>
+                            <p>Dobro došli na stranicu portala <a href="#">OglasiIMI</a></p>
+
+                            <p>Portal <a href="#">OglasiIMI</a> je online berza poslova, nastao kao potreba za
+                                uspostavljanjem profesionalnog poslovnog sistema koji će pomoći Srbiji da poveća stopu
+                                zaposlenosti.</p>
+
+                            <p><a href="#">OglasiIMI</a> je namenjen poslodavcima i kandidatima, kao i svima onima koji
+                                imaju interesovanja za domen ljudskih resursa i praćenje uticaja koju ova oblast ima u
+                                razvoju privrede i društva u celini.</p>
+
+                            <p>Od samog početka rada portala <a href="#">OglasiIMI</a>, cilj nam je da pomognemo svojim
+                                kandidatima da nađu posao, da povećamo stopu zaposlenosti, kao i da postavljamo iznova
+                                standarde u oblasti ljudskih resursa. Naša vizija je da pomognemo i olakšamo
+                                poslodavcima potragu za kvalitetnim i pravim kadrom, koji će doprineti rastu i razvoju
+                                kompanije.</p>
+
+                            <p>Teoriju ćemo ostaviti drugima, a Vama ćemo pomoći da na praktičan način dođete do
+                                ostvarenja svog cilja - bilo da ste poslodavac ili budući zaposleni.</p>
+
+                            <p>Biće nam zadovoljstvo da budemo deo i Vašeg poslovnog uspeha. </p>
                         </div>
-                        <div class="col-xl-4 col-lg-4 col-md-5">
-                            <div class="footer-social f-right sm-left">
-                                <br>
-                                <h2>Kontakt</h2>
-                                <br>
-                                <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 61 11 22 333</p>
-                                <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 65 11 22 333</p>
-                                <p style="color:#000033"><i class="material-icons" style="color:#1f3654">email</i> <a href="#" style="color:#000033">OglasiIMI@pmf.kg.ac.rs</a></p>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5">
+                        <div class="footer-social f-right sm-left">
+                            <br>
+                            <h2>Kontakt</h2>
+                            <br>
+                            <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 61 11 22 333</p>
+                            <p><i class="material-icons" style="color:#1f3654">local_phone</i> +381 (0) 65 11 22 333</p>
+                            <p style="color:#000033"><i class="material-icons" style="color:#1f3654">email</i> <a
+                                    href="#" style="color:#000033">OglasiIMI@pmf.kg.ac.rs</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Want To work End -->
+    <!--? Want To work 01-->
+    <section class="wantToWork-area">
+        <div class="container">
+            <div class="wants-wrapper">
+                <div class="row align-items-center justify-content-center text-center">
+                    <div class="col-xl-7 col-lg-9 col-md-8">
+                        <div class="wantToWork-caption wantToWork-caption2">
+                            <div class="main-menu2">
+                                <nav>
+                                    <ul>
+                                        <li><a href="index">Početna</a></li>
+                                        <li><a href="listing">Kategorije</a></li>
+                                        <li><a href="employers">Poslodavci</a></li>
+                                        <li><a href="contact">Kontakt</a></li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Want To work End -->
-        <!--? Want To work 01-->
-        <section class="wantToWork-area">
-            <div class="container">
-                <div class="wants-wrapper">
-                    <div class="row align-items-center justify-content-center text-center">
-                        <div class="col-xl-7 col-lg-9 col-md-8">
-                            <div class="wantToWork-caption wantToWork-caption2">
-                                <div class="main-menu2">
-                                    <nav>
-                                        <ul>
-                                            <li><a href="index">Početna</a></li>
-                                            <li><a href="listing">Kategorije</a></li>
-                                            <li><a href="employers">Poslodavci</a></li>
-                                            <!--                                    <li><a href="signup">Pages</a>-->
-                                            <!--                                        <ul class="submenu">-->
-                                            <!--                                            <li><a href="directory_details">listing Details</a></li>-->
-                                            <!--                                            <li><a href="listing">Catagories</a></li>-->
-                                            <!--                                        </ul>-->
-                                            <!--                                    </li>-->
-                                            <li><a href="blog">Blog</a>
-<!--                                                <ul class="submenu">-->
-<!--                                                    <li><a href="blog_details">Blog Details</a></li>-->
-<!--                                                    <li><a href="elements">Elements</a></li>-->
-<!--                                                </ul>-->
-                                            </li>
-                                            <li><a href="contact">Kontakt</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-<!--                        <div class="col-xl-2 col-lg-3 col-md-4">-->
-<!--                            <a href="/signup" class="btn f-right sm-left">Add Listing</a>-->
-<!--                        </div>-->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Want To work End -->
+        </div>
+    </section>
+    <!-- Want To work End -->
 </main>
 <footer>
     <div class="footer-wrapper pt-5">
@@ -814,12 +661,9 @@
                         <div class="col-xl-10 col-lg-9 ">
                             <div class="footer-copy-right">
                                 <p>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy; <script>document.write(new Date().getFullYear());</script> | <a href="#">OglasiIMI</a> | All rights reserved.<!-- <a href="#"target="_blank">OglasiIMI</a>-->
-                                    <!--                                    This template is made with <i class="fa fa-heart"-->
-                                    <!--                                                                                        aria-hidden="true"></i> by <a-->
-                                    <!--                                        href="https://colorlib.com" target="_blank">Colorlib</a>-->
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script>
+                                    | <a href="#">OglasiIMI</a> | All rights reserved.
                                 </p>
                             </div>
                         </div>

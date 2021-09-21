@@ -61,13 +61,11 @@
                                 <li th:if="${role == 'ADMIN'}"><a href="admin_korisnici">Upravljaj korisnicima</a></li>
                                 <li th:if="${role == 'ADMIN'}"><a href="admin_poslodavci">Upravljaj poslodavcima</a></li>
                                 <li th:if="${role == 'ADMIN'}"><a href="admin_oglasi">Upravljaj oglasima</a></li>
-                                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a>
-                                </li>
+                                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a></li>
                                 <li><a href="contact">Kontakt</a></li>
                                 <li th:if="${username}">
                                     <a th:if="${role == 'USER'}" href="profil" th:text="' '+${username}"></a>
-                                    <a th:if="${role == 'PUSER'}" href="profil_poslodavac"
-                                       th:text="' '+${username}"></a>
+                                    <a th:if="${role == 'PUSER'}" href="profil_poslodavac" th:text="' '+${username}"></a>
                                 </li>
                                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
                                 <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
@@ -193,9 +191,14 @@
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a th:href="@{/oglas/(pageid=${posao.id})}"><img th:src="${'/slike/baneri/null/' + posao.baner}" alt=""></a>
+<!--                                    <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>-->
+                                    <a th:href="@{/oglas/(pageid=${posao.id})}"><img
+                                            th:src="${'/slike/baneri/null/' + posao.baner}" alt=""></a>
                                     <div class="icon">
                                         <img src="assets/img/gallery/categori_icon1.png" alt="">
+
+                                        <!--                                        <a th:href="@{/oglas/(pageid=${posao.id})}">-->
+<!--                                            <img th:src="${'/slike/baneri/null/' + posao.icon}" alt=""></a>-->
                                     </div>
                                 </div>
                                 <div class="properties__caption">

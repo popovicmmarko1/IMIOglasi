@@ -66,6 +66,7 @@
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
                                 <li th:if="${role == 'ADMIN'}"><a href="admin_korisnici">Upravljaj korisnicima</a></li>
+                                <li th:if="${role == 'ADMIN'}"><a href="admin_poslodavci">Upravljaj poslodavcima</a></li>
                                 <li th:if="${role == 'ADMIN'}"><a href="admin_oglasi">Upravljaj oglasima</a></li>
                                 <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a>
                                 </li>
@@ -121,7 +122,7 @@
                         <div class="u-align-center-xs u-container-style u-group u-group-1">
                             <div class="u-container-layout u-container-layout-2">
                                 <h4 class="u-custom-font u-font-oswald u-text u-text-1"
-                                    th:text="${korisnik.fname + ' ' + korisnik.lname}"></h4>
+                                    th:text="${korisnik.fName + ' ' + korisnik.lName}"></h4>
                                 <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"
                                     th:text="${'Email: ' + korisnik.email}"></h5>
                                 <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"
@@ -129,29 +130,7 @@
                                 <p class="u-text u-text-black-10 u-text-3" th:text="${korisnik.bio}"
                                    style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"></p>
                                 <div class="obriši-btn pb-3" style="margin:auto;border-radius:6px;">
-                                    <a href="#" onclick="document.getElementById('pretraga').submit()"><i
-                                            class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="u-align-center-xs u-container-style u-list-item u-repeater-item">
-                    <div class="u-container-layout u-similar-container u-valign-bottom-lg u-valign-top-xl u-container-layout-3">
-                        <div alt="" class="u-image u-image-circle u-image-2" data-image-width="598"
-                             data-image-height="598"></div>
-                        <div class="u-align-center-xs u-container-style u-group u-group-2">
-                            <div class="u-container-layout u-container-layout-4">
-                                <h4 class="u-custom-font u-font-oswald u-text u-text-4">Ann Richmond</h4>
-                                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-5">manager</h5>
-                                <p class="u-text u-text-grey-10 u-text-6"
-                                   style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">
-                                    Sample text. Click to select the text box. Click
-                                    again or double click to start editing the text.</p>
-                                <div class="obriši-btn pt-3 pb-3" style="margin:auto;border-radius:6px;">
-                                    <a href="#" onclick="document.getElementById('pretraga').submit()"><i
-                                            class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button>
+                                    <a th:href="@{/obrisiuser/(id=${korisnik.id})}"><i class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button>
                                     </a>
                                 </div>
                             </div>

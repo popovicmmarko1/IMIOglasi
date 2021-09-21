@@ -57,7 +57,7 @@
                 <div class="menu-wrapper d-flex align-items-center justify-content-between">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt="">
+                        <a href="/"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt="">
                             OglasiIMI</a>
                     </div>
                     <!-- Main-menu -->
@@ -68,12 +68,15 @@
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
                                 <li th:if="${role == 'ADMIN'}"><a href="admin_korisnici">Upravljaj korisnicima</a></li>
+                                <li th:if="${role == 'ADMIN'}"><a href="admin_poslodavci">Upravljaj poslodavcima</a></li>
                                 <li th:if="${role == 'ADMIN'}"><a href="admin_oglasi">Upravljaj oglasima</a></li>
-                                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a>
+                                </li>
                                 <li><a href="contact">Kontakt</a></li>
                                 <li th:if="${username}">
                                     <a th:if="${role == 'USER'}" href="profil" th:text="' '+${username}"></a>
-                                    <a th:if="${role == 'PUSER'}" href="profil_poslodavac" th:text="' '+${username}"></a>
+                                    <a th:if="${role == 'PUSER'}" href="profil_poslodavac"
+                                       th:text="' '+${username}"></a>
                                 </li>
                                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
                                 <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
@@ -81,9 +84,9 @@
                             </ul>
                         </nav>
                     </div>
+
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
-
                     </div>
                 </div>
             </div>
@@ -116,22 +119,14 @@
 
                 <div class="text-left mt-3">
                     <h4 class="font-13 text-muted text-uppercase">O nama:</h4>
-                    <p class="text-muted font-13 mb-3" th:text="${opis}">
+                    <p class="text-muted font-13 mb-3" th:text="${opis}"></p>
+                    <p class="text-muted mb-2 font-13"><strong>Naziv firme:</strong> <span class="ml-2" th:text="${naziv}"></span></p>
 
-                    </p>
-                    <p class="text-muted mb-2 font-13"><strong>Naziv firme:</strong> <span class="ml-2"
-                                                                                              th:text="${naziv}"></span>
-                    </p>
+                    <p class="text-muted mb-2 font-13"><strong>Broj telefona :</strong><span class="ml-2" th:text="${telefon}"></span></p>
 
-                    <p class="text-muted mb-2 font-13"><strong>Broj telefona :</strong><span class="ml-2"
-                                                                                             th:text="${telefon}"></span>
-                    </p>
+                    <p class="text-muted mb-2 font-13"><strong>E-mail :</strong> <span class="ml-2 " th:text="${email}"></span></p>
 
-                    <p class="text-muted mb-2 font-13"><strong>E-mail :</strong> <span class="ml-2 "
-                                                                                       th:text="${email}"></span></p>
-
-                    <p class="text-muted mb-1 font-13"><strong>Lokacija :</strong> <span class="ml-2"
-                                                                                         th:text="${adresa} + ' ,' + ${grad}" ></span></p>
+                    <p class="text-muted mb-1 font-13"><strong>Lokacija :</strong> <span class="ml-2" th:text="${adresa} + ' ,' + ${grad}" ></span></p>
                 </div>
             </div> <!-- end card-box -->
 
@@ -194,7 +189,7 @@
                     <!-- end timeline content-->
 
                     <div class="tab-pane" id="settings">
-                        <form>
+                        <form method="POST" action="/profilpromenap" enctype="multipart/form-data">
                             <h5 class="mb-3 text-muted text-uppercase bg-light p-2"><i class="mdi mdi-account-circle mr-1"></i>
                                 Podaci o firmi</h5>
 
@@ -202,8 +197,7 @@
 <!--                                <div class="col-md-6">-->
                                     <div class="form-group">
                                         <label for="poslodavac">Naziv firme</label>
-                                        <input type="text" class="form-control" id="poslodavac" name="naziv"
-                                               placeholder="Unesite naziv firme">
+                                        <input type="text" class="form-control" id="poslodavac" name="naziv" placeholder="Unesite naziv firme">
                                     </div>
 <!--                                </div>-->
 <!--                                <div class="col-md-6">-->
@@ -218,15 +212,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="grad">Grad</label>
-                                        <input type="text" class="form-control" id="grad" name="grad"
-                                               placeholder="Unesite grad">
+                                        <input type="text" class="form-control" id="grad" name="grad" placeholder="Unesite grad">
                                     </div>
+                                </div>
+                                <div style="display: none;">
+                                    <input th:value="${userId}" name="id">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="adresaposlodavca">Adresa</label>
-                                        <input type="text" class="form-control" id="adresaposlodavca" name="adresa"
-                                               placeholder="Unesite adresu">
+                                        <input type="text" class="form-control" id="adresaposlodavca" name="adresa" placeholder="Unesite adresu">
                                     </div>
                                 </div> <!-- end col -->
                             </div>
@@ -234,8 +229,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="opis">Opis</label>
-                                        <textarea class="form-control" id="opis" rows="4" name="opis"
-                                                  placeholder="Upišite nešto o firmi..."></textarea>
+                                        <textarea class="form-control" id="opis" rows="4" name="opis" placeholder="Upišite nešto o firmi..."></textarea>
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -244,15 +238,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="telofon">Kontakt telefon</label>
-                                        <input type="text" class="form-control" id="telofon" name="telofon"
-                                               placeholder="Unesite broj telefona">
+                                        <input type="text" class="form-control" id="telofon" name="telefon" placeholder="Unesite broj telefona">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="emailp">E-mail</label>
-                                        <input type="email" class="form-control" id="emailp" name="emailp"
-                                               placeholder="Unesite e-mail">
+                                        <input type="email" class="form-control" id="emailp" name="email" placeholder="Unesite e-mail">
 
                                     </div>
                                 </div>
@@ -261,13 +253,13 @@
                             <div class="row">
                                 <div class="col-md-6 mt-15">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="slika_baner" id="slika_baner">
+                                        <input type="file" class="custom-file-input" name="baner" id="slika_baner">
                                         <label class="custom-file-label" for="slika_baner">Izaberite baner</label>
                                     </div>
                                 </div> <!-- end col -->
                                 <div class="col-md-6 mt-15">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="slika_logo" id="slika_logo">
+                                        <input type="file" class="custom-file-input" name="logo" id="slika_logo">
                                         <label class="custom-file-label" for="slika_logo">Izaberite logo</label>
                                     </div>
                                 </div> <!-- end col -->

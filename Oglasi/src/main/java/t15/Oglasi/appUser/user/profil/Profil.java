@@ -23,8 +23,9 @@ public class Profil {
     @Column(columnDefinition = "TEXT")
     private String opis;
     private LocalDateTime datumRodjenja;
+    private String slika;
 
-    public Profil(Long appUserId, String mesto, String brTelefona, String opis, LocalDateTime datumRodjenja) {
+    public Profil(Long appUserId, String mesto, String brTelefona, String opis, LocalDateTime datumRodjenja, String slika) {
         AppUserId = appUserId;
         this.mesto = mesto;
         this.brTelefona = brTelefona;

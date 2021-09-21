@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -18,6 +19,9 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 
     @Query(value = "SELECT * FROM app_user a WHERE a.id = ?1", nativeQuery = true)
     AppUser findById1(Long id);
+
+    @Query(value = "SELECT * FROM app_user a WHERE a.app_user_role = 'USER'", nativeQuery = true)
+    List<Long> findAllByRole();
 
     @Transactional
     @Modifying

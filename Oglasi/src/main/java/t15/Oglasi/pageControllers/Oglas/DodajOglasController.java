@@ -29,18 +29,20 @@ public class DodajOglasController {
 
     @PostMapping
     public String saveOglas(Oglas request, @RequestParam("image") MultipartFile file, HttpServletResponse response) throws IOException {
+
+
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         request.setBaner(fileName);
+        String dir = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\slike\\baneri\\" + request.getId() + "\\";
+        DodajOglasController.saveFile(dir, fileName, file);
+
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         request.setPostavljen(LocalDateTime.now().format(df));
 
-        String dir = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\slike\\baneri\\" + request.getId() + "\\";
 
-        DodajOglasController.saveFile(dir, fileName, file);
+
+
         Oglas saved = oglasService.postaviOglas(request);
-
-
-
         response.sendRedirect("/");
         return "Uspesno postavljen oglas";
     }

@@ -30,5 +30,8 @@ public interface ProfilRepository extends JpaRepository<Profil, Long> {
     @Query(value = "UPDATE Profil p SET p.mesto = ?1 WHERE p.app_user_id = ?2", nativeQuery = true)
     public void updateMesto(String mesto, Long id);
 
-
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE Profil p SET p.slika = ?1 WHERE p.app_user_id = ?2", nativeQuery = true)
+    void updateSlika(String slikap, Long id);
 }

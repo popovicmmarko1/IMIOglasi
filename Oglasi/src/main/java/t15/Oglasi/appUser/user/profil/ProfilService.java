@@ -27,4 +27,7 @@ public class ProfilService {
     }
 
 
+    public void updateSlika(String slikap, Long id) {
+        profilRepository.updateSlika(slikap, id);
+    }
 }

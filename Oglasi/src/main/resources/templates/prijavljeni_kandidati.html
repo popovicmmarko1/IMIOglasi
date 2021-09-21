@@ -33,25 +33,6 @@
     <link rel="stylesheet" href="css/nicepage.css" media="screen">
     <link rel="stylesheet" href="css/home.css" media="screen">
 </head>
-
-<head>
-<!--    <link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
-<!--    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">-->
-<!--    <link rel="stylesheet" href="assets/css/slicknav.css">-->
-<!--    <link rel="stylesheet" href="assets/css/flaticon.css">-->
-<!--    <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">-->
-<!--    <link rel="stylesheet" href="assets/css/gijgo.css">-->
-<!--    <link rel="stylesheet" href="assets/css/animate.min.css">-->
-<!--    <link rel="stylesheet" href="assets/css/animated-headline.css">-->
-<!--    <link rel="stylesheet" href="assets/css/magnific-popup.css">-->
-<!--    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">-->
-<!--    <link rel="stylesheet" href="assets/css/themify-icons.css">-->
-<!--    <link rel="stylesheet" href="assets/css/slick.css">-->
-<!--    <link rel="stylesheet" href="assets/css/nice-select.css">-->
-<!--    <link rel="stylesheet" href="assets/css/style.css">-->
-<!--    <link rel="stylesheet" href="css/nicepage.css" media="screen">-->
-<!--    <link rel="stylesheet" href="css/home.css" media="screen">-->
-</head>
 <body>
 <!-- ? Preloader Start -->
 <div id="preloader-active">
@@ -83,11 +64,16 @@
                                 <li><a href="index">Početna</a></li>
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
-                                <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${role == 'ADMIN'}"><a href="admin_korisnici">Upravljaj korisnicima</a></li>
+                                <li th:if="${role == 'ADMIN'}"><a href="admin_oglasi">Upravljaj oglasima</a></li>
                                 <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a></li>
-                                <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
+                                <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${username}">
+                                    <a th:if="${role == 'USER'}" href="profil" th:text="' '+${username}"></a>
+                                    <a th:if="${role == 'PUSER'}" href="profil_poslodavac" th:text="' '+${username}"></a>
+                                </li>
                                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
-                                <li th:if="${role == 'PUSER' && username}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
                                 <li th:if="${username}"><a href="logout">Odjavi se</a></li>
                             </ul>
                         </nav>

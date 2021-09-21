@@ -56,11 +56,16 @@
                                 <li><a href="index">Početna</a></li>
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
-                                <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${role == 'ADMIN'}"><a href="admin_korisnici">Upravljaj korisnicima</a></li>
+                                <li th:if="${role == 'ADMIN'}"><a href="admin_oglasi">Upravljaj oglasima</a></li>
                                 <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a></li>
-                                <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
+                                <li><a href="contact">Kontakt</a></li>
+                                <li th:if="${username}">
+                                    <a th:if="${role == 'USER'}" href="profil" th:text="' '+${username}"></a>
+                                    <a th:if="${role == 'PUSER'}" href="profil_poslodavac" th:text="' '+${username}"></a>
+                                </li>
                                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
-                                <li th:if="${role == 'PUSER' && username}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
                                 <li th:if="${username}"><a href="logout">Odjavi se</a></li>
                             </ul>
                         </nav>

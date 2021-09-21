@@ -31,7 +31,6 @@ public class ListingController {
     public String pretraga(@RequestParam Optional<Integer> page, @RequestParam Optional<String> search, @RequestParam Optional<String> grad,
                            @RequestParam Optional<String> oblast, @RequestParam Optional<String> obrazovanje, @RequestParam Optional<String> ri,
                            @RequestParam Optional<String> tip, @RequestParam Optional<String> pol, @RequestParam Optional<String> rv,
-                           @RequestParam Optional<String> po, @RequestParam Optional<String> pi, @RequestParam Optional<String> vp,
                            Model model, Principal principal)
     {
         try{

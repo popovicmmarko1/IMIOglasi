@@ -189,29 +189,24 @@
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <!-- <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>-->
                                     <a th:href="@{/oglas/(pageid=${posao.id})}"><img th:src="${'/slike/baneri/null/' + posao.baner}" alt=""></a>
                                     <div class="icon">
                                         <img src="assets/img/gallery/categori_icon1.png" alt="">
-
-                                        <!--                                        <a th:href="@{/oglas/(pageid=${posao.id})}">-->
-                                        <!--                                            <img th:src="${'/slike/baneri/null/' + posao.icon}" alt=""></a>-->
                                     </div>
                                 </div>
                                 <div class="properties__caption">
                                     <h3><a th:href="@{/oglas/(pageid=${posao.id})}" th:text="${posao.name}"></a></h3>
-                                    <p th:text="${posao.opis}" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"></p>
+                                    <p style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;" th:text="${posao.opis}"></p>
                                 </div>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="restaurant-name">
                                         <img src="assets/img/gallery/city2.png" width="40px" height="35px" alt="">
                                         <!--                                        <img src="assets/img/gallery/city3.png" width="50px" height="45px" alt="">-->
                                         <h3 th:text="${posao.mesto}"></h3>
-
                                     </div>
                                 </div>
                                 <div class="obriši-btn pb-3" style="margin:auto">
-                                    <a href="#" ><i class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button></a>
+                                    <a th:href="@{/obrisioglas(id=${posao.id})}" ><i class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button></a>
                                 </div>
                             </div>
                         </div>

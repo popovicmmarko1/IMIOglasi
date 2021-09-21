@@ -32,20 +32,24 @@ public class AdminController {
 
 
     @GetMapping(value = {"admin_korisnici",  "/admin_korisnici.html"})
-    public String admin_korisnici()
+    public String admin_korisnici(Model model)
     {
         return "admin_korisnici";
     }
 
     @GetMapping(value = {"admin_oglasi",  "/admin_oglasi.html"})
-    public String admin_oglasi()
+    public String admin_oglasi(Model model)
     {
+        model.addAttribute("sviOglasi", oglasRepository.findAll());
+
         return "admin_oglasi";
     }
 
     @GetMapping(value = {"admin_poslodavci",  "/admin_poslodavci.html"})
-    public String admin_poslodavci()
+    public String admin_poslodavci(Model model)
     {
+
+
         return "admin_poslodavci";
     }
 

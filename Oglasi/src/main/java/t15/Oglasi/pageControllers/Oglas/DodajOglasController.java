@@ -25,8 +25,6 @@ public class DodajOglasController {
     @Autowired
     private OglasService oglasService;
 
-
-
     @PostMapping
     public String saveOglas(Oglas request, @RequestParam("image") MultipartFile file, HttpServletResponse response) throws IOException {
 
@@ -39,14 +37,10 @@ public class DodajOglasController {
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         request.setPostavljen(LocalDateTime.now().format(df));
 
-
-
-
         Oglas saved = oglasService.postaviOglas(request);
         response.sendRedirect("/");
         return "Uspesno postavljen oglas";
     }
-
 
     public static void saveFile(String uploadDir, String fileName, MultipartFile multipartFile) throws IOException {
         Path uploadPath = Paths.get(uploadDir);

@@ -19,11 +19,8 @@ import java.util.Optional;
 
 @Controller
 public class ListingController {
-
     @Autowired
     AppUserRepository appUserRepository;
-    @Autowired
-    OglasRepository oglasRepository;
     @Autowired
     OglasService oglasService;
 
@@ -39,10 +36,9 @@ public class ListingController {
             {
                 model.addAttribute("username",ulogovan.get().getFName());
             }
-        }catch (Exception e){
+        }catch (Exception e) {
             System.out.println("Nije ulogovan!");
         }
-
 
         String search1 = search.orElse(null);
         String grad1 = grad.orElse(null);
@@ -53,9 +49,7 @@ public class ListingController {
         String pol1 = pol.orElse(null);
         String rv1 = rv.orElse(null);
 
-
         Page<Oglas> oglasi = oglasService.findByPagingCriteria(search1, grad1, oblast1, obrazovanje1, ri1, tip1, pol1, rv1, PageRequest.of(page.orElse(0), 6));
-        //List<Oglas> oglasi = oglasService.findByPagingCriteria(null, null, null, null, null, null, null, null, PageRequest.of(page.orElse(1), 6));
         model.addAttribute("oglasi", oglasi);
         model.addAttribute("nop", oglasi.getTotalPages());
         model.addAttribute("noe",oglasi.getTotalElements());

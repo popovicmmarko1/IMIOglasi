@@ -27,19 +27,15 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class OglasService {
-
     @Autowired
     private final OglasRepository oglasRepository;
-
     public Oglas postaviOglas(Oglas request) {
         return oglasRepository.save(request);
     }
-
     public void obrisiOglas(Long id)
     {
         oglasRepository.delete(oglasRepository.findById(id).get());
     }
-
     public Page<Oglas> findByPagingCriteria(String search, String grad, String oblast, String obrazovanje, String ri, String tip, String pol, String rv, Pageable pageable) {
 
         Page<Oglas> page = oglasRepository.findAll(new Specification<Oglas>() {
@@ -51,42 +47,26 @@ public class OglasService {
                     if(!search.equals(""))
                         predicates.add(criteriaBuilder.and(criteriaBuilder.like(root.get("name"), "%" + search + "%")));
                 }
-
                 if (grad != null) {
                     if(!grad.equals(""))
                         predicates.add(criteriaBuilder.and(criteriaBuilder.like(root.get("mesto"), "%" + grad + "%")));
                 }
-
                 if (oblast != null) {
                     if(!oblast.equals(""))
                         predicates.add(criteriaBuilder.and(criteriaBuilder.like(root.get("oblast"), "%" + oblast + "%")));
                 }
-
                 if (obrazovanje != null) {
                     predicates.add(criteriaBuilder.and(criteriaBuilder.like(root.get("obrazovanje"), "%" + obrazovanje + "%")));
                 }
-
-                if (ri != null) {
-                    predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("ri"), ri)));
-                }
-
-                if (tip != null) {
-                    predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("tip"), tip)));
-                }
-
-                if (pol != null) {
-                    predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("pol"), pol)));
-                }
-                if (rv != null) {
-                    predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("rv"), rv)));
-                }
+                if (ri != null) { predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("ri"), ri)));}
+                if (tip != null) { predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("tip"), tip)));}
+                if (pol != null) {predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("pol"), pol)));}
+                if (rv != null) {predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("rv"), rv)));}
                 return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
             }
         }, pageable);
         page.getTotalElements();        // get total elements
         page.getTotalPages();           // get total pages
-
         return page;       // get List of Employee
     }
-
 }

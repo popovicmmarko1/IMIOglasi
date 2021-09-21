@@ -25,39 +25,27 @@ public class ProfilPromenaController {
     private AppUserService appUserService;
     @Autowired
     private ProfilService profilService;
-
     @PostMapping
     public String promeniProfil(ProfilRequest request, @RequestParam("image") MultipartFile slika, HttpServletResponse response) throws IOException {
 
         Long id = request.getUserId();
         System.out.println(request);
-        if(!request.getIme().equals("")) {
-            appUserService.updateIme(request.getIme(), id);
-        }
-        if(!request.getPrezime().equals("")) {
-            appUserService.updatePrezime(request.getPrezime(), id);
-        }
+        if(!request.getIme().equals("")) { appUserService.updateIme(request.getIme(), id); }
+        if(!request.getPrezime().equals("")) { appUserService.updatePrezime(request.getPrezime(), id); }
         if(!request.getEmail().equals("")) {
             appUserService.updateEmail(request.getEmail(), id);
             response.sendRedirect("/logout");
             return "OK";
         }
-        if(!request.getBio().equals("")) {
-            profilService.updateBio(request.getBio(), id);
-        }
-        if(!request.getTelefon().equals("")) {
-            profilService.updateTelefon(request.getTelefon(), id);
-        }
-        if(!request.getMesto().equals("")) {
-            profilService.updateMesto(request.getMesto(), id);
-        }
+        if(!request.getBio().equals("")) { profilService.updateBio(request.getBio(), id); }
+        if(!request.getTelefon().equals("")) { profilService.updateTelefon(request.getTelefon(), id); }
+        if(!request.getMesto().equals("")) { profilService.updateMesto(request.getMesto(), id); }
         if(!slika.isEmpty()){
             String slikap = StringUtils.cleanPath(slika.getOriginalFilename());
             profilService.updateSlika(slikap, id);
             String dir = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\slike\\slika\\" + request.getUserId() + "\\";
             PoslodavacPromenaController.saveFile(dir, slikap, slika);
         }
-
         response.sendRedirect("/profil");
         return "OK";
     }

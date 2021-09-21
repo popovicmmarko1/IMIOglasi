@@ -26,32 +26,21 @@ import java.util.Optional;
 public class PoslodavacPromenaController {
     @Autowired
     private PoslodavacService poslodavacService;
-
     @PostMapping
-    public String promeniProfil(PoslodavacPromena request, @RequestParam(name = "baner", required = false) MultipartFile baner, @RequestParam(name = "logo", required = false) MultipartFile logo, HttpServletResponse response) throws IOException {
-
+    public String promeniProfil(PoslodavacPromena request, @RequestParam(name = "baner", required = false) MultipartFile baner,
+                                @RequestParam(name = "logo", required = false) MultipartFile logo, HttpServletResponse response) throws IOException {
         Long id = request.getId();
         System.out.println(request);
-        if(!request.getNaziv().equals("")) {
-            poslodavacService.updateNaziv(request.getNaziv(), id);
-        }
-        if(!request.getGrad().equals("")) {
-            poslodavacService.updateGrad(request.getGrad(), id);
-        }
+        if(!request.getNaziv().equals("")) { poslodavacService.updateNaziv(request.getNaziv(), id); }
+        if(!request.getGrad().equals("")) {  poslodavacService.updateGrad(request.getGrad(), id); }
         if(!request.getEmail().equals("")) {
             poslodavacService.updateEmail(request.getEmail(), id);
             response.sendRedirect("/logout");
             return "OK";
         }
-        if(!request.getOpis().equals("")) {
-            poslodavacService.updateOpis(request.getOpis(), id);
-        }
-        if(!request.getTelefon().equals("")) {
-            poslodavacService.updateTelefon(request.getTelefon(), id);
-        }
-        if(!request.getAdresa().equals("")) {
-            poslodavacService.updateMesto(request.getAdresa(), id);
-        }
+        if(!request.getOpis().equals("")) { poslodavacService.updateOpis(request.getOpis(), id); }
+        if(!request.getTelefon().equals("")) { poslodavacService.updateTelefon(request.getTelefon(), id); }
+        if(!request.getAdresa().equals("")) { poslodavacService.updateMesto(request.getAdresa(), id); }
         if(!baner.isEmpty())
         {
             System.out.println("Usao sam ovde");

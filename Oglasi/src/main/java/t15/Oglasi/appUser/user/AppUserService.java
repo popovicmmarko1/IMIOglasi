@@ -32,8 +32,6 @@ public class AppUserService implements UserDetailsService {
         {
             throw new IllegalStateException("Email taken!");
         }
-
-
         System.out.println(appUser.getEmail());
         String encodedPass = bCryptPasswordEncoder.encode(appUser.getPassword());
         appUser.setPassword(encodedPass);

@@ -58,28 +58,17 @@
                             OglasiIMI</a>
                     </div>
                     <!-- Main-menu -->
-                    <div th:if="${username != 'null'}" class="main-menu f-right d-none d-lg-block">
+                    <div class="main-menu f-right d-none d-lg-block">
                         <nav>
-                            <ul id="navigation_prijavljen">
+                            <ul id="navigation">
                                 <li><a href="index">Početna</a></li>
                                 <li><a href="listing">Kategorije</a></li>
                                 <li><a href="employers">Poslodavci</a></li>
                                 <li><a href="contact">Kontakt</a></li>
                                 <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
                                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
-                                <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                <li th:if="${role == 'PUSER' && username}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
                                 <li th:if="${username}"><a href="logout">Odjavi se</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div th:if="${username == 'null'}" class="main-menu f-right d-none d-lg-block">
-                        <nav>
-                            <ul id="navigation_neprijavljen">
-                                <li><a href="index">Početna</a></li>
-                                <li><a href="listing">Kategorije</a></li>
-                                <li><a href="employers">Poslodavci</a></li>
-                                <li><a href="contact">Kontakt</a></li>
-                                <li><a href="login"> Prijavi se</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -136,7 +125,7 @@
 <!--                <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Message</button>-->
 
                 <div class="text-left mt-3">
-                    <h4 class="font-13 text-uppercase">O meni :</h4>
+                    <h4 class="font-13 text-muted text-uppercase">O meni :</h4>
                     <p class="text-muted font-13 mb-3" th:text="${bio}">
 
                     </p>
@@ -228,7 +217,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
-                            <i class="mdi mdi-settings-outline mr-1"></i>Imena podataka
+                            <i class="mdi mdi-settings-outline mr-1"></i>Izmena podataka
                         </a>
                     </li>
                 </ul>
@@ -392,6 +381,7 @@
                                     </div>
                                 </div> <!-- end col -->
                             </div>
+
 
                             <div class="text-right">
                                 <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Sačuvaj</button>

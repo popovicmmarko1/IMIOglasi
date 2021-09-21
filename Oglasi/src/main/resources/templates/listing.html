@@ -49,28 +49,17 @@
                             <a href="index"><img src="images/icons/LogoOglasiIMI.png" width="50px" height="45px" alt=""> OglasiIMI</a>
                         </div>
                         <!-- Main-menu -->
-                        <div th:if="${username != 'null'}" class="main-menu f-right d-none d-lg-block">
+                        <div class="main-menu f-right d-none d-lg-block">
                             <nav>
-                                <ul id="navigation_prijavljen">
+                                <ul id="navigation">
                                     <li><a href="index">Početna</a></li>
                                     <li><a href="listing">Kategorije</a></li>
                                     <li><a href="employers">Poslodavci</a></li>
                                     <li><a href="contact">Kontakt</a></li>
                                     <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
                                     <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
-                                    <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
+                                    <li th:if="${role == 'PUSER' && username}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
                                     <li th:if="${username}"><a href="logout">Odjavi se</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div th:if="${username == 'null'}" class="main-menu f-right d-none d-lg-block">
-                            <nav>
-                                <ul id="navigation_neprijavljen">
-                                    <li><a href="index">Početna</a></li>
-                                    <li><a href="listing">Kategorije</a></li>
-                                    <li><a href="employers">Poslodavci</a></li>
-                                    <li><a href="contact">Kontakt</a></li>
-                                    <li><a href="login"> Prijavi se</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -187,17 +176,17 @@
                         </div>
                         <!--  Select State items End-->
                         <!-- Select km items start -->
-                        <div class="select-job-items2">
-                            <select name="select5">
-                                <option value="">Poslodavac (neka bude polje za pretragu)</option>
-                                <option value="">
-<!--                                    <div class="search-box mb-100 input-form">-->
-<!--                                    <input type="text" placeholder="What are you finding?">-->
-<!--                                    <div class="bs-searchbox"><input type="text" class="form-control" autocomplete="off" placeholder="Unesite naziv grada"></div>-->
-<!--                                </div>-->
-                                </option>
-                            </select>
-                        </div>
+<!--                        <div class="select-job-items2">-->
+<!--                            <select name="select5">-->
+<!--                                <option value="">Poslodavac (neka bude polje za pretragu)</option>-->
+<!--                                <option value="">-->
+<!--&lt;!&ndash;                                    <div class="search-box mb-100 input-form">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <input type="text" placeholder="What are you finding?">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="bs-searchbox"><input type="text" class="form-control" autocomplete="off" placeholder="Unesite naziv grada"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                                </option>-->
+<!--                            </select>-->
+<!--                        </div>-->
                         <!--  Select km items End-->
                         <!-- Select km items start -->
                         <div class="select-job-items2">
@@ -306,61 +295,9 @@
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <!-- select-Categories End -->
-                        <!-- select-Categories start -->
-<!--                        <div class="select-Categories pb-20">-->
-<!--                            <div class="small-section-tittle2 mb-20">-->
-<!--                                <h4>Tags</h4>-->
-<!--                            </div>-->
-<!--                            <label class="container">Wireless Internet-->
-<!--                                <input type="checkbox">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                            <label class="container">Accepts Credit Cards-->
-<!--                                <input type="checkbox" checked="checked active">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                            <label class="container">Smoking Allowed-->
-<!--                                <input type="checkbox">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                            <label class="container">Parking Street-->
-<!--                                <input type="checkbox">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                            <label class="container">Coupons-->
-<!--                                <input type="checkbox">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                        </div>-->
-                        <!-- select-Categories End -->
-                        <!-- select-Categories start -->
-<!--                        <div class="select-Categories">-->
-<!--                            <div class="small-section-tittle2 mb-20">-->
-<!--                                <h4>Tags</h4>-->
-<!--                            </div>-->
-<!--                            <label class="container">Wireless Internet-->
-<!--                                <input type="checkbox">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                            <label class="container">Accepts Credit Cards-->
-<!--                                <input type="checkbox" checked="checked active">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                            <label class="container">Smoking Allowed-->
-<!--                                <input type="checkbox">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                            <label class="container">Parking Street-->
-<!--                                <input type="checkbox">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                            <label class="container">Coupons-->
-<!--                                <input type="checkbox">-->
-<!--                                <span class="checkmark"></span>-->
-<!--                            </label>-->
-<!--                        </div>-->
-                        <!-- select-Categories End -->
+                        <div class="primeni-filtere-btn">
+                            <a href="#" onclick="document.getElementById('pretraga').submit()"><i class="ti-filter justify-content-between align-items-center"></i>PRIMENI FILTERE</button></a>
+                        </div>
                     </div>
                 </div>
                 <!-- Job Category Listing End -->

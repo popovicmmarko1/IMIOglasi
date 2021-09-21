@@ -119,10 +119,13 @@
                                 <select id="select2" th:name="oblast">
                                     <option value="" selected hidden disabled>Oblast rada</option>
                                     <option value="IT">IT</option>
-                                    <option value="Trgovina">Trgovina, prodaja</option>
+                                    <option value="Trgovina">Trgovina / prodaja</option>
                                     <option value="Masinstvo">Mašinstvo</option>
                                     <option value="Administracija">Administracija</option>
                                     <option value="Bankarstvo">Bankarstvo</option>
+                                    <option value="Farmacija">Farmacija</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Medicina">Medicina</option>
                                 </select>
                             </div>
                             <div class="search-form">
@@ -159,7 +162,7 @@
                             <p>Najpopularnije kategorije</p>
                         </div>
                         <div class="najpopularnije text-center pb-20">
-                            <a href="#" class="location-btn mb-2">Programiranje</a>
+                            <a href="#" onclick="document.getElementById('pretraga2').submit()" class="location-btn mb-2">Programiranje</a>
                             <a href="#" class="location-btn mb-2">Trgovina / Prodaja</a>
                             <a href="#" class="location-btn mb-2">IT</a>
                             <a href="#" class="location-btn mb-2">Farmacija</a>
@@ -237,26 +240,20 @@
                     <div class="properties pb-20">
                         <div class="properties__card">
                             <div class="properties__img overlay1">
-                                <a href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>
-                                <div class="img-text">
-                                    <span>$$$</span>
-                                    <span>Closed</span>
-                                </div>
+                                <a th:href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>
                                 <div class="icon">
                                     <img src="assets/img/gallery/categori_icon1.png" alt="">
                                 </div>
                             </div>
                             <div class="properties__caption">
-                                <h3><a href="#">Ime poslodavca</a></h3>
-                                <p>Kratak opis poslodavca i cime se bavi</p>
+                                <h3><a href="#" th:text="${poslodavac.naziv}"></a></h3>
+                                <p th:text="${poslodavac.opis}"
+                                style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"></p>
                             </div>
                             <div class="properties__footer d-flex justify-content-between align-items-center">
                                 <div class="restaurant-name">
-                                    <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                    <h3>Oblast rada</h3>
-                                </div>
-                                <div class="heart">
-                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                    <img src="assets/img/gallery/city2.png" width="40px" height="35px" alt="">
+                                    <h3 th:text="${' ' + poslodavac.grad}"></h3>
                                 </div>
                             </div>
                         </div>

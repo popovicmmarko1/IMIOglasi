@@ -1,5 +1,6 @@
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -66,11 +67,13 @@
                                 <li><a href="employers">Poslodavci</a></li>
                                 <li th:if="${role == 'ADMIN'}"><a href="admin_korisnici">Upravljaj korisnicima</a></li>
                                 <li th:if="${role == 'ADMIN'}"><a href="admin_oglasi">Upravljaj oglasima</a></li>
-                                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a></li>
+                                <li th:if="${role == 'PUSER'}"><a href="objavljeni_poslovi" class="">Moji poslovi</a>
+                                </li>
                                 <li><a href="contact">Kontakt</a></li>
                                 <li th:if="${username}">
                                     <a th:if="${role == 'USER'}" href="profil" th:text="' '+${username}"></a>
-                                    <a th:if="${role == 'PUSER'}" href="profil_poslodavac" th:text="' '+${username}"></a>
+                                    <a th:if="${role == 'PUSER'}" href="profil_poslodavac"
+                                       th:text="' '+${username}"></a>
                                 </li>
                                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
                                 <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
@@ -107,54 +110,52 @@
             </div>
         </div>
     </div>
-<!--    <div class="slider-area hero-bg3 hero-overly">-->
-<!--        <div class="single-slider   slider-height2 d-flex align-items-end">-->
-<!--            <div class="container">-->
-<!--                <div class="directory-details-head">-->
-<!--                    <section class="wantToWork-area">-->
-<!--                        <div class="wants-wrapper w-padding3">-->
-<!--                            <div class="row align-items-center justify-content-between">-->
-<!--                                <div class="col-xl-8">-->
-<!--                                    <div class="details-cap d-flex">-->
-<!--                                        &lt;!&ndash; <div class="icon">-->
-<!--                                             <img src="../assets/img/gallery/categori_icon1.png" alt="">-->
-<!--                                         </div>-->
-<!--                                         &ndash;&gt;-->
-<!--                                        &lt;!&ndash;  <div class="properties__caption">-->
-<!--                                              <h3><a href="#">Urban areas</a></h3>-->
-<!--                                              <p>Let's uncover the best places to eat, drink</p>-->
-<!--                                          </div>-->
-<!--                                          &ndash;&gt;-->
+    <section class="u-align-center u-clearfix u-palette-5-dark-3 u-valign-middle u-section-6" id="carousel_2ff31">
+        <div class="u-expanded-height u-palette-3-base u-shape u-shape-rectangle u-shape-1"></div>
+            <div class="u-list u-list-1">
+                <div class="u-repeater u-repeater-1">
+                    <div th:each="korisnik : ${korisnici}"
+                         class="u-align-center-xs u-container-style u-list-item u-repeater-item">
+                        <div class="u-container-layout u-similar-container u-valign-bottom-lg u-valign-top-xl u-container-layout-1">
+                            <div alt="" class="u-image u-image-circle u-image-1"
+                                 style="background-image:url('https://thumbs.dreamstime.com/b/happy-person-portrait-smiling-woman-tanned-skin-curly-hair-happy-person-portrait-smiling-young-friendly-woman-197501184.jpg')"></div>
+                            <div class="u-align-center-xs u-container-style u-group u-group-1">
+                                <div class="u-container-layout u-container-layout-2">
+                                    <h4 class="u-custom-font u-font-oswald u-text u-text-1"
+                                        th:text="${korisnik.fname + ' ' + korisnik.lname}"></h4>
+                                    <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"
+                                        th:text="${'Email: ' + korisnik.email}"></h5>
+                                    <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"
+                                        th:text="${'Telefon: ' + korisnik.telefon}"></h5>
+                                    <p class="u-text u-text-black-10 u-text-3" th:text="${korisnik.bio}"
+                                       style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"></p>
+<!--                                    <div class="obriši-btn pb-3" style="margin:auto">-->
+<!--                                        <a href="#" onclick="document.getElementById('pretraga').submit()"><i-->
+<!--                                                class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button>-->
+<!--                                        </a>-->
 <!--                                    </div>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash;   <div class="col-xl-4">-->
-<!--                                       <div class="double-btn f-right  d-flex flex-wrap">-->
-<!--                                           <a href="#" class="border-btn w-btn wantToWork-btn mr-20"><i class="fas fa-globe"></i>Website</a>-->
-<!--                                           <a href="#" class="btn w-btn wantToWork-btn"><i class="fas fa-phone"></i>Call Now</a>-->
-<!--                                       </div>-->
-<!--                                   </div>-->
-<!--                                   &ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </section>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-    <section class="u-align-center u-clearfix u-palette-5-light-3 u-valign-middle u-section-6" id="carousel_2ff3">
-        <div class="u-expanded-height u-shape u-shape-rectangle u-shape-1"></div>
-        <div class="u-list u-list-1">
-            <div class="u-repeater u-repeater-1">
-                <div th:each="korisnik : ${korisnici}"class="u-align-center-s u-container-style u-list-item u-repeater-item border border-secondary">
-                    <div class="u-container-layout u-similar-container u-valign-bottom-lg u-valign-top-xl u-container-layout-1">
-                        <div alt="" class="u-image u-image-circle u-image-1" style="background-image:url('https://thumbs.dreamstime.com/b/happy-person-portrait-smiling-woman-tanned-skin-curly-hair-happy-person-portrait-smiling-young-friendly-woman-197501184.jpg')"></div>
-                        <div class="u-align-center-xs u-container-style u-group u-group-1">
-                            <div class="u-container-layout u-container-layout-2">
-                                <h4 class="u-custom-font u-font-oswald u-text u-text-1" th:text="${korisnik.fname + ' ' + korisnik.lname}"></h4>
-                                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Email: ' + korisnik.email}"></h5>
-                                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Telefon: ' + korisnik.telefon}"></h5>
-                                <p class="u-text u-text-black-10 u-text-3" th:text="${korisnik.bio}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-align-center-xs u-container-style u-list-item u-repeater-item">
+                        <div class="u-container-layout u-similar-container u-valign-bottom-lg u-valign-top-xl u-container-layout-3">
+                            <div alt="" class="u-image u-image-circle u-image-2" data-image-width="598"
+                                 data-image-height="598"></div>
+                            <div class="u-align-center-xs u-container-style u-group u-group-2">
+                                <div class="u-container-layout u-container-layout-4">
+                                    <h4 class="u-custom-font u-font-oswald u-text u-text-4">Ann Richmond</h4>
+                                    <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-5">manager</h5>
+                                    <p class="u-text u-text-grey-10 u-text-6"
+                                       style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">
+                                        Sample text. Click to select the text box. Click
+                                        again or double click to start editing the text.</p>
+<!--                                    <div class="obriši-btn pt-3 pb-3" style="margin:auto">-->
+<!--                                        <a href="#" onclick="document.getElementById('pretraga').submit()"><i-->
+<!--                                                class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -162,6 +163,26 @@
             </div>
         </div>
     </section>
+    <!--    <section class="u-align-center u-clearfix u-palette-5-light-3 u-valign-middle u-section-6" id="carousel_2ff3">-->
+    <!--        <div class="u-expanded-height u-shape u-shape-rectangle u-shape-1"></div>-->
+    <!--        <div class="u-list u-list-1">-->
+    <!--            <div class="u-repeater u-repeater-1">-->
+    <!--                <div th:each="korisnik : ${korisnici}"class="u-align-center-s u-container-style u-list-item u-repeater-item border border-secondary">-->
+    <!--                    <div class="u-container-layout u-similar-container u-valign-bottom-lg u-valign-top-xl u-container-layout-1">-->
+    <!--                        <div alt="" class="u-image u-image-circle u-image-1" style="background-image:url('https://thumbs.dreamstime.com/b/happy-person-portrait-smiling-woman-tanned-skin-curly-hair-happy-person-portrait-smiling-young-friendly-woman-197501184.jpg')"></div>-->
+    <!--                        <div class="u-align-center-xs u-container-style u-group u-group-1">-->
+    <!--                            <div class="u-container-layout u-container-layout-2">-->
+    <!--                                <h4 class="u-custom-font u-font-oswald u-text u-text-1" th:text="${korisnik.fname + ' ' + korisnik.lname}"></h4>-->
+    <!--                                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Email: ' + korisnik.email}"></h5>-->
+    <!--                                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Telefon: ' + korisnik.telefon}"></h5>-->
+    <!--                                <p class="u-text u-text-black-10 u-text-3" th:text="${korisnik.bio}"></p>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </section>-->
 
     <!-- Want To work 02-->
     <section class="wantToWork-area">
@@ -177,13 +198,22 @@
                             <br>
                             <p>Dobro došli na stranicu portala <a href="#">OglasiIMI</a></p>
 
-                            <p>Portal <a href="#">OglasiIMI</a> je online berza poslova, nastao kao potreba za uspostavljanjem profesionalnog poslovnog sistema koji će pomoći Srbiji da poveća stopu zaposlenosti.</p>
+                            <p>Portal <a href="#">OglasiIMI</a> je online berza poslova, nastao kao potreba za
+                                uspostavljanjem profesionalnog poslovnog sistema koji će pomoći Srbiji da poveća stopu
+                                zaposlenosti.</p>
 
-                            <p><a href="#">OglasiIMI</a> je namenjen poslodavcima i kandidatima, kao i svima onima koji imaju interesovanja za domen ljudskih resursa i praćenje uticaja koju ova oblast ima u razvoju privrede i društva u celini.</p>
+                            <p><a href="#">OglasiIMI</a> je namenjen poslodavcima i kandidatima, kao i svima onima koji
+                                imaju interesovanja za domen ljudskih resursa i praćenje uticaja koju ova oblast ima u
+                                razvoju privrede i društva u celini.</p>
 
-                            <p>Od samog početka rada portala <a href="#">OglasiIMI</a>, cilj nam je da pomognemo svojim kandidatima da nađu posao, da povećamo stopu zaposlenosti, kao i da postavljamo iznova standarde u oblasti ljudskih resursa. Naša vizija je da pomognemo i olakšamo poslodavcima potragu za kvalitetnim i pravim kadrom, koji će doprineti rastu i razvoju kompanije.</p>
+                            <p>Od samog početka rada portala <a href="#">OglasiIMI</a>, cilj nam je da pomognemo svojim
+                                kandidatima da nađu posao, da povećamo stopu zaposlenosti, kao i da postavljamo iznova
+                                standarde u oblasti ljudskih resursa. Naša vizija je da pomognemo i olakšamo
+                                poslodavcima potragu za kvalitetnim i pravim kadrom, koji će doprineti rastu i razvoju
+                                kompanije.</p>
 
-                            <p>Teoriju ćemo ostaviti drugima, a Vama ćemo pomoći da na praktičan način dođete do ostvarenja svog cilja - bilo da ste poslodavac ili budući zaposleni.</p>
+                            <p>Teoriju ćemo ostaviti drugima, a Vama ćemo pomoći da na praktičan način dođete do
+                                ostvarenja svog cilja - bilo da ste poslodavac ili budući zaposleni.</p>
 
                             <p>Biće nam zadovoljstvo da budemo deo i Vašeg poslovnog uspeha. </p>
                         </div>
@@ -193,9 +223,15 @@
                             <br>
                             <h2>Kontakt</h2>
                             <br>
-                            <p><i class="material-icons" style="color:#1f3654;position:relative;top:7px;">local_phone</i>  +381 (0) 61 11 22 333</p>
-                            <p><i class="material-icons" style="color:#1f3654;position:relative;top:7px;">local_phone</i>  +381 (0) 65 11 22 333</p>
-                            <p style="color:#000033"><i class="material-icons" style="color:#1f3654;position:relative;top:7px;">email</i> <a href="#" style="color:#000033">  OglasiIMI@pmf.kg.ac.rs</a></p>
+                            <p><i class="material-icons"
+                                  style="color:#1f3654;position:relative;top:7px;">local_phone</i> +381 (0) 61 11 22 333
+                            </p>
+                            <p><i class="material-icons"
+                                  style="color:#1f3654;position:relative;top:7px;">local_phone</i> +381 (0) 65 11 22 333
+                            </p>
+                            <p style="color:#000033"><i class="material-icons"
+                                                        style="color:#1f3654;position:relative;top:7px;">email</i> <a
+                                    href="#" style="color:#000033"> OglasiIMI@pmf.kg.ac.rs</a></p>
                         </div>
                     </div>
                 </div>
@@ -238,7 +274,10 @@
                         <div class="col-xl-10 col-lg-9 ">
                             <div class="footer-copy-right">
                                 <p>
-                                    Copyright &copy; <script>document.write(new Date().getFullYear());</script> | <a href="#">OglasiIMI</a> | All rights reserved.<!-- <a href="#"target="_blank">OglasiIMI</a>-->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script>
+                                    | <a href="#">OglasiIMI</a> | All rights reserved.
+                                    <!-- <a href="#"target="_blank">OglasiIMI</a>-->
                                 </p>
                             </div>
                         </div>

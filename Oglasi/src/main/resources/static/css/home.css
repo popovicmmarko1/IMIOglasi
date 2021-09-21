@@ -1385,7 +1385,7 @@
 .u-section-6 .u-repeater-1 {
   grid-template-columns: 50% 50%;
   grid-gap: 0px 0px;
-  min-height: 683px;
+  min-height: 100px;
 }
 
 .u-section-6 .u-container-layout-1 {

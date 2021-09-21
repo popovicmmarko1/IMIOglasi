@@ -97,7 +97,7 @@
     <!--? Hero Area Start-->
     <!--? Hero Start -->
     <div class="slider-area2">
-        <div class="slider-height3  hero-overly hero-bg4 d-flex align-items-center">
+        <div class="slider-height3  hero-overly hero-bg5 d-flex align-items-center">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -201,7 +201,7 @@
                                 </div>
                                 <div class="properties__caption">
                                     <h3><a th:href="@{/oglas/(pageid=${posao.id})}" th:text="${posao.name}"></a></h3>
-                                    <p th:text="${posao.opis}"></p>
+                                    <p th:text="${posao.opis}" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"></p>
                                 </div>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="restaurant-name">
@@ -211,7 +211,7 @@
 
                                     </div>
                                 </div>
-                                <div class="obriši-btn pb-3" style="margin:auto">
+                                <div class="obriši-btn pb-3" style="margin:auto;border-radius:6px;">
                                     <a href="#" onclick="document.getElementById('pretraga').submit()"><i
                                             class="ti-trash justify-content-between align-items-center"></i>OBRIŠI</button></a>
                                 </div>

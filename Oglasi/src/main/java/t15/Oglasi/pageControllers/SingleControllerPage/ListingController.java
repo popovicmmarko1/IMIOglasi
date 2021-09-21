@@ -1,6 +1,7 @@
 package t15.Oglasi.pageControllers.SingleControllerPage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,9 +55,11 @@ public class ListingController {
         String rv1 = rv.orElse(null);
 
 
-        List<Oglas> oglasi = oglasService.findByPagingCriteria(search1, grad1, oblast1, obrazovanje1, ri1, tip1, pol1, rv1, PageRequest.of(page.orElse(0), 6));
+        Page<Oglas> oglasi = oglasService.findByPagingCriteria(search1, grad1, oblast1, obrazovanje1, ri1, tip1, pol1, rv1, PageRequest.of(page.orElse(0), 6));
         //List<Oglas> oglasi = oglasService.findByPagingCriteria(null, null, null, null, null, null, null, null, PageRequest.of(page.orElse(1), 6));
         model.addAttribute("oglasi", oglasi);
+        model.addAttribute("nop", oglasi.getTotalPages());
+        model.addAttribute("noe",oglasi.getTotalElements());
 
         return "listing";
     }

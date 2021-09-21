@@ -35,7 +35,7 @@ public class OglasService {
         return oglasRepository.save(request);
     }
 
-    public List<Oglas> findByPagingCriteria(String search, String grad, String oblast, String obrazovanje, String ri, String tip, String pol, String rv, Pageable pageable) {
+    public Page<Oglas> findByPagingCriteria(String search, String grad, String oblast, String obrazovanje, String ri, String tip, String pol, String rv, Pageable pageable) {
 
         Page<Oglas> page = oglasRepository.findAll(new Specification<Oglas>() {
             @Override
@@ -81,7 +81,7 @@ public class OglasService {
         page.getTotalElements();        // get total elements
         page.getTotalPages();           // get total pages
 
-        return page.getContent();       // get List of Employee
+        return page;       // get List of Employee
     }
 
 }

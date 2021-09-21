@@ -20,4 +20,6 @@ public interface OglasPrijavaRepository extends JpaRepository<OglasPrijava, Long
     public List<Long> findByOglasId(Long id);
 
 
+
+
 }

@@ -83,10 +83,10 @@
                     <div th:if="${username != 'null'}" class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigation_prijavljen">
-                                <li><a href="index">Početna</a></li>
-                                <li><a href="listing">Kategorije</a></li>
-                                <li><a href="employers">Poslodavci</a></li>
-                                <li><a href="contact">Kontakt</a></li>
+                                <li><a href="../../">Početna</a></li>
+                                <li><a href="../../listing">Kategorije</a></li>
+                                <li><a href="../../employers">Poslodavci</a></li>
+                                <li><a href="../../contact">Kontakt</a></li>
                                 <li th:if="${username}"><a href="profil" th:text="' '+${username}"></a></li>
                                 <li th:unless="${username}"><a href="login"> Prijavi se</a></li>
                                 <li th:if="${role == 'PUSER'}"><a href="dodaj_oglas" class="">Postavite oglas</a></li>
@@ -97,11 +97,11 @@
                     <div th:if="${username == 'null'}" class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigation_neprijavljen">
-                                <li><a href="index">Početna</a></li>
-                                <li><a href="listing">Kategorije</a></li>
-                                <li><a href="employers">Poslodavci</a></li>
-                                <li><a href="contact">Kontakt</a></li>
-                                <li><a href="login"> Prijavi se</a></li>
+                                <li><a href="../../">Početna</a></li>
+                                <li><a href="../../">Kategorije</a></li>
+                                <li><a href="../../">Poslodavci</a></li>
+                                <li><a href="../../">Kontakt</a></li>
+                                <li><a href="../../"> Prijavi se</a></li>
                             </ul>
                         </nav>
                     </div>

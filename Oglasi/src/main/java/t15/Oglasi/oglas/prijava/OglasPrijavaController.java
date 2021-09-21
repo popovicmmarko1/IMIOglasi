@@ -23,7 +23,8 @@ public class OglasPrijavaController {
                 if(oglasPrijavaService.proveri(request))
                 {
                         oglasPrijavaService.save(request);
-                        response.sendRedirect("../../oglas/?pageid=" + request.getIdOglasa().toString());
+                        System.out.println(request.getIdOglasa() + "id oglasa je ovaj");
+                        response.sendRedirect("/oglas/?pageid=" + request.getIdOglasa());
                 }else{
                         response.sendRedirect("/nije");
                 }

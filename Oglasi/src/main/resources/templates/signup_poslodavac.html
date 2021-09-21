@@ -55,12 +55,12 @@
 				<span class="login100-form-title p-b-41">
 					Registruj se kao poslodavac
 				</span>
-            <form th:action="@{/registration}" method="post" class="login100-form validate-form p-b-33 p-t-5">
+            <form action="/registrationp" method="post" class="login100-form validate-form p-b-33 p-t-5">
                 <h3 class="title m-t-40 p-l-30 m-r-30" style="text-align:center;color:#122033">Osnovni podaci kompanije</h3> <br>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input" data-validate="Unesite naziv firme">
-                            <input name="naziv" class="input100" type="text" name="naziv" id="poslodavac" placeholder="Naziv firme">
+                            <input name="naziv" class="input100" type="text" id="poslodavac" placeholder="Naziv firme">
                             <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                         </div>
                     </div>
@@ -74,13 +74,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input" data-validate="Unesite grad">
-                            <input name="grad" class="input100" type="text" name="grad" id="grad"  placeholder="Grad">
+                            <input class="input100" type="text" name="grad" id="grad"  placeholder="Grad">
                             <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input pass" data-validate="Unesite adresu">
-                            <input name="adresa"class="input100" type="text" id="adresaposlodavca" name="adresa"
+                            <input name="adresa"class="input100" type="text" id="adresaposlodavca" 
                                    placeholder="Adresa sedišta firme">
                             <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                         </div>
@@ -89,7 +89,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="wrap-input100 validate-input pass" data-validate="Unesite PIB">
-                            <input name="PIB" class="input100" type="number" id="pib" name="pib"
+                            <input name="PIB" class="input100" type="number" id="pib"
                                    placeholder="PIB (Poreski identifikacioni broj)">
                             <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                         </div>

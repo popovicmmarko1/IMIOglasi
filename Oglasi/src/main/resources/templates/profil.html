@@ -335,20 +335,20 @@
                     <!-- end timeline content-->
 
                     <div class="tab-pane" id="settings">
-                        <form>
+                        <form method="POST" action="/profilpromena">
                             <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle mr-1"></i> Lični podaci</h5>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="firstname">Ime</label>
-                                        <input type="text" class="form-control" id="firstname" name="ime" placeholder="Unesi ime">
+                                        <input name="ime" type="text" class="form-control" id="firstname" name="ime" placeholder="Unesi ime">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="lastname">Prezime</label>
-                                        <input type="text" class="form-control" id="lastname" name="prezime" placeholder="Unesi prezime">
+                                        <input name="prezime" type="text" class="form-control" id="lastname" name="prezime" placeholder="Unesi prezime">
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -357,7 +357,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="userbio">Biografija</label>
-                                        <textarea class="form-control" id="userbio" rows="4" name="bio" placeholder="Upiši nešto o sebi..."></textarea>
+                                        <textarea name="bio" class="form-control" id="userbio" rows="4" name="bio" placeholder="Upiši nešto o sebi..."></textarea>
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->

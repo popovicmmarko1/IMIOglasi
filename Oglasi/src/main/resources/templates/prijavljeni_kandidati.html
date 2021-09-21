@@ -181,14 +181,14 @@
         <div class="u-expanded-height u-shape u-shape-rectangle u-shape-1"></div>
         <div class="u-list u-list-1">
             <div class="u-repeater u-repeater-1">
-                <div th:each="${korisnik : korisnici}"class="u-align-center-s u-container-style u-list-item u-repeater-item border border-secondary">
+                <div th:each="korisnik : ${korisnici}"class="u-align-center-s u-container-style u-list-item u-repeater-item border border-secondary">
                     <div class="u-container-layout u-similar-container u-valign-bottom-lg u-valign-top-xl u-container-layout-1">
                         <div alt="" class="u-image u-image-circle u-image-1" style="background-image:url('https://thumbs.dreamstime.com/b/happy-person-portrait-smiling-woman-tanned-skin-curly-hair-happy-person-portrait-smiling-young-friendly-woman-197501184.jpg')"></div>
                         <div class="u-align-center-xs u-container-style u-group u-group-1">
                             <div class="u-container-layout u-container-layout-2">
-                                <h4 class="u-custom-font u-font-oswald u-text u-text-1" th:text="${korisnik.fName + ' ' + korisnik.lName}">Jeffrey Brown</h4>
-                                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Email: 'korisnik.email}"></h5>
-                                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Telefon: 'korisnik.telefon}"></h5>
+                                <h4 class="u-custom-font u-font-oswald u-text u-text-1" th:text="${korisnik.fname + ' ' + korisnik.lname}"></h4>
+                                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Email: ' + korisnik.email}"></h5>
+                                <h5 class="u-custom-font u-text u-text-font u-text-palette-3-base u-text-2"th:text="${'Telefon: ' + korisnik.telefon}"></h5>
                                 <p class="u-text u-text-black-10 u-text-3" th:text="${korisnik.bio}"></p>
                             </div>
                         </div>

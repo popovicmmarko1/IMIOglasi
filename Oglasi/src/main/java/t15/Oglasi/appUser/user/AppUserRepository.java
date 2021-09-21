@@ -16,6 +16,9 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     @Query(value = "SELECT * FROM app_user a WHERE a.email = ?1", nativeQuery = true)
     Optional<AppUser> findByEmail1(String email);
 
+    @Query(value = "SELECT * FROM app_user a WHERE a.id = ?1", nativeQuery = true)
+    AppUser findById1(Long id);
+
     @Transactional
     @Modifying
     @Query("UPDATE AppUser a SET a.enabled = TRUE WHERE a.email = ?1")
